@@ -1,4 +1,4 @@
-package sample;
+package com.pontoDigital.Controllers;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;

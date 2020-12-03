@@ -1,4 +1,4 @@
-package sample;
+package com.pontoDigital.Controllers;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
