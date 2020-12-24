@@ -1,5 +1,10 @@
 package com.pontoDigital.Controllers;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -7,9 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import javafx.util.Duration;
 
 public class Controller{
     //Atributos especiais
@@ -27,12 +30,6 @@ public class Controller{
     private Label lblData;
     @FXML
     private Label lblDataCompleta;
-    //ImageView
-    /** Por enquanto não é util
-     @FXML
-     private ImageView imgPonto;
-     @FXML
-     private ImageView imgRelatorio;*/
     @FXML
     private ImageView setaPonto;
     @FXML
@@ -51,9 +48,34 @@ public class Controller{
         System.exit(0);
     }
 
-    //Ponto digital nessa Parte -Atuando 15/11/2020
     public void botaoHoraRelogio() {
+    	
+    	labelsInstanciaBtr();
+
+        KeyFrame frame = new KeyFrame(Duration.millis(1000), e -> atualizaHoras());
+		Timeline timeline = new Timeline(frame);
+		timeline.setCycleCount(Timeline.INDEFINITE);
+		timeline.play();
+    }
+
+    public void botaoRelatorioPonto() {
         //True
+        setaRelatorio.setVisible(true);
+        relatorioPainel.setVisible(true);
+        //False
+        setaSair.setVisible(false);
+        setaPonto.setVisible(false);
+        relogioPainel.setVisible(false);
+    }
+    
+    private void atualizaHoras() {
+		Date agora = new Date();
+		lblRelogio.setText(sfd1.format(agora)); 
+	}
+    
+    //Este metodo organiza as labels do evento Botao hora relogio
+    private void labelsInstanciaBtr() {
+    	 //True
         setaPonto.setVisible(true);
         relogioPainel.setVisible(true);
         //Label´s
@@ -71,21 +93,5 @@ public class Controller{
         //Data a parte Superior
         lblDataCompleta.setText(sfd2.format(data));
         lblDataCompleta.getText();
-
-        //Teste Thread
-
-
-
-        //Final teste Thread
-    }
-
-    public void botaoRelatorioPonto() {
-        //True
-        setaRelatorio.setVisible(true);
-        relatorioPainel.setVisible(true);
-        //False
-        setaSair.setVisible(false);
-        setaPonto.setVisible(false);
-        relogioPainel.setVisible(false);
     }
 }
