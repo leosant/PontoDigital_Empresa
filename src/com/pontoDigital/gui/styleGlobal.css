@@ -1,9 +1,52 @@
-
-
 /*.root{
 	
-	-fx-border-radius: 8px;
+	
 	-fx-background-radius: 5.0;
     -fx-padding: 8;
 
 }*/
+
+.paneMinEs {
+	-fx-background-color: linear-gradient(to right top, #3f012c, #5d234c, #7c436f);
+	-fx-background-radius: 20;
+}
+
+.paneRelPontoDir {
+	-fx-background-color: linear-gradient(to right top, #3f012c, #5d234c, #7c436f);
+	-fx-background-radius: 40 8 40 8;
+}
+
+.paneRelatorioDir {
+	-fx-background-color: linear-gradient(to right top, #3f012c, #5d234c, #7c436f);
+	-fx-background-radius: 40 8 40 8;
+}
+
+.btRelogioPonto {
+	-fx-cursor: hand;
+}
+
+.btRelatorio {
+	-fx-cursor: hand;
+}
+
+.btSair {
+	-fx-cursor: hand;
+}
+
+.btPonto {
+	 -fx-background-color: #56104d;
+	 -fx-background-radius: 20;
+}
+
+.btPonto:hover {
+	-fx-background-color: #3f012c;
+}
+
+.btAcessarBD {
+	-fx-background-color: #56104d;
+	 -fx-background-radius: 20;
+}
+
+.btAcessarBD:hover {
+	-fx-background-color: #3f012c;
+}
