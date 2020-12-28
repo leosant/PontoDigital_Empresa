@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import javafx.scene.*?>
@@ -8,7 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="650.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pontoDigital.Controllers.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="650.0" styleClass="paneBase" stylesheets="@styleGlobal.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pontoDigital.Controllers.Controller">
    <children>
       <ImageView fx:id="setaSair" fitHeight="50.0" fitWidth="50.0" layoutX="87.0" layoutY="336.0" pickOnBounds="true" preserveRatio="true" rotate="-89.5" visible="false">
          <image>
@@ -47,13 +48,13 @@
       <AnchorPane fx:id="relogioPainel" layoutX="117.0" layoutY="-3.0" prefHeight="400.0" prefWidth="535.0" styleClass="paneRelPontoDir" stylesheets="@styleGlobal.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="117.0" AnchorPane.topAnchor="-3.0">
          <children>
       
-            <Label fx:id="lblRelogio" layoutX="203.0" layoutY="133.0" prefHeight="70.0" prefWidth="150.0" text="Relógio" textFill="WHITE" AnchorPane.bottomAnchor="203.0" AnchorPane.leftAnchor="203.0" AnchorPane.rightAnchor="182.0" AnchorPane.topAnchor="133.0">
+            <Label fx:id="lblRelogio" alignment="CENTER" layoutX="170.0" layoutY="135.0" prefHeight="67.0" prefWidth="535.0" text="Relógio" textFill="WHITE" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="170.0">
                <font>
                   <Font name="Arial Black" size="30.0" />
                </font>
             </Label>
       
-            <Button fx:id="buttonPonto" layoutX="203.0" layoutY="266.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="130.0" styleClass="btPonto" stylesheets="@styleGlobal.css" text="Bater Ponto" textFill="WHITE" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="203.0" AnchorPane.rightAnchor="202.0" AnchorPane.topAnchor="266.0">
+            <Button fx:id="btPonto" layoutX="203.0" layoutY="262.0" mnemonicParsing="false" onMouseClicked="#registrarPonto" prefHeight="70.0" prefWidth="120.0" styleClass="btPonto" stylesheets="@styleGlobal.css" text="Bater Ponto" textFill="WHITE" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="205.0" AnchorPane.rightAnchor="203.0">
                <font>
                   <Font name="Arial Black" size="15.0" />
                </font>
@@ -66,7 +67,7 @@
                   <Font size="9.0" />
                </font>
             </Label>
-            <ImageView fitHeight="50.0" fitWidth="150.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="339.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="412.02564239501953" AnchorPane.topAnchor="14.0">
+            <ImageView fitHeight="50.0" fitWidth="108.97" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
                <image>
                   <Image url="@../Assets/logo.png" />
                </image>
@@ -82,7 +83,7 @@
                   <Font size="9.0" />
                </font>
             </Label>
-            <Button fx:id="buttonPonto1" layoutX="191.0" layoutY="292.0" mnemonicParsing="false" prefHeight="72.0" prefWidth="146.0" styleClass="btAcessarBD" stylesheets="@styleGlobal.css" text="Acessar" textFill="#fffdfd">
+            <Button layoutX="205.0" layoutY="272.0" mnemonicParsing="false" onMouseClicked="#eventAcessarBD" prefHeight="70.0" prefWidth="120.0" styleClass="btAcessarBD" stylesheets="@styleGlobal.css" text="Acessar" textFill="#fffdfd" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="205.0" AnchorPane.rightAnchor="203.0">
                <font>
                   <Font name="Arial Black" size="15.0" />
                </font>
@@ -90,18 +91,22 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label layoutX="190.0" layoutY="76.0" text="Relatorios" textAlignment="CENTER" textFill="WHITE">
+            <Label alignment="CENTER" layoutX="-2.0" layoutY="76.0" prefHeight="44.0" prefWidth="528.0" text="Relatorios" textAlignment="CENTER" textFill="WHITE" AnchorPane.bottomAnchor="250.0" AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="2.0">
                <font>
                   <Font name="Arial Black" size="30.0" />
                </font>
             </Label>
-            <TextField layoutX="190.0" layoutY="160.0" promptText="Login" />
-            <TextField layoutX="190.0" layoutY="233.0" promptText="Senha" />
-            <ImageView fitHeight="50.0" fitWidth="150.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+            <TextField id="txtLogin" layoutX="190.0" layoutY="160.0" promptText="Login" AnchorPane.bottomAnchor="210.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="189.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets></TextField>
+            <TextField layoutX="190.0" layoutY="203.0" promptText="Senha" AnchorPane.bottomAnchor="180.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="189.0" />
+            <ImageView fitHeight="50.0" fitWidth="108.97" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
                <image>
                   <Image url="@../Assets/logo.png" />
                </image>
             </ImageView>
+            <CheckBox layoutX="191.0" layoutY="255.0" mnemonicParsing="false" text="Lembrar-me" textFill="WHITE" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="191.0" AnchorPane.rightAnchor="250.0" />
          </children></AnchorPane>
 
    </children>

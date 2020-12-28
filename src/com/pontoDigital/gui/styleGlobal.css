@@ -5,6 +5,9 @@
     -fx-padding: 8;
 
 }*/
+.paneBase {
+	 -fx-background-color: transparent;
+}
 
 .paneMinEs {
 	-fx-background-color: linear-gradient(to right top, #3f012c, #5d234c, #7c436f);
