@@ -5,6 +5,9 @@ import java.util.Date;
 
 import javax.swing.JOptionPane;
 
+import com.pontoDigital.Principal.ScreenOne;
+import com.pontoDigital.Principal.ScreenTwo;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
@@ -15,6 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class Controller{
@@ -27,7 +31,9 @@ public class Controller{
     @FXML
     private Button btPonto;
     @FXML
-    private TextField txtLogin;
+    private TextField txtLogin = new TextField();
+    @FXML
+    private TextField txtSenha = new TextField();
     
     @FXML
     private Label lblRelogio;
@@ -50,13 +56,7 @@ public class Controller{
     private AnchorPane relogioPainel;
     @FXML
     private AnchorPane relatorioPainel;
-
-    public void botaoSair(MouseEvent event) {
-        setaSair.setVisible(true);
-        Platform.exit();
-        System.exit(0);
-    }
-
+    
     public void botaoHoraRelogio() {
     	
     	labelsInstanciaBtr();
@@ -82,7 +82,23 @@ public class Controller{
     }
     
     public void eventAcessarBD () {
-    	JOptionPane.showMessageDialog(null, "Construindo o acesso do banco de dados");
+    	
+    	//Iniciando a troca de tela
+    	//if(txtLogin.getText().equals("admin") && txtSenha.getText().equals("admin")) {
+    		try {
+    			new ScreenTwo().start(new Stage());
+    			ScreenOne.getStage().close();
+    		}catch(Exception e) {
+    			e.printStackTrace();
+    		}
+//    	}else {
+//    		JOptionPane.showMessageDialog(null, "Login e/ou Senha invalida!", "Error", JOptionPane.ERROR_MESSAGE);
+//    	}
+    }
+    
+    public void botaoSair(MouseEvent event) {
+        setaSair.setVisible(true);
+        Platform.exit();
     }
     
     private void atualizaHoras() {

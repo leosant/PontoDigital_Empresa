@@ -12,11 +12,11 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class Main extends Application {
+public class ScreenOne extends Application {
 
     private double xOffset;
     private double yOffset;
-    private Stage stage;
+    private static Stage stage;
 
 	public static void main(String[] args) {
         launch(args);
@@ -26,20 +26,21 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws IOException{
     	
     	String localiUrl = "/com/pontoDigital/gui/AplicationOne.fxml";
-    	    	
         Parent root = FXMLLoader.load(getClass().getResource(localiUrl));
 
         sceneMovit(root);
         
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.setTitle("Ponto Digital - TDM");
+        
         Scene scene = new Scene(root);
         scene.setFill(Color.TRANSPARENT);
         scene.getStylesheets().add("/com/pontoDigital/gui/styleGlobal.css");
+        
         primaryStage.setScene(scene);
         primaryStage.show();
         
-        this.stage = primaryStage;   
+        ScreenOne.stage = primaryStage;   
     }
     
     public void sceneMovit(Parent root) {
@@ -60,7 +61,7 @@ public class Main extends Application {
         });
     }
 
-	public Stage getStage() {
+	public static Stage getStage() {
 		return stage;
 	}
     

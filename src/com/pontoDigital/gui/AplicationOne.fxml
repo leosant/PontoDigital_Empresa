@@ -11,17 +11,17 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="650.0" styleClass="paneBase" stylesheets="@styleGlobal.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pontoDigital.Controllers.Controller">
    <children>
-      <ImageView fx:id="setaSair" fitHeight="50.0" fitWidth="50.0" layoutX="87.0" layoutY="336.0" pickOnBounds="true" preserveRatio="true" rotate="-89.5" visible="false">
+      <ImageView fx:id="setaPonto" fitHeight="50.0" fitWidth="50.0" layoutX="87.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" rotate="-89.5" AnchorPane.leftAnchor="87.0" AnchorPane.topAnchor="14.0">
          <image>
             <Image url="@../Assets/bleach.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="setaPonto" fitHeight="50.0" fitWidth="50.0" layoutX="87.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" rotate="-89.5">
+      <ImageView fx:id="setaRelatorio" fitHeight="50.0" fitWidth="50.0" layoutX="87.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true" rotate="-89.5" visible="false" AnchorPane.leftAnchor="87.0" AnchorPane.topAnchor="180.0">
          <image>
             <Image url="@../Assets/bleach.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="setaRelatorio" fitHeight="50.0" fitWidth="50.0" layoutX="87.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true" rotate="-89.5" visible="false">
+      <ImageView fx:id="setaSair" fitHeight="50.0" fitWidth="50.0" layoutX="87.0" layoutY="336.0" pickOnBounds="true" preserveRatio="true" rotate="-89.5" visible="false" AnchorPane.leftAnchor="87.0" AnchorPane.topAnchor="336.0">
          <image>
             <Image url="@../Assets/bleach.png" />
          </image>
@@ -38,7 +38,7 @@
                   <Image url="@../Assets/ImportantMonth.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="imgPonto" fitHeight="50.0" fitWidth="50.0" layoutX="15.0" layoutY="21.0" onMouseClicked="#botaoHoraRelogio" pickOnBounds="true" preserveRatio="true" styleClass="btRelogioPonto">
+            <ImageView fx:id="imgPonto" fitHeight="50.0" fitWidth="50.0" layoutX="15.0" layoutY="21.0" onMouseClicked="#botaoHoraRelogio" pickOnBounds="true" preserveRatio="true" styleClass="btRelogioPonto" AnchorPane.topAnchor="14.0">
                <image>
                   <Image url="@../Assets/ClockAdd.png" />
                </image>
@@ -62,23 +62,28 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label layoutX="439.0" layoutY="379.0" text="Copyright Leonardo" textFill="#ebe5e5">
+            <Label layoutX="439.0" layoutY="379.0" text="Copyright Leonardo" textFill="#ebe5e5" AnchorPane.bottomAnchor="7.0" AnchorPane.rightAnchor="30.0">
                <font>
                   <Font size="9.0" />
                </font>
             </Label>
-            <ImageView fitHeight="50.0" fitWidth="108.97" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
+            <ImageView fitHeight="50.0" fitWidth="108.97" layoutX="28.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="14.0">
                <image>
                   <Image url="@../Assets/logo.png" />
                </image>
             </ImageView>
             <Label fx:id="lblData" layoutX="424.0" layoutY="14.0" text="Data: " textFill="#fcfcfc" visible="false" />
             <Label fx:id="lblDataCompleta" layoutX="458.0" layoutY="14.0" text="dd/MM/yyy" textFill="WHITE" visible="false" />
+            <Label layoutX="28.0" layoutY="362.0" opacity="0.5" text="Usuario" textFill="WHITE" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="30.0">
+               <font>
+                  <Font name="Arial Black" size="15.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="relatorioPainel" layoutX="125.0" layoutY="-6.0" prefHeight="406.0" prefWidth="528.0" styleClass="paneRelatorioDir" stylesheets="@styleGlobal.css" visible="false">
          <children>
-            <Label layoutX="434.0" layoutY="386.0" text="Copyright Leonardo" textFill="#ebe5e5">
+            <Label layoutX="427.0" layoutY="386.0" text="Copyright Leonardo" textFill="#ebe5e5" AnchorPane.bottomAnchor="7.0" AnchorPane.rightAnchor="30.0">
                <font>
                   <Font size="9.0" />
                </font>
@@ -100,7 +105,7 @@
                <opaqueInsets>
                   <Insets />
                </opaqueInsets></TextField>
-            <TextField layoutX="190.0" layoutY="203.0" promptText="Senha" AnchorPane.bottomAnchor="180.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="189.0" />
+            <TextField id="txtSenha" layoutX="190.0" layoutY="203.0" promptText="Senha" AnchorPane.bottomAnchor="180.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="189.0" />
             <ImageView fitHeight="50.0" fitWidth="108.97" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
                <image>
                   <Image url="@../Assets/logo.png" />
