@@ -31,9 +31,9 @@ public class Controller{
     @FXML
     private Button btPonto;
     @FXML
-    private TextField txtLogin = new TextField();
+    private TextField txtLogin;
     @FXML
-    private TextField txtSenha = new TextField();
+    private TextField txtSenha;
     
     @FXML
     private Label lblRelogio;
@@ -84,16 +84,16 @@ public class Controller{
     public void eventAcessarBD () {
     	
     	//Iniciando a troca de tela
-    	//if(txtLogin.getText().equals("admin") && txtSenha.getText().equals("admin")) {
+    	if(txtLogin.getText().equals("admin") && txtSenha.getText().equals("admin")) {
     		try {
     			new ScreenTwo().start(new Stage());
     			ScreenOne.getStage().close();
     		}catch(Exception e) {
     			e.printStackTrace();
     		}
-//    	}else {
-//    		JOptionPane.showMessageDialog(null, "Login e/ou Senha invalida!", "Error", JOptionPane.ERROR_MESSAGE);
-//    	}
+    	}else {
+    		JOptionPane.showMessageDialog(null, "Login e/ou Senha invalida!", "Error", JOptionPane.ERROR_MESSAGE);
+    	}
     }
     
     public void botaoSair(MouseEvent event) {

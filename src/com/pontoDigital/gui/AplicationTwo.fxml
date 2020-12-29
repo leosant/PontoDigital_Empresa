@@ -71,7 +71,7 @@
             </AnchorPane>
             <AnchorPane layoutX="277.0" layoutY="536.0" opacity="0.9" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: ffffff; -fx-background-radius: 80;" AnchorPane.rightAnchor="80.0">
                <children>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#returnScreenOne" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                      <image>
                         <Image url="@../Assets/Back.png" />
                      </image>

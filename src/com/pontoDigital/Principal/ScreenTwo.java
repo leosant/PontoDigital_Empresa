@@ -15,7 +15,7 @@ import javafx.stage.StageStyle;
 public class ScreenTwo extends Application{
 	private Double xOffset;
 	private Double yOffset;
-	private Stage stage;
+	private static Stage stage;
 	
 	public static void main(String[] args) {
 		launch(args);
@@ -38,7 +38,7 @@ public class ScreenTwo extends Application{
 		secondStage.setScene(scene);
 		secondStage.show();
 		
-		this.stage = secondStage;
+		ScreenTwo.stage = secondStage;
 	}
 	
 	public void sceneMovit(Parent root) {
@@ -59,7 +59,7 @@ public class ScreenTwo extends Application{
         });
     }
 	
-	public Stage getStage() {
+	public static Stage getStage() {
 		return stage;
 	}
 

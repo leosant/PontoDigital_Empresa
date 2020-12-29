@@ -101,11 +101,11 @@
                   <Font name="Arial Black" size="30.0" />
                </font>
             </Label>
-            <TextField id="txtLogin" layoutX="190.0" layoutY="160.0" promptText="Login" AnchorPane.bottomAnchor="210.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="189.0">
+            <TextField fx:id="txtLogin" layoutX="190.0" layoutY="160.0" promptText="Login" AnchorPane.bottomAnchor="210.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="189.0">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets></TextField>
-            <TextField id="txtSenha" layoutX="190.0" layoutY="203.0" promptText="Senha" AnchorPane.bottomAnchor="180.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="189.0" />
+            <TextField fx:id="txtSenha" layoutX="190.0" layoutY="203.0" promptText="Senha" AnchorPane.bottomAnchor="180.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="189.0" />
             <ImageView fitHeight="50.0" fitWidth="108.97" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
                <image>
                   <Image url="@../Assets/logo.png" />
