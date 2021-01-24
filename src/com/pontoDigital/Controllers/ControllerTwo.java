@@ -1,6 +1,7 @@
 package com.pontoDigital.Controllers;
 
 import com.pontoDigital.Principal.ScreenOne;
+import com.pontoDigital.Principal.ScreenThree;
 import com.pontoDigital.Principal.ScreenTwo;
 
 import javafx.application.Platform;
@@ -17,6 +18,14 @@ public class ControllerTwo {
 			new ScreenOne().start(new Stage());
 			ScreenTwo.getStage().close();
 		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	public void newUser() {
+		try {
+			new ScreenThree().start(new Stage());
+		}catch(Exception e) {
 			e.printStackTrace();
 		}
 	}

@@ -22,18 +22,20 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class Controller{
-    //Atributos especiais
+    //Special attribute
     SimpleDateFormat sfd1 = new SimpleDateFormat("HH:mm:ss");
     SimpleDateFormat sfd2 = new SimpleDateFormat("dd/MM/yyyy");
     Date data = new Date();
     
-    //Buttons and label´s
+    //Buttons and labels
     @FXML
     private Button btPonto;
     @FXML
     private TextField txtLogin;
     @FXML
     private TextField txtSenha;
+    @FXML
+    private Label lblUser;
     
     @FXML
     private Label lblRelogio;
@@ -57,6 +59,7 @@ public class Controller{
     @FXML
     private AnchorPane relatorioPainel;
     
+    //Part of guide button hours time
     public void botaoHoraRelogio() {
     	
     	labelsInstanciaBtr();
@@ -67,10 +70,16 @@ public class Controller{
 		timeline.play();
     }
     
+    //Part of guide button hours time. Here is the button to send data to the database
     public void registrarPonto() {
-    	JOptionPane.showMessageDialog(null, "Construindo o registro");
+    	//TODO build call to my database (button)
+    	JOptionPane.showMessageDialog(null,lblUser.getText()+
+    			"\n"+lblRelogio.getText()+
+    			"\n"+lblDataCompleta.getText()+
+    			"\nSalving my database");
     }
-
+    
+    //Part of guide button reports
     public void botaoRelatorioPonto() {
         //True
         setaRelatorio.setVisible(true);
@@ -81,9 +90,10 @@ public class Controller{
         relogioPainel.setVisible(false);
     }
     
+    //Part of guide reports
     public void eventAcessarBD () {
     	
-    	//Iniciando a troca de tela
+    	//Change for screen two 
     	if(txtLogin.getText().equals("admin") && txtSenha.getText().equals("admin")) {
     		try {
     			new ScreenTwo().start(new Stage());
@@ -96,22 +106,24 @@ public class Controller{
     	}
     }
     
+    //Part of guide button of exit
     public void botaoSair(MouseEvent event) {
         setaSair.setVisible(true);
         Platform.exit();
     }
     
+    //Function used to Thread Time line
     private void atualizaHoras() {
 		Date agora = new Date();
 		lblRelogio.setText(sfd1.format(agora)); 
 	}
     
-    //Este metodo organiza as labels do evento Botao hora relogio
+    //This function arranges the event button time labels
     private void labelsInstanciaBtr() {
-    	 //True
+    	//True
         setaPonto.setVisible(true);
         relogioPainel.setVisible(true);
-        //Label´s
+        //Label�s
         lblRelogio.setVisible(true);
         lblData.setVisible(true);
         lblDataCompleta.setVisible(true);
@@ -119,11 +131,10 @@ public class Controller{
         setaSair.setVisible(false);
         setaRelatorio.setVisible(false);
         relatorioPainel.setVisible(false);
-        //Interações
-        //Relógio
+        //Hours Time
         lblRelogio.setText(sfd1.format(data));
         lblRelogio.getText();
-        //Data a parte Superior
+        //Date part of up
         lblDataCompleta.setText(sfd2.format(data));
         lblDataCompleta.getText();
     }

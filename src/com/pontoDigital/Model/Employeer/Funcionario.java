@@ -1,23 +1,34 @@
 package com.pontoDigital.Model.Employeer;
 
+import javax.persistence.*;
+@Entity
 public class Funcionario {
 	
-	private Long cpf;
+	@Id
+	private int cpf;
 	private String Nome;
+	private String privilegios;
 	/*Mudar para enum*/
 	//private Boolean sexo;
 	
-	public Long getCpf() {
+	public int getCpf() {
 		return cpf;
 	}
-	public void setCpf(Long cpf) {
-		this.cpf = cpf;
+	public void setCpf(int i) {
+		this.cpf = i;
 	}
 	public String getNome() {
 		return Nome;
 	}
 	public void setNome(String nome) {
 		Nome = nome;
+	}
+	
+	public String getPrivilegios() {
+		return privilegios;
+	}
+	public void setPrivilegios(String privilegios) {
+		this.privilegios = privilegios;
 	}
 	
 //	public Boolean getSexo() {
