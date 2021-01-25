@@ -1,1 +1,10 @@
-@charset "ISO-8859-1";
+.paneBase {
+	-fx-background-color: transparent;
+}
+
+/**Used for two button of application shutdown and return */
+.btReturn {
+	-fx-background-color: ffffff;
+	-fx-background-radius: 80;
+	-fx-cursor: hand;
+}

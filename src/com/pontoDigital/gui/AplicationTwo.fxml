@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pontoDigital.Controllers.ControllerTwo">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pontoDigital.Controllers.ControllerTwo">
    <children>
       <AnchorPane layoutX="14.0" layoutY="21.0" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #3F012C; -fx-background-radius: 8 8 8 350;">
          <children>
@@ -40,11 +44,11 @@
                <children>
                   <Label alignment="CENTER" prefHeight="99.0" prefWidth="100.0" text="User Name" textAlignment="CENTER" GridPane.columnIndex="1">
                      <font>
-                        <Font name="David CLM Bold" size="20.0" />
+                        <Font name="Georgia Italic" size="15.0" />
                      </font></Label>
                   <Label alignment="CENTER" prefHeight="83.0" prefWidth="114.0" text="Horas Extras:" GridPane.rowIndex="1">
                      <font>
-                        <Font name="David CLM Bold" size="15.0" />
+                        <Font name="Georgia" size="15.0" />
                      </font></Label>
                   <Label alignment="TOP_CENTER" prefHeight="83.0" prefWidth="116.0" text="Total Time:" GridPane.rowIndex="2">
                      <font>
@@ -80,12 +84,12 @@
             </AnchorPane>
             <Button layoutX="136.0" layoutY="411.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="135.0" style="-fx-background-color: #56104D; -fx-background-radius: 100;" text="Gerar Relatorio" textFill="WHITE" AnchorPane.bottomAnchor="150.0">
                <font>
-                  <Font name="David CLM Bold" size="15.0" />
+                  <Font name="Georgia Bold" size="12.0" />
                </font>
             </Button>
-            <Button layoutX="111.0" layoutY="94.0" mnemonicParsing="false" onMouseClicked="#newUser" prefHeight="30.0" prefWidth="179.0" style="-fx-background-color: #56104D; -fx-background-radius: 100;" text="Criar novo Usuário" textFill="WHITE">
+            <Button layoutX="111.0" layoutY="94.0" mnemonicParsing="false" onMouseClicked="#newUser" prefHeight="30.0" prefWidth="179.0" style="-fx-background-color: #56104D; -fx-background-radius: 100;" text="Mais opções" textFill="WHITE">
                <font>
-                  <Font name="David CLM Bold" size="15.0" />
+                  <Font name="Georgia Bold Italic" size="15.0" />
                </font>
             </Button>
          </children>

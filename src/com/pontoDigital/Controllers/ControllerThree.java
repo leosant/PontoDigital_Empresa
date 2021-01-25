@@ -8,10 +8,15 @@ import javax.swing.JOptionPane;
 import com.pontoDigital.Model.Employeer.Efetivo;
 import com.pontoDigital.Model.Employeer.Estagiario;
 import com.pontoDigital.Model.Employeer.Funcionario;
+import com.pontoDigital.Principal.ScreenOne;
+import com.pontoDigital.Principal.ScreenThree;
+import com.pontoDigital.Principal.ScreenTwo;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class ControllerThree{
 	
@@ -27,6 +32,8 @@ public class ControllerThree{
 	@FXML
 	Label condicao;
 	
+	Funcionario empregado;
+	
 	private static EntityManagerFactory emf;
 	
 	private static EntityManager getEntityManager() {
@@ -38,7 +45,18 @@ public class ControllerThree{
 		return emf.createEntityManager();
 	}
 	
-	Funcionario empregado;
+	public void closedApp() {
+		Platform.exit();
+	}
+	
+	public void returnScreenTwo() {
+		try {
+			new ScreenTwo().start(new Stage());
+			ScreenThree.getStage().close();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
 	
 	public void gravarBD() {
 		
@@ -46,13 +64,13 @@ public class ControllerThree{
 			if(tipoFunc.getText().equals("Estagiario")) {
 				empregado = new Estagiario();
 				empregado.setNome(nomeFunc.getText());
-				empregado.setCpf(Integer.parseInt(cpfFunc.getText()));
+				empregado.setCpf(cpfFunc.getText());
 				condicao = new Label();
 				condicao.setText("Gravado com sucesso");
 			}else if(tipoFunc.getText().equals("Efetivo")) {
 				empregado = new Efetivo();
 				empregado.setNome(nomeFunc.getText());
-				empregado.setCpf(Integer.parseInt(cpfFunc.getText()));
+				empregado.setCpf(cpfFunc.getText());
 				empregado.setPrivilegios(priviFunc.getText());
 				condicao.setText("Gravado com sucesso");
 			}else {
