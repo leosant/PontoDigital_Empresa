@@ -48,7 +48,11 @@ public class ControllerThree{
 	@FXML
 	AnchorPane paneRemove;
 	
+	//Class Orient Objects
 	Funcionario empregado;
+	
+	//JPA
+	protected static EntityManager em;
 	
 	private static EntityManagerFactory emf;
 	
@@ -75,14 +79,25 @@ public class ControllerThree{
 	
 	public void closedApp() {
 		Platform.exit();
+		if(!(em == null)) {
+			em.close();
+			emf.close();
+		}
 	}
 	
 	public void returnScreenTwo() {
-		try {
+		try {		
 			new ScreenTwo().start(new Stage());
 			ScreenThree.getStage().close();
 		}catch(Exception e){
 			e.printStackTrace();
+		}finally {
+			//Case return screen three. Warning: possible error
+			if(!(em == null)) {
+				em.close();
+				emf.close();
+			}
+			
 		}
 	}
 	
@@ -114,15 +129,10 @@ public class ControllerThree{
 			}else if(radioGrau.getText().equals(null)){
 				JOptionPane.showMessageDialog(null, "Marque a opção Grau do funcionário");
 			}
-			
-			EntityManager em = getEntityManager();
+			em = getEntityManager();
 			em.getTransaction().begin();
 			em.persist(empregado);
 			em.getTransaction().commit();
-			
-			em.close();
-			emf.close();
-			System.out.println("Fechando a conexão");
 		}catch(IllegalStateException e) {
 			JOptionPane.showMessageDialog(null, "Ocorreu um erro no banco de dados !"
 					+ "\nfeche aplicação e abra novamente, que tudo ocorrerá bem."

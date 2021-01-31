@@ -25,6 +25,7 @@ public class ControllerTwo {
 	public void newUser() {
 		try {
 			new ScreenThree().start(new Stage());
+			ScreenTwo.getStage().close();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
