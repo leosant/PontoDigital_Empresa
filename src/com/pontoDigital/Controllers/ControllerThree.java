@@ -91,18 +91,18 @@ public class ControllerThree{
 			ScreenThree.getStage().close();
 		}catch(Exception e){
 			e.printStackTrace();
-		}finally {
-			//Case return screen three. Warning: possible error
-			if(!(em == null)) {
-				em.close();
-				emf.close();
-			}
-			
 		}
+//		finally {
+//			//Case return screen three. Warning: possible error
+//			if(!(em == null)) {
+//				em.close();
+//				emf.close();
+//			}
+			
 	}
 	
 	public void adicionarUsario() {
-		//Create of controller
+		//Create at controller		
 		RadioButton radioGrau = (RadioButton) groupGrau.getSelectedToggle();
 		RadioButton radioPriv = (RadioButton) groupPriv.getSelectedToggle();
 		System.out.println("Test value grupoGrau: "+groupGrau.getSelectedToggle());
