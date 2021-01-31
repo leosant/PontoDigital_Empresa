@@ -13,17 +13,17 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="650.0" styleClass="paneBase" stylesheets="@styleGlobal.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pontoDigital.Controllers.Controller">
    <children>
-      <ImageView fx:id="setaPonto" fitHeight="50.0" fitWidth="50.0" layoutX="87.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" rotate="-89.5" AnchorPane.leftAnchor="87.0" AnchorPane.topAnchor="14.0">
+      <ImageView fx:id="setaPonto" fitHeight="50.0" fitWidth="50.0" layoutX="87.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="87.0" AnchorPane.topAnchor="14.0">
          <image>
             <Image url="@../Assets/bleach.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="setaRelatorio" fitHeight="50.0" fitWidth="50.0" layoutX="87.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true" rotate="-89.5" visible="false" AnchorPane.leftAnchor="87.0" AnchorPane.topAnchor="180.0">
+      <ImageView fx:id="setaRelatorio" fitHeight="50.0" fitWidth="50.0" layoutX="87.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.leftAnchor="87.0" AnchorPane.topAnchor="180.0">
          <image>
             <Image url="@../Assets/bleach.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="setaSair" fitHeight="50.0" fitWidth="50.0" layoutX="87.0" layoutY="336.0" pickOnBounds="true" preserveRatio="true" rotate="-89.5" visible="false" AnchorPane.leftAnchor="87.0" AnchorPane.topAnchor="336.0">
+      <ImageView fx:id="setaSair" fitHeight="50.0" fitWidth="50.0" layoutX="87.0" layoutY="336.0" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.leftAnchor="87.0" AnchorPane.topAnchor="336.0">
          <image>
             <Image url="@../Assets/bleach.png" />
          </image>
@@ -32,7 +32,7 @@
          <children>
             <ImageView fx:id="imgSair" fitHeight="50.0" fitWidth="50.0" layoutX="15.0" layoutY="336.0" onMouseClicked="#botaoSair" pickOnBounds="true" preserveRatio="true" styleClass="btSair">
                <image>
-                  <Image url="@../Assets/ExitSign.png" />
+                  <Image url="@../Assets/shutdown.png" />
                </image>
             </ImageView>
             <ImageView fx:id="imgRelatorio" fitHeight="50.0" fitWidth="50.0" layoutX="15.0" layoutY="175.0" onMouseClicked="#botaoRelatorioPonto" pickOnBounds="true" preserveRatio="true" styleClass="btRelatorio">

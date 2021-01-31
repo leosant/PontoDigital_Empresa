@@ -16,15 +16,11 @@
    <children>
       <AnchorPane layoutX="14.0" layoutY="21.0" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #3F012C; -fx-background-radius: 8 8 8 350;">
          <children>
-            <AnchorPane layoutX="14.0" layoutY="14.0" opacity="0.9" prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: #ffffff; -fx-background-radius: 350;" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
-               <children>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="15.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
-                     <image>
-                        <Image url="@../Assets/User.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </AnchorPane>
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="21.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="536.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="329.0" AnchorPane.topAnchor="14.0">
+               <image>
+                  <Image url="@../Assets/User.png" />
+               </image>
+            </ImageView>
             <ImageView fitHeight="50.0" fitWidth="108.97" layoutX="277.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
                <image>
                   <Image url="@../Assets/logo.png" />
@@ -64,18 +60,18 @@
                      </font></Label>
                </children>
             </GridPane>
-            <AnchorPane layoutX="336.0" layoutY="536.0" opacity="0.9" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: ffffff; -fx-background-radius: 80;" AnchorPane.bottomAnchor="14.0">
+            <AnchorPane layoutX="336.0" layoutY="536.0" opacity="0.9" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #3F012C; -fx-background-radius: 80;" AnchorPane.bottomAnchor="14.0" AnchorPane.topAnchor="526.0">
                <children>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#closedApp" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#closedApp" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                      <image>
-                        <Image url="@../Assets/Shutdown.png" />
+                        <Image url="@../Assets/shutdown.png" />
                      </image>
                   </ImageView>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="277.0" layoutY="536.0" opacity="0.9" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: ffffff; -fx-background-radius: 80;" AnchorPane.rightAnchor="80.0">
+            <AnchorPane layoutX="277.0" layoutY="526.0" opacity="0.9" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #3F012C; -fx-background-radius: 80;" AnchorPane.rightAnchor="73.0" AnchorPane.topAnchor="526.0">
                <children>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#returnScreenOne" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                  <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="13.0" layoutY="10.0" onMouseClicked="#returnScreenOne" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="10.0">
                      <image>
                         <Image url="@../Assets/Back.png" />
                      </image>
