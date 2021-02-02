@@ -9,7 +9,7 @@ public class Funcionario {
 	@GeneratedValue
 	private int id;
 	private String cpf;
-	private String Nome;
+	private String nome;
 	private String privilegios;
 	
 	public int getId() {
@@ -27,10 +27,10 @@ public class Funcionario {
 		this.cpf = i;
 	}
 	public String getNome() {
-		return Nome;
+		return nome;
 	}
 	public void setNome(String nome) {
-		Nome = nome;
+		this.nome = nome;
 	}
 	
 	public String getPrivilegios() {
@@ -44,7 +44,7 @@ public class Funcionario {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((Nome == null) ? 0 : Nome.hashCode());
+		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		return result;
 	}
 	@Override
@@ -56,10 +56,10 @@ public class Funcionario {
 		if (getClass() != obj.getClass())
 			return false;
 		Funcionario other = (Funcionario) obj;
-		if (Nome == null) {
-			if (other.Nome != null)
+		if (nome == null) {
+			if (other.nome != null)
 				return false;
-		} else if (!Nome.equals(other.Nome))
+		} else if (!nome.equals(other.nome))
 			return false;
 		return true;
 	}

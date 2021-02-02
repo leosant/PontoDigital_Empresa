@@ -16,7 +16,7 @@
 	  <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
 
 	  <!-- Propriedades para conexão com o banco de dados -->
-	  <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/pontodigital?useTimezone=true&amp;serverTimezone=UTC" />
+	  <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/pontodigital?createDatabaseIfNotExist=true&amp;useTimezone=true&amp;serverTimezone=UTC" />
 	  <property name="javax.persistence.jdbc.user" value="root" />
 	  <property name="javax.persistence.jdbc.password" value=""/>
 
