@@ -161,7 +161,8 @@ public class ControllerThree{
 	public ObservableList<Funcionario> find() {
 		ObservableList<Funcionario> listSenFun = FXCollections.observableArrayList();
 		for(int i = 0; i < listObsFunc.size(); i++) {
-			if(listObsFunc.get(i).getNome().contains(txtFind.getText())) {
+			if(listObsFunc.get(i).getNome().toLowerCase().contains
+					(txtFind.getText().toLowerCase())) {
 				listSenFun.add(listObsFunc.get(i));
 			}
 		}
@@ -169,8 +170,13 @@ public class ControllerThree{
 	}
 	//AnchorPane edit - TableView - Button
 	public void clickFindEdit() {
-		tbFindEdit.setItems(find());
+		/*Method old 
+		tbFindEdit.setItems(find());*/
  	}
+	
+	public void findDirect() {
+		tbFindEdit.setItems(find());
+	}
 	
 	public void clickRemove() {
 		paneVisibleIs(3);
