@@ -1,4 +1,10 @@
-# ![Relogio](https://github.com/leosant/AssetsforRepository/blob/main/clock.png) PontoDigital_Empresa
+# ![Relogio](https://github.com/leosant/AssetsforRepository/blob/main/clock.png) PontoDigital_Empresa   
+#### Contate-me
+[![Linkedin: Leonardo](https://img.shields.io/badge/-Leonardo-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/leonardosantos455/)](https://www.linkedin.com/in/leonardosantos455/)
+
+
+
+
 ## Aplicação Javafx com JPA e MVC
 **Este projeto tem o intuito de gerenciar, o horário de trabalho dos funcionários da empresa, seguindo as regras da CLT.** 
 
