@@ -75,15 +75,19 @@ public class ControllerThree{
 	//AnchorPane add
 	public void clickAddUser() {
 		paneVisibleIs(1);
+		if(tbFindEdit.isVisible()) {
+			tbFindEdit.setVisible(false);
+		}
 	}
 	//AnchorPane add
 	public void adicionarUsario() {
+		
 		//Create at controller		
 		RadioButton radioGrau = (RadioButton) groupGrau.getSelectedToggle();
 		RadioButton radioPriv = (RadioButton) groupPriv.getSelectedToggle();
 		System.out.println("Test value grupoGrau: "+groupGrau.getSelectedToggle());
 		try {
-			if(radioGrau.getText().equals("Estagiário")) {
+			if(radioGrau.getText().equals("Estagiï¿½rio")) {
 				empregado = new Estagiario();
 				empregado.setNome(nomeFunc.getText());
 				empregado.setCpf(cpfFunc.getText());
@@ -95,7 +99,7 @@ public class ControllerThree{
 				empregado = new Efetivo();
 				empregado.setNome(nomeFunc.getText());
 				empregado.setCpf(cpfFunc.getText());
-				if(radioPriv.getText().equals("Padrão")) {
+				if(radioPriv.getText().equals("Padrï¿½o")) {
 					empregado.setPrivilegios("padrao");
 				}else {
 					empregado.setPrivilegios("admin");
@@ -103,7 +107,7 @@ public class ControllerThree{
 				//remove before of test
 				condicao.setText("Gravado com sucesso");
 			}else if(radioGrau.getText().equals(null)){
-				JOptionPane.showMessageDialog(null, "Marque a opção Grau do funcionário");
+				JOptionPane.showMessageDialog(null, "Marque a opï¿½ï¿½o Grau do funcionï¿½rio");
 			}
 			em = getEntityManager();
 			em.getTransaction().begin();
@@ -111,14 +115,14 @@ public class ControllerThree{
 			em.getTransaction().commit();
 		}catch(IllegalStateException e) {
 			JOptionPane.showMessageDialog(null, "Ocorreu um erro no banco de dados !"
-					+ "\nfeche aplicação e abra novamente, que tudo ocorrerá bem."
+					+ "\nfeche aplicaï¿½ï¿½o e abra novamente, que tudo ocorrerï¿½ bem."
 					+ "\nDesculpe o transtorno !");
 			em.getTransaction().rollback();
 			Platform.exit();
 			e.printStackTrace();
 		}catch(Exception e) {
-			JOptionPane.showMessageDialog(null, "Infelizmente ocorreu um erro de gravação, "
-					+ "verifique se o Banco de dados está disponível");
+			JOptionPane.showMessageDialog(null, "Infelizmente ocorreu um erro de gravaï¿½ï¿½o, "
+					+ "verifique se o Banco de dados estï¿½ disponï¿½vel");
 			em.getTransaction().rollback();
 		}
 	
@@ -127,7 +131,6 @@ public class ControllerThree{
 	//AnchorPane edit
 	public void clickEdit() {
 		paneVisibleIs(2);
-		initTable();
 	}
 	//AnchorPane edit - Radio button
 	public void visiblePanePrivFalse() {
@@ -173,9 +176,17 @@ public class ControllerThree{
 		/*Method old 
 		tbFindEdit.setItems(find());*/
  	}
-	
+	//AnchorPane edit - TableView - TextField
 	public void findDirect() {
 		tbFindEdit.setItems(find());
+	}
+	//AnchorPane edit - TableView - TextField
+	public void startTable() {
+		initTable();
+		if(!(tbFindEdit.isVisible())) {
+			tbFindEdit.setVisible(true);
+		}
+		
 	}
 	
 	public void clickRemove() {
