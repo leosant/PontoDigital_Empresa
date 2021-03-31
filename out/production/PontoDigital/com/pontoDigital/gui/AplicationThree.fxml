@@ -147,7 +147,7 @@
             </AnchorPane>
             <AnchorPane fx:id="paneEdit" layoutY="100.0" prefHeight="438.0" prefWidth="661.0" styleClass="paneMinEs" stylesheets="@styleGlobal.css" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
                <children>
-                  <TextField fx:id="txtFind" alignment="CENTER" layoutX="42.0" layoutY="82.0" onKeyReleased="#findDirect" onMouseClicked="#startTable" onMouseExited="#closeTable" prefHeight="26.0" prefWidth="250.0" promptText="Pesquisar usuário" styleClass="txtDefault" stylesheets="@styleAppThree.css" AnchorPane.bottomAnchor="325.0" AnchorPane.leftAnchor="40.0">
+                  <TextField fx:id="txtFind" alignment="CENTER" layoutX="42.0" layoutY="82.0" onKeyReleased="#findDirect" onMouseClicked="#startTable" prefHeight="26.0" prefWidth="250.0" promptText="Pesquisar usuário" styleClass="txtDefault" stylesheets="@styleAppThree.css" AnchorPane.bottomAnchor="325.0" AnchorPane.leftAnchor="40.0">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
