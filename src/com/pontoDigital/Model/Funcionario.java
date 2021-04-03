@@ -1,6 +1,8 @@
-package com.pontoDigital.Model.Employeer;
+package com.pontoDigital.Model;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 @Entity
 public class Funcionario {
@@ -8,8 +10,11 @@ public class Funcionario {
 	@Id
 	@GeneratedValue
 	private int id;
+	private Tipo tipo;
 	private String cpf;
 	private String nome;
+	private String senha;
+	//Access to administration or default
 	private String privilegios;
 	
 	public int getId() {
@@ -32,12 +37,24 @@ public class Funcionario {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
 	public String getPrivilegios() {
 		return privilegios;
 	}
 	public void setPrivilegios(String privilegios) {
 		this.privilegios = privilegios;
+	}
+
+	public Tipo getTipo() {
+		return tipo;
+	}
+	public void setTipo(Tipo tipo) {
+		this.tipo = tipo;
+	}
+	public String getSenha() {
+		return senha;
+	}
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 	
 	@Override

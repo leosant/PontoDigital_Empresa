@@ -8,9 +8,9 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import javax.swing.JOptionPane;
 
-import com.pontoDigital.Model.Employeer.Efetivo;
-import com.pontoDigital.Model.Employeer.Estagiario;
-import com.pontoDigital.Model.Employeer.Funcionario;
+import com.pontoDigital.Model.Efetivo;
+import com.pontoDigital.Model.Estagiario;
+import com.pontoDigital.Model.Funcionario;
 import com.pontoDigital.Principal.ScreenThree;
 import com.pontoDigital.Principal.ScreenTwo;
 
@@ -88,7 +88,8 @@ public class ControllerThree{
 		System.out.println("Test value grupoGrau: "+groupGrau.getSelectedToggle());
 		try {
 			if(radioGrau.getText().equals("Estagi�rio")) {
-				empregado = new Estagiario();
+				//empregado = new Estagiario();
+				empregado = new Funcionario();
 				empregado.setNome(nomeFunc.getText());
 				empregado.setCpf(cpfFunc.getText());
 				
@@ -96,7 +97,8 @@ public class ControllerThree{
 				//remove before of test
 				condicao.setText("Gravado com sucesso");	
 			}else if(radioGrau.getText().equals("Efetivo")) {
-				empregado = new Efetivo();
+				//empregado = new Efetivo();
+				empregado = new Funcionario();
 				empregado.setNome(nomeFunc.getText());
 				empregado.setCpf(cpfFunc.getText());
 				if(radioPriv.getText().equals("Padr�o")) {

@@ -1,4 +1,4 @@
-package com.pontoDigital.Model.Employeer;
+package com.pontoDigital.Model;
 
 import java.util.Date;
 

@@ -8,7 +8,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.swing.JOptionPane;
 
-import com.pontoDigital.Model.Employeer.Funcionario;
+import com.pontoDigital.Model.Funcionario;
 import com.pontoDigital.Principal.ScreenOne;
 import com.pontoDigital.Principal.ScreenTwo;
 
@@ -145,7 +145,7 @@ private static EntityManagerFactory emf;
 		//True
 		setaPonto.setVisible(true);
 		relogioPainel.setVisible(true);
-		//Label´s
+		//Labelï¿½s
 		lblRelogio.setVisible(true);
 		lblData.setVisible(true);
 		lblDataCompleta.setVisible(true);
