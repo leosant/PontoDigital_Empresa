@@ -8,9 +8,9 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import javax.swing.JOptionPane;
 
-import com.pontoDigital.Model.Efetivo;
-import com.pontoDigital.Model.Estagiario;
 import com.pontoDigital.Model.Funcionario;
+import com.pontoDigital.Model.Status;
+import com.pontoDigital.Model.Tipo;
 import com.pontoDigital.Principal.ScreenThree;
 import com.pontoDigital.Principal.ScreenTwo;
 
@@ -37,7 +37,7 @@ public class ControllerThree{
 	//TextField
 	@FXML private TextField nomeFunc;
 	@FXML private TextField cpfFunc;
-	@FXML private TextField priviFunc;
+	@FXML private TextField txtSenha;
 	@FXML private TextField txtFind;
 	
 	//Label of test
@@ -48,7 +48,8 @@ public class ControllerThree{
 	@FXML private ToggleGroup groupPriv;
 	
 	//AnchorPane Visible
-	@FXML private AnchorPane panePriv;
+	@FXML private AnchorPane panePrivEdit;
+	@FXML private AnchorPane panePrivUser;
 	
 	//AnchorPane
 	@FXML private AnchorPane paneAddUser;
@@ -79,52 +80,58 @@ public class ControllerThree{
 			tbFindEdit.setVisible(false);
 		}
 	}
-	//AnchorPane add
-	public void adicionarUsario() {
+	
+	//AnchorPane user - Radio button
+	public void visiblePaneUserPrivFalse() {
+		if(panePrivUser.isVisible()) {
+			panePrivUser.setVisible(false);
+		}
 		
+	}
+	//AnchorPane user - Radio button
+	public void visiblePaneUserPrivTrue() {
+		if(!(panePrivUser.isVisible())) {
+			panePrivUser.setVisible(true);
+		}
+	}
+	
+	//AnchorPane add
+	public void adicionarUsario() {	
 		//Create at controller		
 		RadioButton radioGrau = (RadioButton) groupGrau.getSelectedToggle();
 		RadioButton radioPriv = (RadioButton) groupPriv.getSelectedToggle();
-		System.out.println("Test value grupoGrau: "+groupGrau.getSelectedToggle());
 		try {
-			if(radioGrau.getText().equals("Estagi�rio")) {
-				//empregado = new Estagiario();
-				empregado = new Funcionario();
-				empregado.setNome(nomeFunc.getText());
-				empregado.setCpf(cpfFunc.getText());
-				
-				empregado.setPrivilegios("padrao");
+			if(radioGrau.getText().equals("Estagiário")) {
+				empregado = new Funcionario(Tipo.ESTAGIARIO, cpfFunc.getText(), nomeFunc.getText(), txtSenha.getText());
+				empregado.setStatus(Status.DEFAULT);
 				//remove before of test
 				condicao.setText("Gravado com sucesso");	
 			}else if(radioGrau.getText().equals("Efetivo")) {
-				//empregado = new Efetivo();
-				empregado = new Funcionario();
-				empregado.setNome(nomeFunc.getText());
-				empregado.setCpf(cpfFunc.getText());
-				if(radioPriv.getText().equals("Padr�o")) {
-					empregado.setPrivilegios("padrao");
+				empregado = new Funcionario(Tipo.EFETIVO, cpfFunc.getText(), nomeFunc.getText(), txtSenha.getText());
+				if(radioPriv.getText().equals("Padrao")) {
+					empregado.setStatus(Status.DEFAULT);
 				}else {
-					empregado.setPrivilegios("admin");
+					empregado.setStatus(Status.ADMIN);
 				}
 				//remove before of test
 				condicao.setText("Gravado com sucesso");
 			}else if(radioGrau.getText().equals(null)){
-				JOptionPane.showMessageDialog(null, "Marque a op��o Grau do funcion�rio");
+				JOptionPane.showMessageDialog(null, "Marque a opção Grau do funcionário");
 			}
 			em = getEntityManager();
 			em.getTransaction().begin();
 			em.persist(empregado);
 			em.getTransaction().commit();
 		}catch(IllegalStateException e) {
-			JOptionPane.showMessageDialog(null, "Ocorreu um erro no banco de dados !"
-					+ "\nfeche aplica��o e abra novamente, que tudo ocorrer� bem."
+			JOptionPane.showMessageDialog(null, "Ocorreu um erro no banco de dados!"
+					+ "\nfeche aplicação e abra novamente, que tudo ocorrerá bem."
 					+ "\nDesculpe o transtorno !");
 			em.getTransaction().rollback();
 			Platform.exit();
 			e.printStackTrace();
 		}catch(Exception e) {
-			JOptionPane.showMessageDialog(null, "Infelizmente ocorreu um erro de grava��o, "
-					+ "verifique se o Banco de dados est� dispon�vel");
+			JOptionPane.showMessageDialog(null, "Infelizmente ocorreu um erro de gravação, "
+					+ "verifique se o Banco de dados está disponível");
 			em.getTransaction().rollback();
 		}
 	
@@ -135,18 +142,16 @@ public class ControllerThree{
 		paneVisibleIs(2);
 	}
 	//AnchorPane edit - Radio button
-	public void visiblePanePrivFalse() {
-		if(panePriv.isVisible()) {
-			panePriv.setVisible(false);
+	public void visiblePaneEditPrivFalse() {
+		if(panePrivEdit.isVisible()) {
+			panePrivEdit.setVisible(false);
 		}
-		
 	}
 	//AnchorPane edit - Radio button
-	public void visiblePanePrivtrue() {
-		if(!(panePriv.isVisible())) {
-			panePriv.setVisible(true);
+	public void visiblePaneEditPrivtrue() {
+		if(!(panePrivEdit.isVisible())) {
+			panePrivEdit.setVisible(true);
 		}
-		
 	}
 	//AnchorPane edit - Table
 	public void initTable() {

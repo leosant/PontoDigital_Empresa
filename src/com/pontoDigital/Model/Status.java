@@ -1,16 +1,16 @@
 package com.pontoDigital.Model;
 
-public enum Tipo {
+public enum Status {
 	
-	EFETIVO("Efetivo"), 
-	ESTAGIARIO("Estagiario");
+	ADMIN("Admin"),
+	DEFAULT("Padrao");
 	
 	private String descricao;
 	
-	Tipo(String descricao) {
+	Status(String descricao) {
 		this.descricao = descricao;
 	}
-
+	
 	public String getDescricao() {
 		return descricao;
 	}

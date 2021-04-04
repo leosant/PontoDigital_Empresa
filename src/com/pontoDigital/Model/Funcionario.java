@@ -1,21 +1,44 @@
 package com.pontoDigital.Model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import com.sun.istack.NotNull;
+
 @Entity
 public class Funcionario {
-	
+	//add not null
 	@Id
 	@GeneratedValue
 	private int id;
+	@Column(name = "tipo", length = 10)
+	@Enumerated(EnumType.STRING)
 	private Tipo tipo;
+	@Column(name = "registro", length = 11)
 	private String cpf;
+	@Column(name = "nome", length = 150, nullable = false)
 	private String nome;
+	@Column(name = "senha", length = 4)
 	private String senha;
 	//Access to administration or default
-	private String privilegios;
+	@Column(name = "status", length = 7)
+	@Enumerated(EnumType.STRING)
+	private Status status;
+	
+	public Funcionario() {
+		
+	}
+		
+	public Funcionario(Tipo tipo, String cpf, String nome, String senha) {
+		this.tipo = tipo;
+		this.cpf = cpf;
+		this.nome = nome;
+		this.senha = senha;
+	}
 	
 	public int getId() {
 		return id;
@@ -37,13 +60,12 @@ public class Funcionario {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public String getPrivilegios() {
-		return privilegios;
+	public Status getStatus() {
+		return status;
 	}
-	public void setPrivilegios(String privilegios) {
-		this.privilegios = privilegios;
+	public void setStatus(Status status) {
+		this.status = status;
 	}
-
 	public Tipo getTipo() {
 		return tipo;
 	}
