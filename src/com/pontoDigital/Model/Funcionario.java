@@ -11,21 +11,20 @@ import com.sun.istack.NotNull;
 
 @Entity
 public class Funcionario {
-	//add not null
 	@Id
 	@GeneratedValue
-	private int id;
-	@Column(name = "tipo", length = 10)
+	private Long id;
+	@Column(name = "tipo", length = 10, nullable = false)
 	@Enumerated(EnumType.STRING)
 	private Tipo tipo;
-	@Column(name = "registro", length = 11)
+	@Column(name = "registro", length = 11, nullable = false, precision = 11)
 	private String cpf;
 	@Column(name = "nome", length = 150, nullable = false)
 	private String nome;
-	@Column(name = "senha", length = 4)
+	@Column(name = "senha", length = 4, nullable = false, precision = 4)
 	private String senha;
 	//Access to administration or default
-	@Column(name = "status", length = 7)
+	@Column(name = "status", length = 7, nullable = false)
 	@Enumerated(EnumType.STRING)
 	private Status status;
 	
@@ -40,17 +39,12 @@ public class Funcionario {
 		this.senha = senha;
 	}
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	
 	public String getCpf() {
 		return cpf;
 	}
-
 	public void setCpf(String i) {
 		this.cpf = i;
 	}

@@ -3,11 +3,10 @@ package com.pontoDigital.Controllers;
 import java.util.List;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import javax.swing.JOptionPane;
 
+import com.pontoDigital.DAO.InteractionDAO;
 import com.pontoDigital.Model.Funcionario;
 import com.pontoDigital.Model.Status;
 import com.pontoDigital.Model.Tipo;
@@ -60,19 +59,9 @@ public class ControllerThree{
 	private Funcionario empregado;
 	private ObservableList<Funcionario> listObsFunc = FXCollections.observableArrayList();
 	
-	//JPA
-	private static EntityManager em;
+	//Layer DAO
+	InteractionDAO interactioDAO = new InteractionDAO();
 	
-	private static EntityManagerFactory emf;
-	
-	private static EntityManager getEntityManager() {
-		
-		if(emf == null) {
-			emf = Persistence.createEntityManagerFactory("pontodigital");
-		}
-		
-		return emf.createEntityManager();
-	}
 	//AnchorPane add
 	public void clickAddUser() {
 		paneVisibleIs(1);
@@ -105,7 +94,8 @@ public class ControllerThree{
 				empregado = new Funcionario(Tipo.ESTAGIARIO, cpfFunc.getText(), nomeFunc.getText(), txtSenha.getText());
 				empregado.setStatus(Status.DEFAULT);
 				//remove before of test
-				condicao.setText("Gravado com sucesso");	
+				condicao.setText("Gravado com sucesso");
+				interactioDAO.save(empregado);
 			}else if(radioGrau.getText().equals("Efetivo")) {
 				empregado = new Funcionario(Tipo.EFETIVO, cpfFunc.getText(), nomeFunc.getText(), txtSenha.getText());
 				if(radioPriv.getText().equals("Padrao")) {
@@ -115,26 +105,20 @@ public class ControllerThree{
 				}
 				//remove before of test
 				condicao.setText("Gravado com sucesso");
+				interactioDAO.save(empregado);
 			}else if(radioGrau.getText().equals(null)){
 				JOptionPane.showMessageDialog(null, "Marque a opção Grau do funcionário");
 			}
-			em = getEntityManager();
-			em.getTransaction().begin();
-			em.persist(empregado);
-			em.getTransaction().commit();
 		}catch(IllegalStateException e) {
 			JOptionPane.showMessageDialog(null, "Ocorreu um erro no banco de dados!"
 					+ "\nfeche aplicação e abra novamente, que tudo ocorrerá bem."
 					+ "\nDesculpe o transtorno !");
-			em.getTransaction().rollback();
 			Platform.exit();
 			e.printStackTrace();
 		}catch(Exception e) {
 			JOptionPane.showMessageDialog(null, "Infelizmente ocorreu um erro de gravação, "
 					+ "verifique se o Banco de dados está disponível");
-			em.getTransaction().rollback();
 		}
-	
 	}
 	
 	//AnchorPane edit
@@ -155,9 +139,8 @@ public class ControllerThree{
 	}
 	//AnchorPane edit - Table
 	public void initTable() {
-		em = getEntityManager();
 		clmNameEdit.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("nome"));
-		tbFindEdit.setItems(updateTable(em));
+		tbFindEdit.setItems(updateTable(interactioDAO.getEntityManager()));
 	}
 	//AnchorPane edit - TableView
 	public ObservableList<Funcionario> updateTable(EntityManager em) {
@@ -180,8 +163,6 @@ public class ControllerThree{
 	}
 	//AnchorPane edit - TableView - Button
 	public void clickFindEdit() {
-		/*Method old 
-		tbFindEdit.setItems(find());*/
  	}
 	//AnchorPane edit - TableView - TextField
 	public void findDirect() {
@@ -202,10 +183,6 @@ public class ControllerThree{
 	
 	public void closedApp() {
 		Platform.exit();
-		if(!(em == null)) {
-			em.close();
-			emf.close();
-		}
 	}
 	
 	public void returnScreenTwo() {
@@ -214,14 +191,7 @@ public class ControllerThree{
 			ScreenThree.getStage().close();
 		}catch(Exception e){
 			e.printStackTrace();
-		}
-//		finally {
-//			//Case return screen three. Warning: possible error
-//			if(!(em == null)) {
-//				em.close();
-//				emf.close();
-//			}
-			
+		}	
 	}
 	
 	public void paneVisibleIs(Integer flag) {
