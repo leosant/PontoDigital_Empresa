@@ -150,7 +150,7 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="paneEdit" layoutY="100.0" prefHeight="438.0" prefWidth="661.0" styleClass="paneMinEs" stylesheets="@styleGlobal.css" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+            <AnchorPane fx:id="paneEdit" layoutY="100.0" prefHeight="438.0" prefWidth="661.0" styleClass="paneMinEs" stylesheets="@styleGlobal.css" visible="false" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
                <children>
                   <TextField fx:id="txtFind" alignment="CENTER" layoutX="42.0" layoutY="82.0" onKeyReleased="#findDirect" onMouseClicked="#startTable" prefHeight="26.0" prefWidth="250.0" promptText="Pesquisar usuário" styleClass="txtDefault" stylesheets="@styleAppThree.css" AnchorPane.bottomAnchor="325.0" AnchorPane.leftAnchor="40.0">
                      <opaqueInsets>
@@ -230,11 +230,11 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="paneRemove" layoutX="10.0" layoutY="110.0" prefHeight="438.0" prefWidth="661.0" styleClass="paneMinEs" stylesheets="@styleGlobal.css" visible="false" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+            <AnchorPane fx:id="paneRemove" layoutX="10.0" layoutY="110.0" prefHeight="438.0" prefWidth="661.0" styleClass="paneMinEs" stylesheets="@styleGlobal.css" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
                <children>
-                  <TextField fx:id="priviFunc111" layoutX="39.0" layoutY="234.0" promptText="Digite a senha" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="234.0" />
-                  <TextField fx:id="nomeFunc11" layoutX="39.0" layoutY="145.0" prefHeight="6.0" prefWidth="149.0" promptText="Digite o nome" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="145.0" />
-                  <TextField fx:id="cpfFunc11" layoutX="221.0" layoutY="145.0" promptText="Digite CPF" AnchorPane.leftAnchor="225.0" AnchorPane.topAnchor="145.0" />
+                  <TextField fx:id="priviFunc111" layoutX="452.0" layoutY="246.0" promptText="Digite a senha" visible="false" AnchorPane.leftAnchor="452.0" AnchorPane.topAnchor="246.0" />
+                  <TextField fx:id="nomeFunc11" layoutX="452.0" layoutY="198.0" prefHeight="6.0" prefWidth="149.0" promptText="Digite o nome" visible="false" AnchorPane.leftAnchor="452.0" AnchorPane.topAnchor="198.0" />
+                  <TextField fx:id="cpfFunc11" layoutX="452.0" layoutY="222.0" promptText="Digite CPF" visible="false" AnchorPane.leftAnchor="452.0" AnchorPane.topAnchor="222.0" />
                   <Label layoutX="247.0" layoutY="14.0" prefHeight="29.0" prefWidth="200.0" text="Remover Usuário" textFill="WHITE" AnchorPane.leftAnchor="247.0" AnchorPane.rightAnchor="214.0" AnchorPane.topAnchor="14.0">
                      <font>
                         <Font name="Arial Black" size="20.0" />
@@ -245,32 +245,32 @@
                         <Font name="Arial Black" size="20.0" />
                      </font>
                   </Button>
-                  <Label layoutX="222.0" layoutY="210.0" text="Selecione o Privilégio" textFill="WHITE" AnchorPane.leftAnchor="230.0" AnchorPane.topAnchor="210.0">
+                  <Label layoutX="455.0" layoutY="271.0" text="Selecione o Privilégio" textFill="WHITE" visible="false" AnchorPane.leftAnchor="455.0" AnchorPane.topAnchor="271.0">
                      <font>
                         <Font name="Arial Black" size="12.0" />
                      </font>
                   </Label>
-                  <RadioButton layoutX="203.0" layoutY="238.0" mnemonicParsing="false" text="Padrão" textFill="WHITE" toggleGroup="$groupPriv" AnchorPane.leftAnchor="215.0" AnchorPane.topAnchor="240.0">
+                  <RadioButton layoutX="463.0" layoutY="288.0" mnemonicParsing="false" text="Padrão" textFill="WHITE" toggleGroup="$groupPriv" visible="false" AnchorPane.leftAnchor="463.0" AnchorPane.topAnchor="288.0">
                      <font>
                         <Font name="Arial Black" size="12.0" />
                      </font>
                   </RadioButton>
-                  <RadioButton layoutX="326.0" layoutY="246.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="135.0" text="Administrador" textFill="WHITE" toggleGroup="$groupPriv" AnchorPane.leftAnchor="310.0" AnchorPane.topAnchor="240.0">
+                  <RadioButton layoutX="464.0" layoutY="311.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="135.0" text="Administrador" textFill="WHITE" toggleGroup="$groupPriv" visible="false" AnchorPane.leftAnchor="464.0" AnchorPane.topAnchor="311.0">
                      <font>
                         <Font name="Arial Black" size="12.0" />
                      </font>
                   </RadioButton>
-                  <Label layoutX="471.0" layoutY="162.0" text="Selecione o Grau" textFill="WHITE" AnchorPane.leftAnchor="470.0" AnchorPane.topAnchor="145.0">
+                  <Label layoutX="471.0" layoutY="162.0" text="Selecione o Grau" textFill="WHITE" visible="false" AnchorPane.leftAnchor="470.0" AnchorPane.topAnchor="145.0">
                      <font>
                         <Font name="Arial Black" size="12.0" />
                      </font>
                   </Label>
-                  <RadioButton layoutX="437.0" layoutY="193.0" mnemonicParsing="false" text="Efetivo" textFill="WHITE" toggleGroup="$groupGrau" AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="170.0">
+                  <RadioButton layoutX="437.0" layoutY="193.0" mnemonicParsing="false" text="Efetivo" textFill="WHITE" toggleGroup="$groupGrau" visible="false" AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="170.0">
                      <font>
                         <Font name="Arial Black" size="12.0" />
                      </font>
                   </RadioButton>
-                  <RadioButton layoutX="528.0" layoutY="193.0" mnemonicParsing="false" text="Estagiário" textFill="WHITE" toggleGroup="$groupGrau" AnchorPane.leftAnchor="515.0" AnchorPane.topAnchor="170.0">
+                  <RadioButton layoutX="528.0" layoutY="193.0" mnemonicParsing="false" text="Estagiário" textFill="WHITE" toggleGroup="$groupGrau" visible="false" AnchorPane.leftAnchor="515.0" AnchorPane.topAnchor="170.0">
                      <font>
                         <Font name="Arial Black" size="12.0" />
                      </font>
@@ -280,7 +280,7 @@
                         <Image url="@../Assets/Find%20and%20Replace.png" />
                      </image>
                   </ImageView>
-                  <TextField layoutX="50.0" layoutY="95.0" prefHeight="26.0" prefWidth="301.0" promptText="Pesquisar usuário" AnchorPane.bottomAnchor="325.0" AnchorPane.leftAnchor="40.0">
+                  <TextField layoutX="50.0" layoutY="95.0" onMouseClicked="#startTable" prefHeight="26.0" prefWidth="301.0" promptText="Pesquisar usuário" AnchorPane.bottomAnchor="325.0" AnchorPane.leftAnchor="40.0">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -300,6 +300,12 @@
                         <Font name="Jokerman" size="10.0" />
                      </font>
                   </Label>
+                  <TableView fx:id="tbFindDelete" layoutX="40.0" layoutY="115.0" onMouseClicked="#startTable" prefHeight="167.0" prefWidth="301.0" visible="false">
+                    <columns>
+                      <TableColumn fx:id="clmNameDelete" minWidth="50.0" prefWidth="149.0" text="Nome" />
+                      <TableColumn fx:id="clmCPFDelete" minWidth="0.0" prefWidth="114.0" text="CPF" />
+                    </columns>
+                  </TableView>
                </children>
             </AnchorPane>
          </children>

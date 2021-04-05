@@ -29,9 +29,14 @@ import javafx.stage.Stage;
 
 public class ControllerThree{
 	
-	//TableView
+	//TableView - edit
     @FXML private TableView<Funcionario> tbFindEdit;
     @FXML private TableColumn<Funcionario, String> clmNameEdit;
+    
+    //TableView - Delete
+    @FXML private TableView<Funcionario> tbFindDelete;
+    @FXML private TableColumn<Funcionario, String> clmNameDelete;
+    @FXML private TableColumn<Funcionario, String> clmCPFDelete;
 	
 	//TextField
 	@FXML private TextField nomeFunc;
@@ -84,7 +89,7 @@ public class ControllerThree{
 		}
 	}
 	
-	//AnchorPane add
+	//AnchorPane user - add
 	public void adicionarUsario() {	
 		//Create at controller		
 		RadioButton radioGrau = (RadioButton) groupGrau.getSelectedToggle();
@@ -137,12 +142,18 @@ public class ControllerThree{
 			panePrivEdit.setVisible(true);
 		}
 	}
-	//AnchorPane edit - Table
+	//AnchorPane edit and delete - TableView
 	public void initTable() {
-		clmNameEdit.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("nome"));
-		tbFindEdit.setItems(updateTable(interactioDAO.getEntityManager()));
+		if(paneEdit.isVisible()) {
+			clmNameEdit.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("nome"));
+			tbFindEdit.setItems(updateTable(interactioDAO.getEntityManager()));
+		}if(paneRemove.isVisible()) {
+			clmNameDelete.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("nome"));
+			clmCPFDelete.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("cpf"));
+			tbFindDelete.setItems(updateTable(interactioDAO.getEntityManager()));
+		}
 	}
-	//AnchorPane edit - TableView
+	//AnchorPane edit and delete - TableView
 	public ObservableList<Funcionario> updateTable(EntityManager em) {
 		String consFind = "select f from Funcionario f";
 		TypedQuery<Funcionario> sqlFind = em.createQuery(consFind, Funcionario.class);
@@ -168,13 +179,19 @@ public class ControllerThree{
 	public void findDirect() {
 		tbFindEdit.setItems(find());
 	}
-	//AnchorPane edit - TableView - TextField
+	//AnchorPane edit and delete - TableView - TextField
 	public void startTable() {
 		initTable();
-		if(!(tbFindEdit.isVisible())) {
-			tbFindEdit.setVisible(true);
+		if(paneEdit.isVisible()) {
+			if(!(tbFindEdit.isVisible())) {
+				tbFindEdit.setVisible(true);
+			}
 		}
-		
+		if(paneRemove.isVisible()) {
+			if(!(tbFindDelete.isVisible())) {
+				tbFindDelete.setVisible(true);
+			}
+		}
 	}
 	
 	public void clickRemove() {
