@@ -8,6 +8,12 @@
 ## Aplicação Javafx com JPA e MVC
 **Este projeto tem o intuito de gerenciar o horário de trabalho dos funcionários da empresa, seguindo as regras da CLT.** 
 
+**O uso da tecnologia JPA, como uma forma de obter mais produtividade, facilitando o modo de interação com o banco de dados da aplicação, obtendo assim, mais tempo  para pensar na regra de negócio disposta.**
+
+**MVC o estilo de arquitetura para facilitar na visualização e organização das classes inseridas.**
+
+**O projeto foi pensado de uma maneira que possa crescer sem a preocupação do uso de alto acoplamento entre as classes utilizadas.**
+
 ## Primeira tela  
 ### Código
 
