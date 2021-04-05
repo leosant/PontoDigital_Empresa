@@ -6,7 +6,7 @@
 
 
 ## Aplicação Javafx com JPA e MVC
-**Este projeto tem o intuito de gerenciar, o horário de trabalho dos funcionários da empresa, seguindo as regras da CLT.** 
+**Este projeto tem o intuito de gerenciar o horário de trabalho dos funcionários da empresa, seguindo as regras da CLT.** 
 
 ## Primeira tela  
 ### Código
@@ -24,4 +24,17 @@
 
 ![Java](https://github.com/leosant/AssetsforRepository/blob/main/javax64.png) _____
 ![MySql](https://github.com/leosant/AssetsforRepository/blob/main/mysqlx64.png)_____
-![Hibernate](https://github.com/leosant/AssetsforRepository/blob/main/Hibernatex64.png)
+### _______________________________
+![Hibernate](https://github.com/leosant/AssetsforRepository/blob/main/Hibernatex32.png)
+
+**Arquivo para disponibilidade da configuração do ORM**
+
+![Persistence.xml](https://github.com/leosant/PontoDigital_Empresa/blob/main/src/META-INF/persistence.xml)
+### _______________________________
+![Maven](https://github.com/leosant/AssetsforRepository/blob/main/Mavenx32.png)
+
+**Arquivo para disponibilidade das dependências  utilizadas no projeto**
+
+![Pom.xml](https://github.com/leosant/PontoDigital_Empresa/blob/main/pom.xml)
+# ---------------------------------
+**Projeto em andamento...**
