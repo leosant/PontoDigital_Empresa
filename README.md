@@ -23,7 +23,7 @@
 ## Tecnologias
 
 ![Java](https://github.com/leosant/AssetsforRepository/blob/main/javax64.png) _____
-![MySql](https://github.com/leosant/AssetsforRepository/blob/main/mysqlx64.png)_____
+![MySql](https://github.com/leosant/AssetsforRepository/blob/main/mysqlx64.png)
 ### _______________________________
 ![Hibernate](https://github.com/leosant/AssetsforRepository/blob/main/Hibernatex32.png)
 
