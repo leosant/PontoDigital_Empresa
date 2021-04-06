@@ -21,7 +21,7 @@ public class Funcionario {
 	private String cpf;
 	@Column(name = "nome", length = 150, nullable = false)
 	private String nome;
-	@Column(name = "senha", length = 4, nullable = false, precision = 4)
+	@Column(name = "senha", length = 4, nullable = true, precision = 4)
 	private String senha;
 	//Access to administration or default
 	@Column(name = "status", length = 7, nullable = false)

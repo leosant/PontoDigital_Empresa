@@ -150,14 +150,14 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="paneEdit" layoutY="100.0" prefHeight="438.0" prefWidth="661.0" styleClass="paneMinEs" stylesheets="@styleGlobal.css" visible="false" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+            <AnchorPane fx:id="paneEdit" layoutY="100.0" prefHeight="438.0" prefWidth="661.0" styleClass="paneMinEs" stylesheets="@styleGlobal.css" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
                <children>
                   <TextField fx:id="txtFind" alignment="CENTER" layoutX="42.0" layoutY="82.0" onKeyReleased="#findDirect" onMouseClicked="#startTable" prefHeight="26.0" prefWidth="250.0" promptText="Pesquisar usuário" styleClass="txtDefault" stylesheets="@styleAppThree.css" AnchorPane.bottomAnchor="325.0" AnchorPane.leftAnchor="40.0">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
                   </TextField>
-                  <TableView fx:id="tbFindEdit" layoutX="40.0" layoutY="112.0" prefHeight="100.0" prefWidth="250.0" style="-fx-background-radius: 20;" stylesheets="@styleAppThree.css" visible="false" AnchorPane.bottomAnchor="224.0" AnchorPane.leftAnchor="40.0">
+                  <TableView fx:id="tbFindEdit" layoutX="40.0" layoutY="112.0" onMouseClicked="#EditSelectedTU" prefHeight="100.0" prefWidth="250.0" style="-fx-background-radius: 20;" stylesheets="@styleAppThree.css" visible="false" AnchorPane.bottomAnchor="224.0" AnchorPane.leftAnchor="40.0">
                     <columns>
                       <TableColumn fx:id="clmNameEdit" editable="false" maxWidth="250.0" prefWidth="250.0" resizable="false" text="Nome" />
                     </columns>
@@ -171,9 +171,9 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <TextField fx:id="priviFunc11" alignment="CENTER" layoutX="39.0" layoutY="234.0" promptText="Digite a senha" styleClass="txtDefault" stylesheets="@styleAppThree.css" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="270.0" />
-                  <TextField fx:id="nomeFunc1" alignment="CENTER" layoutX="39.0" layoutY="145.0" prefHeight="6.0" prefWidth="149.0" promptText="Digite o nome" styleClass="txtDefault" stylesheets="@styleAppThree.css" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="220.0" />
-                  <TextField fx:id="cpfFunc1" alignment="CENTER" layoutX="221.0" layoutY="145.0" promptText="Digite CPF" styleClass="txtDefault" stylesheets="@styleAppThree.css" AnchorPane.leftAnchor="225.0" AnchorPane.topAnchor="220.0" />
+                  <TextField fx:id="senhaFuncEdit" alignment="CENTER" layoutX="39.0" layoutY="234.0" promptText="Digite a senha" styleClass="txtDefault" stylesheets="@styleAppThree.css" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="270.0" />
+                  <TextField fx:id="nomeFuncEdit" alignment="CENTER" layoutX="39.0" layoutY="145.0" prefHeight="6.0" prefWidth="149.0" promptText="Digite o nome" styleClass="txtDefault" stylesheets="@styleAppThree.css" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="220.0" />
+                  <TextField fx:id="cpfFuncEdit" alignment="CENTER" layoutX="221.0" layoutY="145.0" promptText="Digite CPF" styleClass="txtDefault" stylesheets="@styleAppThree.css" AnchorPane.leftAnchor="225.0" AnchorPane.topAnchor="220.0" />
                   <Label layoutX="247.0" layoutY="14.0" text="Editar Usuário" textFill="WHITE" AnchorPane.leftAnchor="247.0" AnchorPane.rightAnchor="247.0" AnchorPane.topAnchor="14.0">
                      <font>
                         <Font name="Arial Black" size="20.0" />
@@ -189,12 +189,12 @@
                         <Font name="Arial Black" size="12.0" />
                      </font>
                   </Label>
-                  <RadioButton layoutX="437.0" layoutY="193.0" mnemonicParsing="false" onMouseClicked="#visiblePaneEditPrivtrue" text="Efetivo" textFill="WHITE" toggleGroup="$groupGrau" AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="170.0">
+                  <RadioButton fx:id="rbEfeEdit" layoutX="437.0" layoutY="193.0" mnemonicParsing="false" onMouseClicked="#visiblePaneEditPrivtrue" text="Efetivo" textFill="WHITE" toggleGroup="$groupGrau" AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="170.0">
                      <font>
                         <Font name="Arial Black" size="12.0" />
                      </font>
                   </RadioButton>
-                  <RadioButton layoutX="528.0" layoutY="193.0" mnemonicParsing="false" onMouseClicked="#visiblePaneEditPrivFalse" text="Estagiário" textFill="WHITE" toggleGroup="$groupGrau" AnchorPane.leftAnchor="515.0" AnchorPane.topAnchor="170.0">
+                  <RadioButton fx:id="rbEstEdit" layoutX="528.0" layoutY="193.0" mnemonicParsing="false" onMouseClicked="#visiblePaneEditPrivFalse" text="Estagiário" textFill="WHITE" toggleGroup="$groupGrau" AnchorPane.leftAnchor="515.0" AnchorPane.topAnchor="170.0">
                      <font>
                         <Font name="Arial Black" size="12.0" />
                      </font>
@@ -211,12 +211,12 @@
                   </ImageView>
                   <AnchorPane fx:id="panePrivEdit" layoutX="411.0" layoutY="212.0" prefHeight="117.0" prefWidth="258.0" AnchorPane.leftAnchor="410.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="212.0">
                      <children>
-                        <RadioButton layoutX="109.0" layoutY="56.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="135.0" text="Administrador" textFill="WHITE" toggleGroup="$groupPriv" AnchorPane.leftAnchor="109.0" AnchorPane.topAnchor="50.0">
+                        <RadioButton fx:id="rbAdminEdit" layoutX="109.0" layoutY="56.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="135.0" text="Administrador" textFill="WHITE" toggleGroup="$groupPriv" AnchorPane.leftAnchor="109.0" AnchorPane.topAnchor="50.0">
                            <font>
                               <Font name="Arial Black" size="12.0" />
                            </font>
                         </RadioButton>
-                        <RadioButton layoutX="14.0" layoutY="50.0" mnemonicParsing="false" text="Padrão" textFill="WHITE" toggleGroup="$groupPriv" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="50.0">
+                        <RadioButton fx:id="rbDefaultEdit" layoutX="14.0" layoutY="50.0" mnemonicParsing="false" text="Padrão" textFill="WHITE" toggleGroup="$groupPriv" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="50.0">
                            <font>
                               <Font name="Arial Black" size="12.0" />
                            </font>
@@ -230,7 +230,7 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="paneRemove" layoutX="10.0" layoutY="110.0" prefHeight="438.0" prefWidth="661.0" styleClass="paneMinEs" stylesheets="@styleGlobal.css" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+            <AnchorPane fx:id="paneRemove" layoutX="10.0" layoutY="110.0" prefHeight="438.0" prefWidth="661.0" styleClass="paneMinEs" stylesheets="@styleGlobal.css" visible="false" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
                <children>
                   <TextField fx:id="priviFunc111" layoutX="452.0" layoutY="246.0" promptText="Digite a senha" visible="false" AnchorPane.leftAnchor="452.0" AnchorPane.topAnchor="246.0" />
                   <TextField fx:id="nomeFunc11" layoutX="452.0" layoutY="198.0" prefHeight="6.0" prefWidth="149.0" promptText="Digite o nome" visible="false" AnchorPane.leftAnchor="452.0" AnchorPane.topAnchor="198.0" />
@@ -300,12 +300,17 @@
                         <Font name="Jokerman" size="10.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="tbFindDelete" layoutX="40.0" layoutY="115.0" onMouseClicked="#startTable" prefHeight="167.0" prefWidth="301.0" visible="false">
+                  <TableView fx:id="tbFindDelete" layoutX="40.0" layoutY="115.0" onMouseClicked="#TstSelecionadoTable" prefHeight="167.0" prefWidth="301.0" visible="false">
                     <columns>
                       <TableColumn fx:id="clmNameDelete" minWidth="50.0" prefWidth="149.0" text="Nome" />
                       <TableColumn fx:id="clmCPFDelete" minWidth="0.0" prefWidth="114.0" text="CPF" />
                     </columns>
                   </TableView>
+                  <Label fx:id="teste" alignment="CENTER" layoutX="399.0" layoutY="250.0" prefHeight="17.0" prefWidth="200.0" text="TESTE" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </children>

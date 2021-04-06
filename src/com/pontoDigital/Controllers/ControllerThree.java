@@ -38,11 +38,19 @@ public class ControllerThree{
     @FXML private TableColumn<Funcionario, String> clmNameDelete;
     @FXML private TableColumn<Funcionario, String> clmCPFDelete;
 	
-	//TextField
+	//TextField - User
 	@FXML private TextField nomeFunc;
 	@FXML private TextField cpfFunc;
 	@FXML private TextField txtSenha;
 	@FXML private TextField txtFind;
+	
+	//TextField - Edit
+	@FXML private TextField nomeFuncEdit;
+	@FXML private TextField cpfFuncEdit;
+	@FXML private TextField senhaFuncEdit;
+	
+	//Radio button - Edit
+	@FXML private RadioButton rbEfeEdit;
 	
 	//Label of test
 	@FXML private Label condicao;
@@ -62,10 +70,14 @@ public class ControllerThree{
 	
 	//Class Orient Objects
 	private Funcionario empregado;
+	private Funcionario empregadoUpdated;
 	private ObservableList<Funcionario> listObsFunc = FXCollections.observableArrayList();
 	
 	//Layer DAO
 	InteractionDAO interactioDAO = new InteractionDAO();
+	
+	//Layer of test
+	@FXML private Label teste;
 	
 	//AnchorPane add
 	public void clickAddUser() {
@@ -152,8 +164,9 @@ public class ControllerThree{
 			clmCPFDelete.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("cpf"));
 			tbFindDelete.setItems(updateTable(interactioDAO.getEntityManager()));
 		}
+		
 	}
-	//AnchorPane edit and delete - TableView
+	//AnchorPane edit and remove - TableView
 	public ObservableList<Funcionario> updateTable(EntityManager em) {
 		String consFind = "select f from Funcionario f";
 		TypedQuery<Funcionario> sqlFind = em.createQuery(consFind, Funcionario.class);
@@ -172,16 +185,28 @@ public class ControllerThree{
 		}
 		return listSenFun;
 	}
-	//AnchorPane edit - TableView - Button
+	//AnchorPane edit - TableView - Button - Verificar utilizacao
 	public void clickFindEdit() {
  	}
 	//AnchorPane edit - TableView - TextField
 	public void findDirect() {
 		tbFindEdit.setItems(find());
 	}
-	//AnchorPane edit and delete - TableView - TextField
+	
+	//AnchorPane edit - TableView - Selected
+	public void EditSelectedTU() {
+		empregado = tbFindEdit.getSelectionModel().getSelectedItem();
+
+		nomeFuncEdit.setText(empregado.getNome());
+		cpfFuncEdit.setText(empregado.getCpf());
+		senhaFuncEdit.setText(empregado.getSenha());
+		//rbEfeEdit.set
+		
+	}
+	//AnchorPane edit and remove - TableView - TextField
 	public void startTable() {
 		initTable();
+	
 		if(paneEdit.isVisible()) {
 			if(!(tbFindEdit.isVisible())) {
 				tbFindEdit.setVisible(true);
@@ -193,15 +218,25 @@ public class ControllerThree{
 			}
 		}
 	}
-	
+	//AnchorPane remove
 	public void clickRemove() {
 		paneVisibleIs(3);
 	}
 	
+	//AnchorPane remove - tableView
+	public void TstSelecionadoTable() {
+		/*
+		 * funcTeste = tbFindDelete.getSelectionModel().getSelectedItem();
+		 * teste.setText(funcTeste.getNome());
+		 */
+	}
+	
+	
+	//Button closed
 	public void closedApp() {
 		Platform.exit();
 	}
-	
+	//Button return in other screen
 	public void returnScreenTwo() {
 		try {		
 			new ScreenTwo().start(new Stage());
@@ -210,7 +245,7 @@ public class ControllerThree{
 			e.printStackTrace();
 		}	
 	}
-	
+	//Switch to AnchorPane
 	public void paneVisibleIs(Integer flag) {
 		
 		if(paneAddUser.isVisible() || paneEdit.isVisible() || paneRemove.isVisible()) {
