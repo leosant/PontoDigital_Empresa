@@ -15,21 +15,21 @@ public class InteractionDAO implements ResourceDAO{
 	}
 	//Methods are realized two operation to insert and update
 	@Override
-	public void save(Object obj) throws Exception {
+	public void save(Funcionario func) throws Exception {
 		EntityManager em = getEntityManager();
-		Funcionario func = null;
-		if(obj.getClass().equals(Funcionario.class)) {
+		
 			try {
-				func = (Funcionario) obj; 
 				em.getTransaction().begin();
 				if(func.getId() == null) {
 					em.persist(func); //run insert
+					System.out.println("Estou persistindo os dados");
 				}else {
 					if(!em.contains(func)) {
 						if(em.find(Funcionario.class, func.getId()) == null) {
 							throw new Exception("Erro ao atualizar o local");
 						}
 						em.merge(func); //run update
+						System.out.println("Atualizando os dados");
 					}
 				}
 				em.getTransaction().commit();
@@ -37,7 +37,6 @@ public class InteractionDAO implements ResourceDAO{
 			}finally {
 			em.close();
 			}
-		}	
 	}
 
 	@Override

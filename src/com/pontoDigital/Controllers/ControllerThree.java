@@ -6,12 +6,14 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.swing.JOptionPane;
 
+import com.mysql.cj.util.Util;
 import com.pontoDigital.DAO.InteractionDAO;
 import com.pontoDigital.Model.Funcionario;
 import com.pontoDigital.Model.Status;
 import com.pontoDigital.Model.Tipo;
 import com.pontoDigital.Principal.ScreenThree;
 import com.pontoDigital.Principal.ScreenTwo;
+import com.pontoDigital.Service.Utilitario;
 
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -51,6 +53,9 @@ public class ControllerThree{
 	
 	//Radio button - Edit
 	@FXML private RadioButton rbEfeEdit;
+	@FXML private RadioButton rbEstEdit;
+	@FXML private RadioButton rbDefaultEdit;
+	@FXML private RadioButton rbAdminEdit;
 	
 	//Label of test
 	@FXML private Label condicao;
@@ -70,7 +75,6 @@ public class ControllerThree{
 	
 	//Class Orient Objects
 	private Funcionario empregado;
-	private Funcionario empregadoUpdated;
 	private ObservableList<Funcionario> listObsFunc = FXCollections.observableArrayList();
 	
 	//Layer DAO
@@ -102,40 +106,9 @@ public class ControllerThree{
 	}
 	
 	//AnchorPane user - add
-	public void adicionarUsario() {	
-		//Create at controller		
-		RadioButton radioGrau = (RadioButton) groupGrau.getSelectedToggle();
-		RadioButton radioPriv = (RadioButton) groupPriv.getSelectedToggle();
-		try {
-			if(radioGrau.getText().equals("Estagiário")) {
-				empregado = new Funcionario(Tipo.ESTAGIARIO, cpfFunc.getText(), nomeFunc.getText(), txtSenha.getText());
-				empregado.setStatus(Status.DEFAULT);
-				//remove before of test
-				condicao.setText("Gravado com sucesso");
-				interactioDAO.save(empregado);
-			}else if(radioGrau.getText().equals("Efetivo")) {
-				empregado = new Funcionario(Tipo.EFETIVO, cpfFunc.getText(), nomeFunc.getText(), txtSenha.getText());
-				if(radioPriv.getText().equals("Padrao")) {
-					empregado.setStatus(Status.DEFAULT);
-				}else {
-					empregado.setStatus(Status.ADMIN);
-				}
-				//remove before of test
-				condicao.setText("Gravado com sucesso");
-				interactioDAO.save(empregado);
-			}else if(radioGrau.getText().equals(null)){
-				JOptionPane.showMessageDialog(null, "Marque a opção Grau do funcionário");
-			}
-		}catch(IllegalStateException e) {
-			JOptionPane.showMessageDialog(null, "Ocorreu um erro no banco de dados!"
-					+ "\nfeche aplicação e abra novamente, que tudo ocorrerá bem."
-					+ "\nDesculpe o transtorno !");
-			Platform.exit();
-			e.printStackTrace();
-		}catch(Exception e) {
-			JOptionPane.showMessageDialog(null, "Infelizmente ocorreu um erro de gravação, "
-					+ "verifique se o Banco de dados está disponível");
-		}
+	public void adicionarUsario() throws Exception {	
+		//Create at controller	
+		//Utilitario.generateUser(EditSelectedTU(), groupGrau, groupPriv, nomeFunc, cpfFunc, txtSenha);
 	}
 	
 	//AnchorPane edit
@@ -194,15 +167,35 @@ public class ControllerThree{
 	}
 	
 	//AnchorPane edit - TableView - Selected
-	public void EditSelectedTU() {
+	public Funcionario EditSelectedTU() {
+		Funcionario auxEmpregado;
 		empregado = tbFindEdit.getSelectionModel().getSelectedItem();
 
 		nomeFuncEdit.setText(empregado.getNome());
 		cpfFuncEdit.setText(empregado.getCpf());
 		senhaFuncEdit.setText(empregado.getSenha());
-		//rbEfeEdit.set
 		
+		if(empregado.getTipo().equals(Tipo.EFETIVO)) {
+			groupGrau.selectToggle(rbEfeEdit);
+			if(empregado.getStatus().equals(Status.ADMIN)) {
+				groupPriv.selectToggle(rbAdminEdit);
+			}else {
+				groupPriv.selectToggle(rbDefaultEdit);
+			}
+		}else {
+			groupGrau.selectToggle(rbEstEdit);
+		}
+		
+		auxEmpregado = empregado;
+		
+		return auxEmpregado;
 	}
+	
+	//AnchorPane edit - button update
+	public void updateUser() throws Exception {
+		Utilitario.generateUser(EditSelectedTU(), groupGrau, groupPriv, nomeFuncEdit, cpfFuncEdit, senhaFuncEdit);
+	}
+	
 	//AnchorPane edit and remove - TableView - TextField
 	public void startTable() {
 		initTable();
@@ -253,7 +246,6 @@ public class ControllerThree{
 			paneEdit.setVisible(false);
 			paneRemove.setVisible(false);
 		}
-			
 			switch (flag){
 			case 1: 
 				paneAddUser.setVisible(true);
@@ -264,8 +256,7 @@ public class ControllerThree{
 			case 3:
 				paneRemove.setVisible(true);
 				break;
-			}
-		
+			}	
 	}
 	
 }

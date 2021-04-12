@@ -1,5 +1,7 @@
 package com.pontoDigital.Model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -7,24 +9,30 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
-import com.sun.istack.NotNull;
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-public class Funcionario {
+public class Funcionario  implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8364936441130394066L;
+	
 	@Id
 	@GeneratedValue
+	@Column(name = "id")
 	private Long id;
-	@Column(name = "tipo", length = 10, nullable = false)
+	@Column(name = "tipo", length = 10)
 	@Enumerated(EnumType.STRING)
 	private Tipo tipo;
-	@Column(name = "registro", length = 11, nullable = false, precision = 11)
+	@Column(name = "registro", length = 11, precision = 11)
 	private String cpf;
-	@Column(name = "nome", length = 150, nullable = false)
+	@Column(name = "nome", length = 150)
 	private String nome;
-	@Column(name = "senha", length = 4, nullable = true, precision = 4)
+	@Column(name = "senha", length = 4, precision = 4)
 	private String senha;
 	//Access to administration or default
-	@Column(name = "status", length = 7, nullable = false)
+	@Column(name = "status", length = 7)
 	@Enumerated(EnumType.STRING)
 	private Status status;
 	
