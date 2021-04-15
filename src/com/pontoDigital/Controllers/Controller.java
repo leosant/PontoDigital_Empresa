@@ -71,7 +71,7 @@ public class Controller {
 
 		labelsInstanciaBtr();
 
-		Funcionario func = (Funcionario) interactionDAO.findById((long) 2);
+		Funcionario func = (Funcionario) interactionDAO.findById(2);
 		lblUser.setText(func.getNome());
 		
 		KeyFrame frame = new KeyFrame(Duration.millis(1000), e -> atualizaHoras());

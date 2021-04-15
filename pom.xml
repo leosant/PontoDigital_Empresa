@@ -21,6 +21,13 @@
     	<type>pom</type>
 	</dependency>
 
+	<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+	<dependency>
+		<groupId>org.projectlombok</groupId>
+		<artifactId>lombok</artifactId>
+		<version>1.18.20</version>
+		<scope>provided</scope>
+	</dependency>
 	
 	<dependency>
 		<groupId>org.hibernate</groupId>
@@ -60,6 +67,12 @@
         <configuration>
           <source>1.8</source>
           <target>1.8</target>
+		  <excludes>
+			<exclude>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok</artifactId>
+			</exclude>
+		  </excludes>
         </configuration>
       </plugin>
     </plugins>

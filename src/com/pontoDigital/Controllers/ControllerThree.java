@@ -1,12 +1,12 @@
 package com.pontoDigital.Controllers;
-
 import java.util.List;
-
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.FlushModeType;
+import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import javax.swing.JOptionPane;
 
-import com.mysql.cj.util.Util;
 import com.pontoDigital.DAO.InteractionDAO;
 import com.pontoDigital.Model.Funcionario;
 import com.pontoDigital.Model.Status;
@@ -14,7 +14,6 @@ import com.pontoDigital.Model.Tipo;
 import com.pontoDigital.Principal.ScreenThree;
 import com.pontoDigital.Principal.ScreenTwo;
 import com.pontoDigital.Service.Utilitario;
-
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -73,6 +72,11 @@ public class ControllerThree{
 	@FXML private AnchorPane paneEdit;
 	@FXML private AnchorPane paneRemove;
 	
+	public EntityManager getEntityManager() {
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("pontodigital");
+		return factory.createEntityManager();
+	}
+	
 	//Class Orient Objects
 	private Funcionario empregado;
 	private ObservableList<Funcionario> listObsFunc = FXCollections.observableArrayList();
@@ -108,7 +112,39 @@ public class ControllerThree{
 	//AnchorPane user - add
 	public void adicionarUsario() throws Exception {	
 		//Create at controller	
-		//Utilitario.generateUser(EditSelectedTU(), groupGrau, groupPriv, nomeFunc, cpfFunc, txtSenha);
+		EntityManager em = getEntityManager();
+		Funcionario generateFunc = new Funcionario();
+		RadioButton radioGrau = (RadioButton) groupGrau.getSelectedToggle();
+		RadioButton radioPriv = (RadioButton) groupPriv.getSelectedToggle();
+		
+		try {
+			if(radioGrau.getText().equals("Estagiário")) {
+				generateFunc.setTipo(Tipo.ESTAGIARIO);
+				generateFunc.setCpf(cpfFunc.getText());
+				generateFunc.setNome(nomeFunc.getText());
+				generateFunc.setSenha(txtSenha.getText());
+				generateFunc.setStatus(Status.DEFAULT);
+			}else if(radioGrau.getText().equals("Efetivo")) {
+				generateFunc.setTipo(Tipo.EFETIVO);
+				generateFunc.setCpf(cpfFunc.getText());
+				generateFunc.setNome(nomeFunc.getText());
+				generateFunc.setSenha(txtSenha.getText());	
+				if(radioPriv.getText().equals("Padrão")) {
+					generateFunc.setStatus(Status.DEFAULT);
+				}else {
+					generateFunc.setStatus(Status.ADMIN);
+				}
+			}else if(radioGrau.getText().equals(null)){
+				JOptionPane.showMessageDialog(null, "Marque a opção Grau do funcionário");
+			}
+		}catch(Exception e) {			
+			throw e;
+		}
+		em.getTransaction().begin();
+		em.persist(generateFunc);
+		em.flush();
+		em.getTransaction().commit();
+		em.close();
 	}
 	
 	//AnchorPane edit
@@ -129,10 +165,13 @@ public class ControllerThree{
 	}
 	//AnchorPane edit and delete - TableView
 	public void initTable() {
+		//Edit
 		if(paneEdit.isVisible()) {
 			clmNameEdit.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("nome"));
-			tbFindEdit.setItems(updateTable(interactioDAO.getEntityManager()));
-		}if(paneRemove.isVisible()) {
+			tbFindEdit.setItems(updateTable(interactioDAO.getEntityManager()));	
+		}
+		//Remove
+		if(paneRemove.isVisible()) {
 			clmNameDelete.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("nome"));
 			clmCPFDelete.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("cpf"));
 			tbFindDelete.setItems(updateTable(interactioDAO.getEntityManager()));
@@ -141,8 +180,10 @@ public class ControllerThree{
 	}
 	//AnchorPane edit and remove - TableView
 	public ObservableList<Funcionario> updateTable(EntityManager em) {
+		tbFindEdit.refresh();
 		String consFind = "select f from Funcionario f";
-		TypedQuery<Funcionario> sqlFind = em.createQuery(consFind, Funcionario.class);
+		TypedQuery<Funcionario> sqlFind = em.createQuery(consFind, Funcionario.class)
+				.setFlushMode(FlushModeType.COMMIT);
 		List<Funcionario> listFunc = sqlFind.getResultList();
 		listObsFunc = FXCollections.observableArrayList(listFunc);
 		return listObsFunc;
@@ -167,13 +208,15 @@ public class ControllerThree{
 	}
 	
 	//AnchorPane edit - TableView - Selected
-	public Funcionario EditSelectedTU() {
-		Funcionario auxEmpregado;
+	public Integer EditSelectedTU() {
+		tbFindEdit.refresh();			
 		empregado = tbFindEdit.getSelectionModel().getSelectedItem();
-
-		nomeFuncEdit.setText(empregado.getNome());
-		cpfFuncEdit.setText(empregado.getCpf());
-		senhaFuncEdit.setText(empregado.getSenha());
+		Funcionario auxEmpregado = empregado;
+		tbFindEdit.setVisible(false);
+		
+		nomeFuncEdit.setText(auxEmpregado.getNome());
+		cpfFuncEdit.setText(auxEmpregado.getCpf());
+		senhaFuncEdit.setText(auxEmpregado.getSenha());
 		
 		if(empregado.getTipo().equals(Tipo.EFETIVO)) {
 			groupGrau.selectToggle(rbEfeEdit);
@@ -186,24 +229,36 @@ public class ControllerThree{
 			groupGrau.selectToggle(rbEstEdit);
 		}
 		
-		auxEmpregado = empregado;
-		
-		return auxEmpregado;
+		return auxEmpregado.getId();
 	}
 	
 	//AnchorPane edit - button update
-	public void updateUser() throws Exception {
-		Utilitario.generateUser(EditSelectedTU(), groupGrau, groupPriv, nomeFuncEdit, cpfFuncEdit, senhaFuncEdit);
+	public void updateUser(){
+		EntityManager em = getEntityManager();
+		empregado = tbFindEdit.getSelectionModel().getSelectedItem();
+		System.out.println(tbFindEdit.getSelectionModel().getSelectedItem());
+		Funcionario generateFunc = em.find(Funcionario.class, empregado.getId());
+				generateFunc.setTipo(Tipo.ESTAGIARIO);
+				generateFunc.setCpf(cpfFuncEdit.getText());
+				generateFunc.setNome(nomeFuncEdit.getText());
+				generateFunc.setSenha(senhaFuncEdit.getText());
+				generateFunc.setStatus(Status.DEFAULT);	
+				
+				em.getTransaction().begin();
+				em.merge(generateFunc);
+				//em.flush();
+				em.getTransaction().commit();
+				em.close();
 	}
 	
 	//AnchorPane edit and remove - TableView - TextField
-	public void startTable() {
+	public void startTable() throws Exception {
 		initTable();
 	
 		if(paneEdit.isVisible()) {
 			if(!(tbFindEdit.isVisible())) {
 				tbFindEdit.setVisible(true);
-			}
+			}	
 		}
 		if(paneRemove.isVisible()) {
 			if(!(tbFindDelete.isVisible())) {

@@ -1,39 +1,44 @@
 package com.pontoDigital.Model;
-
 import java.io.Serializable;
-
-import javax.persistence.Column;
+import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import org.hibernate.annotations.GenericGenerator;
+import lombok.Data;
 
 @Entity
+@Data
 public class Funcionario  implements Serializable{
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = -8364936441130394066L;
 	
+	
 	@Id
-	@GeneratedValue
-	@Column(name = "id")
-	private Long id;
-	@Column(name = "tipo", length = 10)
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Basic(fetch = FetchType.EAGER)
+	private Integer id;
+	
 	@Enumerated(EnumType.STRING)
+	@Basic(fetch = FetchType.LAZY)
 	private Tipo tipo;
-	@Column(name = "registro", length = 11, precision = 11)
+	
+	@Basic(fetch = FetchType.EAGER)
 	private String cpf;
-	@Column(name = "nome", length = 150)
+	
+	@Basic(fetch = FetchType.EAGER)
 	private String nome;
-	@Column(name = "senha", length = 4, precision = 4)
+	
+	@Basic(fetch = FetchType.LAZY)
 	private String senha;
+	
 	//Access to administration or default
-	@Column(name = "status", length = 7)
 	@Enumerated(EnumType.STRING)
+	@Basic(fetch = FetchType.LAZY)
 	private Status status;
 	
 	public Funcionario() {
@@ -47,47 +52,14 @@ public class Funcionario  implements Serializable{
 		this.senha = senha;
 	}
 	
-	public Long getId() {
-		return id;
-	}
-	public String getCpf() {
-		return cpf;
-	}
-	public void setCpf(String i) {
-		this.cpf = i;
-	}
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	public Status getStatus() {
-		return status;
-	}
-	public void setStatus(Status status) {
-		this.status = status;
-	}
-	public Tipo getTipo() {
-		return tipo;
-	}
-	public void setTipo(Tipo tipo) {
-		this.tipo = tipo;
-	}
-	public String getSenha() {
-		return senha;
-	}
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -97,10 +69,10 @@ public class Funcionario  implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Funcionario other = (Funcionario) obj;
-		if (nome == null) {
-			if (other.nome != null)
+		if (id == null) {
+			if (other.id != null)
 				return false;
-		} else if (!nome.equals(other.nome))
+		} else if (!id.equals(other.id))
 			return false;
 		return true;
 	}

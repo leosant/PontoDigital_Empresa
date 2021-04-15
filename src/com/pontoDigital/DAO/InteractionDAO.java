@@ -6,40 +6,42 @@ import javax.persistence.Persistence;
 
 import com.pontoDigital.Model.Funcionario;
 
-public class InteractionDAO implements ResourceDAO{
+
+public class InteractionDAO{
 	
-	@Override
+	
 	public EntityManager getEntityManager() {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("pontodigital");
 		return factory.createEntityManager();
 	}
 	//Methods are realized two operation to insert and update
-	@Override
-	public void save(Funcionario func) throws Exception {
+	
+	public Funcionario save(Funcionario func) throws Exception {
 		EntityManager em = getEntityManager();
 		
 			try {
 				em.getTransaction().begin();
+				
 				if(func.getId() == null) {
-					em.persist(func); //run insert
-					System.out.println("Estou persistindo os dados");
+					this.findById(func.getId());
+					 em.persist(func); //run insert
 				}else {
-					if(!em.contains(func)) {
+					if(!em.contains(func)) {						
 						if(em.find(Funcionario.class, func.getId()) == null) {
 							throw new Exception("Erro ao atualizar o local");
 						}
-						em.merge(func); //run update
-						System.out.println("Atualizando os dados");
 					}
+					em.merge(func);
 				}
 				em.getTransaction().commit();
-		
-			}finally {
+				}
+			finally {
 			em.close();
 			}
+			return func;
 	}
 
-	@Override
+
 	public void delete(Long id) {
 		EntityManager em = getEntityManager();
 		Funcionario func = em.find(Funcionario.class, id);
@@ -52,8 +54,8 @@ public class InteractionDAO implements ResourceDAO{
 		}
 	}
 
-	@Override
-	public Object findById(Long id) {
+
+	public Funcionario findById(int id) {
 		EntityManager em = getEntityManager();
 		Funcionario func = null;
 		try {
@@ -64,4 +66,12 @@ public class InteractionDAO implements ResourceDAO{
 		return func;
 	}
 	
+	public void altualizar(Funcionario fun) {
+		EntityManager em = getEntityManager();
+		fun = em.find(Funcionario.class, 1);
+		em.getTransaction().begin();
+		em.merge(fun);
+		em.getTransaction().commit();
+		em.close();
+	}
 }

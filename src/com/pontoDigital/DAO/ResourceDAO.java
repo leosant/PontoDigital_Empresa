@@ -8,9 +8,9 @@ public interface ResourceDAO {
 	
 	EntityManager getEntityManager();
 	
-	void save(Funcionario func) throws Exception;
-	
 	void delete(Long id);
 	
 	Object findById(Long id);
+
+	Funcionario save(Funcionario func) throws Exception;
 }
