@@ -14,6 +14,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Ellipse?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
@@ -52,11 +53,6 @@
                   <Image url="@../Assets/shutdown.png" />
                </image>
             </ImageView>
-            <Label fx:id="condicao" layoutX="294.0" layoutY="548.0" text="Condição" textFill="WHITE">
-               <font>
-                  <Font name="Arial Black" size="12.0" />
-               </font>
-            </Label>
             <GridPane layoutX="10.0" layoutY="62.0" prefHeight="30.0" prefWidth="632.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -150,7 +146,7 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="paneEdit" layoutY="100.0" prefHeight="438.0" prefWidth="661.0" styleClass="paneMinEs" stylesheets="@styleGlobal.css" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+            <AnchorPane fx:id="paneEdit" layoutY="100.0" prefHeight="438.0" prefWidth="661.0" styleClass="paneMinEs" stylesheets="@styleGlobal.css" visible="false" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
                <children>
                   <TextField fx:id="txtFind" alignment="CENTER" layoutX="42.0" layoutY="82.0" onKeyReleased="#findDirect" onMouseClicked="#startTable" prefHeight="26.0" prefWidth="250.0" promptText="Pesquisar usuário" styleClass="txtDefault" stylesheets="@styleAppThree.css" AnchorPane.bottomAnchor="325.0" AnchorPane.leftAnchor="40.0">
                      <opaqueInsets>
@@ -162,15 +158,6 @@
                       <TableColumn fx:id="clmNameEdit" editable="false" maxWidth="250.0" prefWidth="250.0" resizable="false" text="Nome" />
                     </columns>
                   </TableView>
-                  <Button minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#clickFindEdit" prefHeight="26.0" prefWidth="50.0" styleClass="btFind" stylesheets="@styleAppThree.css" AnchorPane.bottomAnchor="325.0" AnchorPane.leftAnchor="292.0">
-                     <graphic>
-                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" styleClass="btPonto">
-                           <image>
-                              <Image url="@../Assets/Find%20and%20Replace.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
                   <TextField fx:id="senhaFuncEdit" alignment="CENTER" layoutX="39.0" layoutY="234.0" promptText="Digite a senha" styleClass="txtDefault" stylesheets="@styleAppThree.css" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="270.0" />
                   <TextField fx:id="nomeFuncEdit" alignment="CENTER" layoutX="39.0" layoutY="145.0" prefHeight="6.0" prefWidth="149.0" promptText="Digite o nome" styleClass="txtDefault" stylesheets="@styleAppThree.css" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="220.0" />
                   <TextField fx:id="cpfFuncEdit" alignment="CENTER" layoutX="221.0" layoutY="145.0" promptText="Digite CPF" styleClass="txtDefault" stylesheets="@styleAppThree.css" AnchorPane.leftAnchor="225.0" AnchorPane.topAnchor="220.0" />
@@ -199,12 +186,12 @@
                         <Font name="Arial Black" size="12.0" />
                      </font>
                   </RadioButton>
-                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="378.0" layoutY="83.0" lineSpacing="2.0" opacity="0.5" prefHeight="38.0" prefWidth="67.0" text="Click ao lado para buscar" textAlignment="JUSTIFY" textFill="WHITE" wrapText="true" AnchorPane.rightAnchor="223.0" AnchorPane.topAnchor="80.0">
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="328.0" layoutY="68.0" lineSpacing="2.0" opacity="0.5" prefHeight="50.0" prefWidth="98.0" text="Selecione o usuário para buscar" textAlignment="JUSTIFY" textFill="WHITE" wrapText="true" AnchorPane.rightAnchor="228.0" AnchorPane.topAnchor="68.0">
                      <font>
                         <Font name="Jokerman" size="10.0" />
                      </font>
                   </Label>
-                  <ImageView fx:id="imgRelatorio111" fitHeight="10.0" fitWidth="10.0" layoutX="361.0" layoutY="97.0" onMouseClicked="#returnScreenTwo" opacity="0.5" pickOnBounds="true" preserveRatio="true" rotate="6.1" styleClass="btRelatorio" AnchorPane.rightAnchor="293.0" AnchorPane.topAnchor="90.0">
+                  <ImageView fx:id="imgRelatorio111" fitHeight="17.0" fitWidth="22.0" layoutX="300.0" layoutY="90.0" onMouseClicked="#returnScreenTwo" opacity="0.5" pickOnBounds="true" preserveRatio="true" rotate="6.1" styleClass="btRelatorio" AnchorPane.rightAnchor="331.0" AnchorPane.topAnchor="90.0">
                      <image>
                         <Image url="@../Assets/Left%203.png" />
                      </image>
@@ -230,87 +217,50 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="paneRemove" layoutX="10.0" layoutY="110.0" prefHeight="438.0" prefWidth="661.0" styleClass="paneMinEs" stylesheets="@styleGlobal.css" visible="false" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+            <AnchorPane fx:id="paneRemove" layoutX="10.0" layoutY="110.0" prefHeight="438.0" prefWidth="661.0" styleClass="paneMinEs" stylesheets="@styleGlobal.css" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
                <children>
-                  <TextField fx:id="priviFunc111" layoutX="452.0" layoutY="246.0" promptText="Digite a senha" visible="false" AnchorPane.leftAnchor="452.0" AnchorPane.topAnchor="246.0" />
-                  <TextField fx:id="nomeFunc11" layoutX="452.0" layoutY="198.0" prefHeight="6.0" prefWidth="149.0" promptText="Digite o nome" visible="false" AnchorPane.leftAnchor="452.0" AnchorPane.topAnchor="198.0" />
-                  <TextField fx:id="cpfFunc11" layoutX="452.0" layoutY="222.0" promptText="Digite CPF" visible="false" AnchorPane.leftAnchor="452.0" AnchorPane.topAnchor="222.0" />
                   <Label layoutX="247.0" layoutY="14.0" prefHeight="29.0" prefWidth="200.0" text="Remover Usuário" textFill="WHITE" AnchorPane.leftAnchor="247.0" AnchorPane.rightAnchor="214.0" AnchorPane.topAnchor="14.0">
                      <font>
                         <Font name="Arial Black" size="20.0" />
                      </font>
                   </Label>
-                  <Button layoutX="250.0" layoutY="350.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="150.0" styleClass="btPonto" text="Remover" textFill="WHITE" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="249.0">
+                  <Button layoutX="250.0" layoutY="350.0" mnemonicParsing="false" onMouseClicked="#removeUser" prefHeight="50.0" prefWidth="150.0" styleClass="btPonto" text="Remover" textFill="WHITE" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="249.0">
                      <font>
                         <Font name="Arial Black" size="20.0" />
                      </font>
                   </Button>
-                  <Label layoutX="455.0" layoutY="271.0" text="Selecione o Privilégio" textFill="WHITE" visible="false" AnchorPane.leftAnchor="455.0" AnchorPane.topAnchor="271.0">
-                     <font>
-                        <Font name="Arial Black" size="12.0" />
-                     </font>
-                  </Label>
-                  <RadioButton layoutX="463.0" layoutY="288.0" mnemonicParsing="false" text="Padrão" textFill="WHITE" toggleGroup="$groupPriv" visible="false" AnchorPane.leftAnchor="463.0" AnchorPane.topAnchor="288.0">
-                     <font>
-                        <Font name="Arial Black" size="12.0" />
-                     </font>
-                  </RadioButton>
-                  <RadioButton layoutX="464.0" layoutY="311.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="135.0" text="Administrador" textFill="WHITE" toggleGroup="$groupPriv" visible="false" AnchorPane.leftAnchor="464.0" AnchorPane.topAnchor="311.0">
-                     <font>
-                        <Font name="Arial Black" size="12.0" />
-                     </font>
-                  </RadioButton>
-                  <Label layoutX="471.0" layoutY="162.0" text="Selecione o Grau" textFill="WHITE" visible="false" AnchorPane.leftAnchor="470.0" AnchorPane.topAnchor="145.0">
-                     <font>
-                        <Font name="Arial Black" size="12.0" />
-                     </font>
-                  </Label>
-                  <RadioButton layoutX="437.0" layoutY="193.0" mnemonicParsing="false" text="Efetivo" textFill="WHITE" toggleGroup="$groupGrau" visible="false" AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="170.0">
-                     <font>
-                        <Font name="Arial Black" size="12.0" />
-                     </font>
-                  </RadioButton>
-                  <RadioButton layoutX="528.0" layoutY="193.0" mnemonicParsing="false" text="Estagiário" textFill="WHITE" toggleGroup="$groupGrau" visible="false" AnchorPane.leftAnchor="515.0" AnchorPane.topAnchor="170.0">
-                     <font>
-                        <Font name="Arial Black" size="12.0" />
-                     </font>
-                  </RadioButton>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="311.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="325.0" AnchorPane.leftAnchor="310.0">
-                     <image>
-                        <Image url="@../Assets/Find%20and%20Replace.png" />
-                     </image>
-                  </ImageView>
-                  <TextField layoutX="50.0" layoutY="95.0" onMouseClicked="#startTable" prefHeight="26.0" prefWidth="301.0" promptText="Pesquisar usuário" AnchorPane.bottomAnchor="325.0" AnchorPane.leftAnchor="40.0">
+                  <TextField layoutX="50.0" layoutY="95.0" onMouseClicked="#startTable" prefHeight="26.0" prefWidth="301.0" promptText="Pesquisar usuário" styleClass="txtDefault" stylesheets="@styleAppThree.css" AnchorPane.bottomAnchor="325.0" AnchorPane.leftAnchor="40.0">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
                   </TextField>
-                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="325.0" AnchorPane.leftAnchor="310.0">
-                     <image>
-                        <Image url="@../Assets/Find%20and%20Replace.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fx:id="imgRelatorio1111" fitHeight="10.0" fitWidth="10.0" onMouseClicked="#returnScreenTwo" opacity="0.5" pickOnBounds="true" preserveRatio="true" styleClass="btRelatorio" AnchorPane.rightAnchor="280.0" AnchorPane.topAnchor="100.0">
-                     <image>
-                        <Image url="@../Assets/Left%203.png" />
-                     </image>
-                  </ImageView>
-                  <Label alignment="CENTER" contentDisplay="CENTER" lineSpacing="2.0" opacity="0.5" prefHeight="38.0" prefWidth="67.0" text="Click ao lado para buscar" textAlignment="JUSTIFY" textFill="WHITE" wrapText="true" AnchorPane.rightAnchor="210.0" AnchorPane.topAnchor="95.0">
-                     <font>
-                        <Font name="Jokerman" size="10.0" />
-                     </font>
-                  </Label>
-                  <TableView fx:id="tbFindDelete" layoutX="40.0" layoutY="115.0" onMouseClicked="#TstSelecionadoTable" prefHeight="167.0" prefWidth="301.0" visible="false">
+                  <TableView fx:id="tbFindDelete" layoutX="40.0" layoutY="115.0" onMouseClicked="#RemoveSelectedTU" prefHeight="167.0" prefWidth="301.0" visible="false">
                     <columns>
                       <TableColumn fx:id="clmNameDelete" minWidth="50.0" prefWidth="149.0" text="Nome" />
                       <TableColumn fx:id="clmCPFDelete" minWidth="0.0" prefWidth="114.0" text="CPF" />
                     </columns>
                   </TableView>
-                  <Label fx:id="teste" alignment="CENTER" layoutX="399.0" layoutY="250.0" prefHeight="17.0" prefWidth="200.0" text="TESTE" textAlignment="CENTER" textFill="WHITE">
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="378.0" layoutY="72.0" lineSpacing="2.0" opacity="0.5" prefHeight="50.0" prefWidth="98.0" text="Selecione o usuário para buscar" textAlignment="JUSTIFY" textFill="WHITE" wrapText="true">
                      <font>
-                        <Font name="System Bold" size="12.0" />
+                        <Font name="Jokerman" size="10.0" />
                      </font>
                   </Label>
+                  <ImageView fx:id="imgRelatorio1111" fitHeight="17.0" fitWidth="22.0" layoutX="353.0" layoutY="94.0" onMouseClicked="#returnScreenTwo" opacity="0.5" pickOnBounds="true" preserveRatio="true" styleClass="btRelatorio">
+                     <image>
+                        <Image url="@../Assets/Left%203.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" contentDisplay="TOP" layoutX="378.0" layoutY="178.0" prefHeight="29.0" prefWidth="184.0" text="Usuário Selecionado" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Black" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblFuncRemove" layoutX="431.0" layoutY="220.0" text="Funcionario" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Label>
+                  <Ellipse fill="#ffffff00" layoutX="466.0" layoutY="221.0" radiusX="109.0" radiusY="71.0" stroke="#ffffff4f" strokeType="INSIDE" />
                </children>
             </AnchorPane>
          </children>

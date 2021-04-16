@@ -1,19 +1,11 @@
 package com.pontoDigital.Controllers;
 import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.FlushModeType;
-import javax.persistence.Persistence;
-import javax.persistence.TypedQuery;
 import javax.swing.JOptionPane;
-
 import com.pontoDigital.DAO.InteractionDAO;
 import com.pontoDigital.Model.Funcionario;
-import com.pontoDigital.Model.Status;
-import com.pontoDigital.Model.Tipo;
 import com.pontoDigital.Principal.ScreenThree;
 import com.pontoDigital.Principal.ScreenTwo;
-import com.pontoDigital.Service.Utilitario;
+import com.pontoDigital.Service.StringUtils;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -50,15 +42,15 @@ public class ControllerThree{
 	@FXML private TextField cpfFuncEdit;
 	@FXML private TextField senhaFuncEdit;
 	
+	//Label - Remove
+	@FXML private Label lblFuncRemove;
+	
 	//Radio button - Edit
 	@FXML private RadioButton rbEfeEdit;
 	@FXML private RadioButton rbEstEdit;
 	@FXML private RadioButton rbDefaultEdit;
 	@FXML private RadioButton rbAdminEdit;
-	
-	//Label of test
-	@FXML private Label condicao;
-	
+		
 	//ToggleGroup of radio Button
 	@FXML private ToggleGroup groupGrau;
 	@FXML private ToggleGroup groupPriv;
@@ -72,20 +64,12 @@ public class ControllerThree{
 	@FXML private AnchorPane paneEdit;
 	@FXML private AnchorPane paneRemove;
 	
-	public EntityManager getEntityManager() {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("pontodigital");
-		return factory.createEntityManager();
-	}
-	
 	//Class Orient Objects
 	private Funcionario empregado;
 	private ObservableList<Funcionario> listObsFunc = FXCollections.observableArrayList();
 	
 	//Layer DAO
-	InteractionDAO interactioDAO = new InteractionDAO();
-	
-	//Layer of test
-	@FXML private Label teste;
+	private InteractionDAO interactioDAO;
 	
 	//AnchorPane add
 	public void clickAddUser() {
@@ -109,42 +93,20 @@ public class ControllerThree{
 		}
 	}
 	
-	//AnchorPane user - add
-	public void adicionarUsario() throws Exception {	
+	//AnchorPane user - add (Adjusted)
+	public void adicionarUsario(){	
 		//Create at controller	
-		EntityManager em = getEntityManager();
-		Funcionario generateFunc = new Funcionario();
-		RadioButton radioGrau = (RadioButton) groupGrau.getSelectedToggle();
-		RadioButton radioPriv = (RadioButton) groupPriv.getSelectedToggle();
+		empregado = new Funcionario();
+		interactioDAO = new InteractionDAO();
 		
 		try {
-			if(radioGrau.getText().equals("Estagiário")) {
-				generateFunc.setTipo(Tipo.ESTAGIARIO);
-				generateFunc.setCpf(cpfFunc.getText());
-				generateFunc.setNome(nomeFunc.getText());
-				generateFunc.setSenha(txtSenha.getText());
-				generateFunc.setStatus(Status.DEFAULT);
-			}else if(radioGrau.getText().equals("Efetivo")) {
-				generateFunc.setTipo(Tipo.EFETIVO);
-				generateFunc.setCpf(cpfFunc.getText());
-				generateFunc.setNome(nomeFunc.getText());
-				generateFunc.setSenha(txtSenha.getText());	
-				if(radioPriv.getText().equals("Padrão")) {
-					generateFunc.setStatus(Status.DEFAULT);
-				}else {
-					generateFunc.setStatus(Status.ADMIN);
-				}
-			}else if(radioGrau.getText().equals(null)){
-				JOptionPane.showMessageDialog(null, "Marque a opção Grau do funcionário");
-			}
-		}catch(Exception e) {			
-			throw e;
+			interactioDAO.save(StringUtils.persistUser(empregado, nomeFunc, cpfFunc, txtSenha,
+					groupGrau, groupPriv));
+			
+		}catch(Exception e) {
+			JOptionPane.showMessageDialog(null, "Erro no servidor, verifique a conexão com o banco de"
+					+ "dados");
 		}
-		em.getTransaction().begin();
-		em.persist(generateFunc);
-		em.flush();
-		em.getTransaction().commit();
-		em.close();
 	}
 	
 	//AnchorPane edit
@@ -163,29 +125,28 @@ public class ControllerThree{
 			panePrivEdit.setVisible(true);
 		}
 	}
-	//AnchorPane edit and delete - TableView
+	//AnchorPane edit and delete - TableView (Adjusted)
 	public void initTable() {
 		//Edit
-		if(paneEdit.isVisible()) {
+		if(paneEdit.isVisible()) { 
 			clmNameEdit.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("nome"));
-			tbFindEdit.setItems(updateTable(interactioDAO.getEntityManager()));	
+			tbFindEdit.setItems(updateTable());	
 		}
 		//Remove
 		if(paneRemove.isVisible()) {
 			clmNameDelete.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("nome"));
 			clmCPFDelete.setCellValueFactory(new PropertyValueFactory<Funcionario, String>("cpf"));
-			tbFindDelete.setItems(updateTable(interactioDAO.getEntityManager()));
+			tbFindDelete.setItems(updateTable());
 		}
 		
 	}
-	//AnchorPane edit and remove - TableView
-	public ObservableList<Funcionario> updateTable(EntityManager em) {
+	//AnchorPane edit and remove - TableView (Adjusted)
+	public ObservableList<Funcionario> updateTable() {
 		tbFindEdit.refresh();
-		String consFind = "select f from Funcionario f";
-		TypedQuery<Funcionario> sqlFind = em.createQuery(consFind, Funcionario.class)
-				.setFlushMode(FlushModeType.COMMIT);
-		List<Funcionario> listFunc = sqlFind.getResultList();
+		interactioDAO = new InteractionDAO();
+		List<Funcionario> listFunc = interactioDAO.listAll();
 		listObsFunc = FXCollections.observableArrayList(listFunc);
+		
 		return listObsFunc;
 	}
 	//AnchorPane edit - TableView - TextField
@@ -199,56 +160,39 @@ public class ControllerThree{
 		}
 		return listSenFun;
 	}
-	//AnchorPane edit - TableView - Button - Verificar utilizacao
-	public void clickFindEdit() {
- 	}
+
 	//AnchorPane edit - TableView - TextField
 	public void findDirect() {
 		tbFindEdit.setItems(find());
 	}
 	
-	//AnchorPane edit - TableView - Selected
-	public Integer EditSelectedTU() {
+	//AnchorPane edit - TableView - Selected (Adjusted)
+	public void EditSelectedTU() {
 		tbFindEdit.refresh();			
 		empregado = tbFindEdit.getSelectionModel().getSelectedItem();
-		Funcionario auxEmpregado = empregado;
+		
+		StringUtils.tbSetup(empregado, nomeFuncEdit, cpfFuncEdit, senhaFuncEdit, groupGrau, 
+				groupPriv, rbEfeEdit, rbAdminEdit, rbDefaultEdit, rbEstEdit);
+		
 		tbFindEdit.setVisible(false);
-		
-		nomeFuncEdit.setText(auxEmpregado.getNome());
-		cpfFuncEdit.setText(auxEmpregado.getCpf());
-		senhaFuncEdit.setText(auxEmpregado.getSenha());
-		
-		if(empregado.getTipo().equals(Tipo.EFETIVO)) {
-			groupGrau.selectToggle(rbEfeEdit);
-			if(empregado.getStatus().equals(Status.ADMIN)) {
-				groupPriv.selectToggle(rbAdminEdit);
-			}else {
-				groupPriv.selectToggle(rbDefaultEdit);
-			}
-		}else {
-			groupGrau.selectToggle(rbEstEdit);
-		}
-		
-		return auxEmpregado.getId();
 	}
 	
 	//AnchorPane edit - button update
 	public void updateUser(){
-		EntityManager em = getEntityManager();
+		interactioDAO = new InteractionDAO();
+		
 		empregado = tbFindEdit.getSelectionModel().getSelectedItem();
-		System.out.println(tbFindEdit.getSelectionModel().getSelectedItem());
-		Funcionario generateFunc = em.find(Funcionario.class, empregado.getId());
-				generateFunc.setTipo(Tipo.ESTAGIARIO);
-				generateFunc.setCpf(cpfFuncEdit.getText());
-				generateFunc.setNome(nomeFuncEdit.getText());
-				generateFunc.setSenha(senhaFuncEdit.getText());
-				generateFunc.setStatus(Status.DEFAULT);	
-				
-				em.getTransaction().begin();
-				em.merge(generateFunc);
-				//em.flush();
-				em.getTransaction().commit();
-				em.close();
+		
+		lblFuncRemove.setText(empregado.getNome());
+		
+		try {
+			interactioDAO.save(StringUtils.persistUser(empregado, nomeFuncEdit, cpfFuncEdit, senhaFuncEdit, 
+					groupGrau, groupPriv));
+		}catch(Exception e) {
+			JOptionPane.showMessageDialog(null, "Error no servido, verique a sua conexão ao banco de "
+					+ "dados");
+		}
+
 	}
 	
 	//AnchorPane edit and remove - TableView - TextField
@@ -271,12 +215,31 @@ public class ControllerThree{
 		paneVisibleIs(3);
 	}
 	
-	//AnchorPane remove - tableView
-	public void TstSelecionadoTable() {
-		/*
-		 * funcTeste = tbFindDelete.getSelectionModel().getSelectedItem();
-		 * teste.setText(funcTeste.getNome());
-		 */
+	//AnchorPane remove - tableView -- VErificar a utilidade
+	public void RemoveSelectedTU() {
+		tbFindDelete.refresh();
+		
+		empregado = tbFindDelete.getSelectionModel().getSelectedItem();
+		
+		lblFuncRemove.setText(empregado.getNome()); 
+		
+		tbFindDelete.setVisible(false);
+	}
+	
+	//AnchorPane remove - button remove
+	public void removeUser() {
+		interactioDAO = new InteractionDAO();
+		empregado = tbFindDelete.getSelectionModel().getSelectedItem();
+		
+		try {
+			JOptionPane.showConfirmDialog(null, "Atenção todos os dados desse funcionário será removidos "
+					+ "\n sem a possibilidade de recuperação");
+			interactioDAO.delete(empregado.getId());
+		}catch(Exception e) {
+			JOptionPane.showMessageDialog(null, "Error no servido, verique a sua conexão ao banco de "
+					+ "dados");
+		}
+		
 	}
 	
 	
