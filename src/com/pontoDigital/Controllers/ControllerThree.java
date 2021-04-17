@@ -186,8 +186,13 @@ public class ControllerThree{
 		lblFuncRemove.setText(empregado.getNome());
 		
 		try {
-			interactioDAO.save(StringUtils.persistUser(empregado, nomeFuncEdit, cpfFuncEdit, senhaFuncEdit, 
-					groupGrau, groupPriv));
+			int confirmUpdate = JOptionPane.showConfirmDialog(null, "Deseja realmente alterar esse usuário?",
+					"Alterar Usuário ?", JOptionPane.YES_NO_OPTION);
+			
+			if(confirmUpdate == 0) {
+				interactioDAO.save(StringUtils.persistUser(empregado, nomeFuncEdit, cpfFuncEdit, senhaFuncEdit, 
+						groupGrau, groupPriv));
+			}
 		}catch(Exception e) {
 			JOptionPane.showMessageDialog(null, "Error no servido, verique a sua conexão ao banco de "
 					+ "dados");
@@ -196,7 +201,7 @@ public class ControllerThree{
 	}
 	
 	//AnchorPane edit and remove - TableView - TextField
-	public void startTable() throws Exception {
+	public void startTable(){
 		initTable();
 	
 		if(paneEdit.isVisible()) {
@@ -232,9 +237,13 @@ public class ControllerThree{
 		empregado = tbFindDelete.getSelectionModel().getSelectedItem();
 		
 		try {
-			JOptionPane.showConfirmDialog(null, "Atenção todos os dados desse funcionário será removidos "
-					+ "\n sem a possibilidade de recuperação");
-			interactioDAO.delete(empregado.getId());
+			int confirmDelete = JOptionPane.showConfirmDialog(null, "Atenção todos os dados desse funcionário será removidos,"
+					+ "\n sem a possibilidade de recuperação!", "Deseja remover o usuário?", JOptionPane.YES_NO_OPTION,
+					JOptionPane.INFORMATION_MESSAGE);
+			
+			if(confirmDelete == 0) {				
+				interactioDAO.delete(empregado.getId());
+			}
 		}catch(Exception e) {
 			JOptionPane.showMessageDialog(null, "Error no servido, verique a sua conexão ao banco de "
 					+ "dados");
