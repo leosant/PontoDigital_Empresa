@@ -2,17 +2,11 @@ package com.pontoDigital.Controllers;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.swing.JOptionPane;
-
 import com.pontoDigital.DAO.InteractionDAO;
 import com.pontoDigital.Model.Funcionario;
 import com.pontoDigital.Principal.ScreenOne;
 import com.pontoDigital.Principal.ScreenTwo;
-
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
