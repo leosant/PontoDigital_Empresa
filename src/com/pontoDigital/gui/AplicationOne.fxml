@@ -47,10 +47,10 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="relogioPainel" layoutX="117.0" layoutY="-3.0" prefHeight="400.0" prefWidth="535.0" styleClass="paneRelPontoDir" stylesheets="@styleGlobal.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="115.0">
+      <AnchorPane fx:id="relogioPainel" layoutX="122.0" prefHeight="400.0" prefWidth="535.0" styleClass="paneRelPontoDir" stylesheets="@styleGlobal.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="122.0">
          <children>
       
-            <Label fx:id="lblRelogio" alignment="CENTER" layoutX="170.0" layoutY="135.0" prefHeight="67.0" prefWidth="535.0" text="Relógio" textFill="WHITE" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="170.0">
+            <Label fx:id="lblRelogio" alignment="CENTER" layoutX="170.0" layoutY="135.0" prefHeight="67.0" prefWidth="535.0" text="Relógio" textFill="WHITE" AnchorPane.bottomAnchor="160.0" AnchorPane.leftAnchor="170.0" AnchorPane.rightAnchor="170.0">
                <font>
                   <Font name="Arial Black" size="30.0" />
                </font>
@@ -81,6 +81,27 @@
                   <Font name="Arial Black" size="15.0" />
                </font>
             </Label>
+            <AnchorPane layoutX="14.0" layoutY="31.0" prefHeight="107.0" prefWidth="273.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="15.0">
+               <children>
+                  <Label layoutX="36.0" layoutY="23.0" text="User : " textFill="WHITE" AnchorPane.leftAnchor="36.0" AnchorPane.topAnchor="23.0">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="36.0" layoutY="54.0" text="Senha : " textFill="WHITE" AnchorPane.leftAnchor="36.0" AnchorPane.topAnchor="62.0">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="txtLoginUser" layoutX="103.0" layoutY="19.0" AnchorPane.topAnchor="18.0" />
+                  <TextField fx:id="txtSenhaUser" layoutX="103.0" layoutY="59.0" AnchorPane.leftAnchor="103.0" AnchorPane.topAnchor="59.0" />
+                  <CheckBox layoutX="35.0" layoutY="97.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="89.0" text="Lembrar -me" textFill="WHITE" AnchorPane.leftAnchor="36.0" AnchorPane.topAnchor="97.0">
+                     <font>
+                        <Font name="Arial Black" size="10.0" />
+                     </font>
+                  </CheckBox>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="relatorioPainel" layoutX="125.0" layoutY="-6.0" prefHeight="406.0" prefWidth="528.0" styleClass="paneRelatorioDir" stylesheets="@styleGlobal.css" visible="false">
@@ -103,17 +124,23 @@
                   <Font name="Arial Black" size="30.0" />
                </font>
             </Label>
-            <TextField fx:id="txtLogin" layoutX="190.0" layoutY="160.0" promptText="Login" AnchorPane.bottomAnchor="210.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="189.0">
+            <TextField fx:id="txtLogin" layoutX="190.0" layoutY="160.0" promptText="Login" styleClass="txtDefault" stylesheets="@styleGlobal.css" AnchorPane.bottomAnchor="210.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="189.0">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets></TextField>
-            <TextField fx:id="txtSenha" layoutX="190.0" layoutY="203.0" promptText="Senha" AnchorPane.bottomAnchor="180.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="189.0" />
+            <TextField fx:id="txtSenha" layoutX="190.0" layoutY="203.0" promptText="Senha" styleClass="txtDefault" stylesheets="@styleGlobal.css" AnchorPane.bottomAnchor="180.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="189.0">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font></TextField>
             <ImageView fitHeight="50.0" fitWidth="108.97" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0">
                <image>
                   <Image url="@../Assets/logo.png" />
                </image>
             </ImageView>
-            <CheckBox layoutX="191.0" layoutY="255.0" mnemonicParsing="false" text="Lembrar-me" textFill="WHITE" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="191.0" AnchorPane.rightAnchor="250.0" />
+            <CheckBox layoutX="191.0" layoutY="255.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="89.0" text="Lembrar-me" textFill="WHITE" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="248.0">
+               <font>
+                  <Font name="Arial Black" size="10.0" />
+               </font></CheckBox>
          </children></AnchorPane>
 
    </children>

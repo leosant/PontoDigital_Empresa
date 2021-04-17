@@ -2,12 +2,19 @@ package com.pontoDigital.Controllers;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
+import java.util.prefs.PreferenceChangeEvent;
+import java.util.prefs.Preferences;
+import java.util.prefs.PreferencesFactory;
 
 import javax.swing.JOptionPane;
+
 import com.pontoDigital.DAO.InteractionDAO;
 import com.pontoDigital.Model.Funcionario;
 import com.pontoDigital.Principal.ScreenOne;
 import com.pontoDigital.Principal.ScreenTwo;
+import com.pontoDigital.Service.StringUtilsOne;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
@@ -26,48 +33,41 @@ public class Controller{
 	SimpleDateFormat sfd1 = new SimpleDateFormat("HH:mm:ss");
 	SimpleDateFormat sfd2 = new SimpleDateFormat("dd/MM/yyyy");
 	Date data = new Date();
+	
+	//Labels
+	@FXML private Label lblUser;
+	@FXML private Label lblRelogio;
+	@FXML private Label lblSeconds;
+	@FXML private Label lblData;
+	@FXML private Label lblDataCompleta;
+	
+	//TextFields
+	@FXML private TextField txtLoginUser;
+	@FXML private TextField txtSenhaUser;
+	@FXML private TextField txtLogin;
+	@FXML private TextField txtSenha;
 
-	//Buttons and labels
-	@FXML
-	private Button btPonto;
-	@FXML
-	private TextField txtLogin;
-	@FXML
-	private TextField txtSenha;
-	@FXML
-	private Label lblUser;
+	//Buttons
+	@FXML private Button btPonto;
 
-	@FXML
-	private Label lblRelogio;
-	@FXML
-	private Label lblSeconds;
-	@FXML
-	private Label lblData;
-	@FXML
-	private Label lblDataCompleta;
-
-	@FXML
-	private ImageView setaPonto;
-	@FXML
-	private ImageView setaRelatorio;
-	@FXML
-	private ImageView setaSair;
+	//ImageView
+	@FXML private ImageView setaPonto;
+	@FXML private ImageView setaRelatorio;
+	@FXML private ImageView setaSair;
 
 	//AnchorPanel
-	@FXML
-	private AnchorPane relogioPainel;
-	@FXML
-	private AnchorPane relatorioPainel;
+	@FXML private AnchorPane relogioPainel;
+	@FXML private AnchorPane relatorioPainel;
 	
-	private InteractionDAO interactionDAO = new InteractionDAO();
+	//Interaction with the layer database and Employer
+	private InteractionDAO interactionDAO;
 
 	//Part of guide button hours time
 	public void botaoHoraRelogio() {
-		
+		interactionDAO = new InteractionDAO();
 		labelsInstanciaBtr();
-		
-		Funcionario func = (Funcionario) interactionDAO.findById(2);
-		lblUser.setText(func.getNome());
+			
+		lblUser.setText(StringUtilsOne.funcToAll(txtLoginUser, txtSenhaUser, interactionDAO).getNome());
 		
 		KeyFrame frame = new KeyFrame(Duration.millis(1000), e -> atualizaHoras());
 		Timeline timeline = new Timeline(frame);
@@ -96,22 +96,30 @@ public class Controller{
 
 	//Part of guide reports
 	public void eventAcessarBD () {
-
-		//Change for screen two 
-		if(txtLogin.getText().equals("admin") && txtSenha.getText().equals("admin")) {
+		interactionDAO = new InteractionDAO();
+		Funcionario acessoFunc = null;
+		
+		acessoFunc = StringUtilsOne.funcToAll(txtLogin, txtSenha, interactionDAO);
+		
+		if((acessoFunc != null) || 
+				txtLogin.getText().equals("admin") 
+				&& txtSenha.getText().equals("admin")) {
+			//Change for screen two
 			try {
 				new ScreenTwo().start(new Stage());
 				ScreenOne.getStage().close();
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
+			
 		}else {
 			JOptionPane.showMessageDialog(null, "Login e/ou Senha invalida!", "Error", JOptionPane.ERROR_MESSAGE);
 		}
+		
 	}
 
 	//Part of guide button of exit
-	public void botaoSair(MouseEvent event) {
+	public void botaoSair() {
 		setaSair.setVisible(true);
 		Platform.exit();
 	}

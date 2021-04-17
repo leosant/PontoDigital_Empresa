@@ -5,7 +5,7 @@ import com.pontoDigital.DAO.InteractionDAO;
 import com.pontoDigital.Model.Funcionario;
 import com.pontoDigital.Principal.ScreenThree;
 import com.pontoDigital.Principal.ScreenTwo;
-import com.pontoDigital.Service.StringUtils;
+import com.pontoDigital.Service.StringUtilsThree;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -100,7 +100,7 @@ public class ControllerThree{
 		interactioDAO = new InteractionDAO();
 		
 		try {
-			interactioDAO.save(StringUtils.persistUser(empregado, nomeFunc, cpfFunc, txtSenha,
+			interactioDAO.save(StringUtilsThree.persistUser(empregado, nomeFunc, cpfFunc, txtSenha,
 					groupGrau, groupPriv));
 			
 		}catch(Exception e) {
@@ -170,7 +170,7 @@ public class ControllerThree{
 		tbFindEdit.refresh();			
 		empregado = tbFindEdit.getSelectionModel().getSelectedItem();
 		
-		StringUtils.tbSetup(empregado, nomeFuncEdit, cpfFuncEdit, senhaFuncEdit, groupGrau, 
+		StringUtilsThree.tbSetup(empregado, nomeFuncEdit, cpfFuncEdit, senhaFuncEdit, groupGrau, 
 				groupPriv, rbEfeEdit, rbAdminEdit, rbDefaultEdit, rbEstEdit);
 		
 		tbFindEdit.setVisible(false);
@@ -189,7 +189,7 @@ public class ControllerThree{
 					"Alterar Usuário ?", JOptionPane.YES_NO_OPTION);
 			
 			if(confirmUpdate == 0) {
-				interactioDAO.save(StringUtils.persistUser(empregado, nomeFuncEdit, cpfFuncEdit, senhaFuncEdit, 
+				interactioDAO.save(StringUtilsThree.persistUser(empregado, nomeFuncEdit, cpfFuncEdit, senhaFuncEdit, 
 						groupGrau, groupPriv));
 			}
 		}catch(Exception e) {

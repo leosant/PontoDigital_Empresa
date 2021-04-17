@@ -24,6 +24,11 @@
 	-fx-background-radius: 40 8 40 8;
 }
 
+.txtDefault {
+	-fx-background-radius: 20;
+	-fx-cursor: hand;
+}
+
 .btRelogioPonto {
 	-fx-cursor: hand;
 }

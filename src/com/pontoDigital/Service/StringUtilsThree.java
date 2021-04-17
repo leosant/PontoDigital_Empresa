@@ -1,18 +1,15 @@
 package com.pontoDigital.Service;
 
-import javax.swing.JOptionPane;
-
 import com.pontoDigital.Model.Funcionario;
 import com.pontoDigital.Model.Status;
 import com.pontoDigital.Model.Tipo;
-
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 
-public class StringUtils {
+public class StringUtilsThree {
 	
-	private StringUtils() {
+	private StringUtilsThree() {
 		throw new IllegalStateException("Utility class");
 	 }
 	
@@ -62,8 +59,6 @@ public class StringUtils {
 			}else {
 				empregado.setStatus(Status.ADMIN);
 			}
-		}else if(radioGrau.getText().equals(null)){
-			JOptionPane.showMessageDialog(null, "Marque a opção Grau do funcionário");
 		}
 		
 		return empregado;
