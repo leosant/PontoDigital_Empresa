@@ -104,8 +104,7 @@ public class ControllerThree{
 					groupGrau, groupPriv));
 			
 		}catch(Exception e) {
-			JOptionPane.showMessageDialog(null, "Erro no servidor, verifique a conexão com o banco de"
-					+ "dados");
+			JOptionPane.showMessageDialog(null, "Erro no servidor, verifique a conexão com o banco de dados");
 		}
 	}
 	
@@ -282,6 +281,10 @@ public class ControllerThree{
 				break;
 			case 3:
 				paneRemove.setVisible(true);
+				break;
+			default:
+				JOptionPane.showMessageDialog(null, "Desculpe ocorreu um erro distinto, retorne a "
+						+ "página anterior.", "Error!", 0);
 				break;
 			}	
 	}
