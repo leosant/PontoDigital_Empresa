@@ -9,7 +9,7 @@
 
    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-   <class>com.pontoDigital.Model.Funcionario</class>
+   <class>com.pontoDigital.Model.Employer.Funcionario</class>
 
    <properties>
       <!-- Driver JDBC para conexão com o MySQL -->

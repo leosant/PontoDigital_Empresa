@@ -1,4 +1,4 @@
-package com.pontoDigital.Model;
+package com.pontoDigital.Model.Employer;
 
 public enum Tipo {
 	

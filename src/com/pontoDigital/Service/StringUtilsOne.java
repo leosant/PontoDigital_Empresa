@@ -1,7 +1,7 @@
 package com.pontoDigital.Service;
 
 import com.pontoDigital.DAO.InteractionDAO;
-import com.pontoDigital.Model.Funcionario;
+import com.pontoDigital.Model.Employer.Funcionario;
 
 import javafx.scene.control.TextField;
 

@@ -12,7 +12,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import javax.swing.JOptionPane;
 
-import com.pontoDigital.Model.Funcionario;
+import com.pontoDigital.Model.Employer.Funcionario;
 
 
 public class InteractionDAO{

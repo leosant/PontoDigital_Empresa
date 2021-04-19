@@ -1,8 +1,9 @@
 package com.pontoDigital.Service;
 
-import com.pontoDigital.Model.Funcionario;
-import com.pontoDigital.Model.Status;
-import com.pontoDigital.Model.Tipo;
+import com.pontoDigital.Model.Employer.Funcionario;
+import com.pontoDigital.Model.Employer.Status;
+import com.pontoDigital.Model.Employer.Tipo;
+
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;

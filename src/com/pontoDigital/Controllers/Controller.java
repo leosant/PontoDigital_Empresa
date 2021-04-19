@@ -10,7 +10,7 @@ import java.util.prefs.PreferencesFactory;
 import javax.swing.JOptionPane;
 
 import com.pontoDigital.DAO.InteractionDAO;
-import com.pontoDigital.Model.Funcionario;
+import com.pontoDigital.Model.Employer.Funcionario;
 import com.pontoDigital.Principal.ScreenOne;
 import com.pontoDigital.Principal.ScreenTwo;
 import com.pontoDigital.Service.StringUtilsOne;
@@ -79,7 +79,11 @@ public class Controller{
 	// database
 	public void registrarPonto() {
 		//TODO build call to my database (button)
-		JOptionPane.showMessageDialog(null, lblUser.getText() + "\n" + lblRelogio.getText() + "\n"
+		interactionDAO = new InteractionDAO();
+		Funcionario testFunc = StringUtilsOne.funcToAll(txtLoginUser, txtSenhaUser, interactionDAO);
+		
+		
+		JOptionPane.showMessageDialog(null, testFunc.getNome() + "\n" + lblRelogio.getText() + "\n"
 				+ lblDataCompleta.getText() + "\nSalving my database");
 	}
 

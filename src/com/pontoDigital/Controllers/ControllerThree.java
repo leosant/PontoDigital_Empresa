@@ -2,7 +2,7 @@ package com.pontoDigital.Controllers;
 import java.util.List;
 import javax.swing.JOptionPane;
 import com.pontoDigital.DAO.InteractionDAO;
-import com.pontoDigital.Model.Funcionario;
+import com.pontoDigital.Model.Employer.Funcionario;
 import com.pontoDigital.Principal.ScreenThree;
 import com.pontoDigital.Principal.ScreenTwo;
 import com.pontoDigital.Service.StringUtilsThree;
