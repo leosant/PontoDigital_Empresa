@@ -1,15 +1,18 @@
 package com.pontoDigital.Controllers;
 
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
-import java.util.prefs.PreferenceChangeEvent;
-import java.util.prefs.Preferences;
-import java.util.prefs.PreferencesFactory;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.swing.JOptionPane;
 
 import com.pontoDigital.DAO.InteractionDAO;
+import com.pontoDigital.Model.Data.DataDays;
+import com.pontoDigital.Model.Data.DataMonth;
+import com.pontoDigital.Model.Data.DataYear;
 import com.pontoDigital.Model.Employer.Funcionario;
 import com.pontoDigital.Principal.ScreenOne;
 import com.pontoDigital.Principal.ScreenTwo;
@@ -23,7 +26,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -32,6 +34,9 @@ public class Controller{
 	//Special attribute
 	SimpleDateFormat sfd1 = new SimpleDateFormat("HH:mm:ss");
 	SimpleDateFormat sfd2 = new SimpleDateFormat("dd/MM/yyyy");
+	SimpleDateFormat sfd3 = new SimpleDateFormat("yyyy");
+	SimpleDateFormat sfd4 = new SimpleDateFormat("MM");
+	SimpleDateFormat sfd5 = new SimpleDateFormat("dd");
 	Date data = new Date();
 	
 	//Labels
@@ -61,13 +66,47 @@ public class Controller{
 	
 	//Interaction with the layer database and Employer
 	private InteractionDAO interactionDAO;
+	
+	//Teste
+	EntityManager getEntityManager() {
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("pontodigital");
+		return factory.createEntityManager();
+	}
+	
+	private DataYear dataYear;
+	private DataMonth dataMonth;
+	private DataDays dataDays;
+	private Funcionario funcTest;
 
 	//Part of guide button hours time
 	public void botaoHoraRelogio() {
 		interactionDAO = new InteractionDAO();
+		dataYear = new DataYear();
+		dataMonth = new DataMonth();
+		dataDays = new DataDays();
+		funcTest = StringUtilsOne.funcToAll(txtLoginUser, txtSenhaUser, interactionDAO);
+		EntityManager em = getEntityManager();
 		labelsInstanciaBtr();
 			
-		lblUser.setText(StringUtilsOne.funcToAll(txtLoginUser, txtSenhaUser, interactionDAO).getNome());
+		lblUser.setText(funcTest.getNome());
+		dataYear.setYear(Integer.parseInt(sfd3.format(data)));
+		dataMonth.setMonth(Integer.parseInt(sfd4.format(data)));
+		dataDays.setDay(Integer.parseInt(sfd5.format(data)));
+		
+		dataYear.setFuncionarios(funcTest);
+		//dataYear.setDataMonth(Arrays.asList(dataMonth));
+		//dataMonth.setDataDays(Arrays.asList(dataDays));
+		
+		System.out.println("data resultado ano: " +dataYear.getYear());
+		System.out.println("data resultado mês: " +dataMonth.getMonth());
+		System.out.println("data resultado dia: " +dataDays.getDay());
+		
+		em.getTransaction().begin();
+		//em.flush();
+		em.merge(dataYear);
+//		em.merge(dataMonth);
+		em.getTransaction().commit();
+		em.close();
 		
 		KeyFrame frame = new KeyFrame(Duration.millis(1000), e -> atualizaHoras());
 		Timeline timeline = new Timeline(frame);
@@ -81,7 +120,6 @@ public class Controller{
 		//TODO build call to my database (button)
 		interactionDAO = new InteractionDAO();
 		Funcionario testFunc = StringUtilsOne.funcToAll(txtLoginUser, txtSenhaUser, interactionDAO);
-		
 		
 		JOptionPane.showMessageDialog(null, testFunc.getNome() + "\n" + lblRelogio.getText() + "\n"
 				+ lblDataCompleta.getText() + "\nSalving my database");
@@ -152,7 +190,6 @@ public class Controller{
 		lblRelogio.getText();
 		//Date part of up
 		lblDataCompleta.setText(sfd2.format(data));
-		lblDataCompleta.getText();
 	}
 	
 }

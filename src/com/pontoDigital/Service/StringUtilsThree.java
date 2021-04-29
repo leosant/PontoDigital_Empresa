@@ -1,9 +1,8 @@
 package com.pontoDigital.Service;
 
-import com.pontoDigital.Model.Employer.Funcionario;
-import com.pontoDigital.Model.Employer.Status;
-import com.pontoDigital.Model.Employer.Tipo;
-
+import com.pontoDigital.Model.Employer.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
@@ -36,6 +35,7 @@ public class StringUtilsThree {
 		
 	}
 	
+	//AnchorPane edit and User - add and update
 	public static Funcionario persistUser(Funcionario empregado, TextField nome, TextField cpf, 
 			TextField senha, ToggleGroup groupGrau, ToggleGroup groupPriv) {
 		
@@ -64,5 +64,20 @@ public class StringUtilsThree {
 		
 		return empregado;
 	}
-	
+
+	//AnchorPane edit - TableView - TextField
+	public static ObservableList<Funcionario> findAutoComplete(TextField busca, ObservableList<Funcionario> listObsFunc) {
+
+		ObservableList<Funcionario> listSenFun = FXCollections.observableArrayList();
+		
+		for(int i = 0; i < listObsFunc.size(); i++) {
+			if(listObsFunc.get(i).getNome().toLowerCase().contains
+					(busca.getText().toLowerCase())) {
+				listSenFun.add(listObsFunc.get(i));
+			}
+		}
+		
+		return listSenFun;
+		
+	}
 }

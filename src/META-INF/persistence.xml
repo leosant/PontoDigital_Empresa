@@ -10,6 +10,9 @@
    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
    <class>com.pontoDigital.Model.Employer.Funcionario</class>
+   <class>com.pontoDigital.Model.Data.DataYear</class>
+   <class>com.pontoDigital.Model.Data.DataMonth</class>
+   <class>com.pontoDigital.Model.Data.DataDays</class>
 
    <properties>
       <!-- Driver JDBC para conexão com o MySQL -->
@@ -21,7 +24,7 @@
 	  <property name="javax.persistence.jdbc.password" value=""/>
 
 	  <!-- Configurações do Hibernate -->
-	  <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
+	  <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect" />
 	  <property name="hibernate.hbm2ddl.auto" value="update" />
 	  
 	  <property name="hibernate.show_sql" value="true"/>

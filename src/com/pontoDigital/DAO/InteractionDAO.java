@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.FlushModeType;
+import javax.persistence.LockModeType;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -35,8 +35,9 @@ public class InteractionDAO{
 				}else {
 					
 					if(!em.contains(func)) {	
-						
-						if(em.find(Funcionario.class, func.getId()) == null) {
+						//Lock of burn
+						if(em.find(Funcionario.class, func.getId(), 
+								LockModeType.PESSIMISTIC_READ) == null) {
 							throw new Exception("Erro ao atualizar o local");
 						}
 						

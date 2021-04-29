@@ -256,7 +256,7 @@
                      </font>
                   </Label>
                   <Ellipse fill="#ffffff00" layoutX="466.0" layoutY="221.0" radiusX="109.0" radiusY="71.0" stroke="#ffffff4f" strokeType="INSIDE" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="150.0" />
-                  <TextField layoutX="50.0" layoutY="95.0" onMouseClicked="#startTable" prefHeight="26.0" prefWidth="301.0" promptText="Pesquisar usuário" styleClass="txtDefault" stylesheets="@styleAppThree.css" AnchorPane.bottomAnchor="325.0" AnchorPane.leftAnchor="40.0">
+                  <TextField fx:id="txtFindDelete" layoutX="50.0" layoutY="95.0" onKeyReleased="#findDirect" onMouseClicked="#startTable" prefHeight="26.0" prefWidth="301.0" promptText="Pesquisar usuário" styleClass="txtDefault" stylesheets="@styleAppThree.css" AnchorPane.bottomAnchor="325.0" AnchorPane.leftAnchor="40.0">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
