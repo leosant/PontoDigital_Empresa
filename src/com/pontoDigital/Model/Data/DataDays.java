@@ -34,7 +34,7 @@ public class DataDays {
 	
 	private Date resultHours;
 	
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "data_month_id")
 	private DataMonth dataMonth;
 }

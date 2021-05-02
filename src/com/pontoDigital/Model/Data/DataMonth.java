@@ -27,7 +27,7 @@ public class DataMonth {
 	
 	private Integer month;
 
-	@ManyToOne(cascade = CascadeType.PERSIST)
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "data_year_id")
 	private DataYear dataYear;
 	

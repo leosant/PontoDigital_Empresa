@@ -94,17 +94,18 @@ public class Controller{
 		dataDays.setDay(Integer.parseInt(sfd5.format(data)));
 		
 		dataYear.setFuncionarios(funcTest);
-		//dataYear.setDataMonth(Arrays.asList(dataMonth));
-		//dataMonth.setDataDays(Arrays.asList(dataDays));
+		dataMonth.setDataYear(dataYear);
+		dataDays.setDataMonth(dataMonth);
+	
 		
 		System.out.println("data resultado ano: " +dataYear.getYear());
 		System.out.println("data resultado mês: " +dataMonth.getMonth());
 		System.out.println("data resultado dia: " +dataDays.getDay());
 		
 		em.getTransaction().begin();
-		//em.flush();
-		em.merge(dataYear);
-//		em.merge(dataMonth);
+		em.merge(funcTest);
+		em.merge(dataMonth);
+		em.merge(dataDays);
 		em.getTransaction().commit();
 		em.close();
 		
