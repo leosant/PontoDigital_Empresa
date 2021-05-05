@@ -1,7 +1,6 @@
 package com.pontoDigital.Controllers;
 
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
 
 import javax.persistence.EntityManager;
@@ -103,7 +102,7 @@ public class Controller{
 		System.out.println("data resultado dia: " +dataDays.getDay());
 		
 		em.getTransaction().begin();
-		em.merge(funcTest);
+		em.merge(dataYear);
 		em.merge(dataMonth);
 		em.merge(dataDays);
 		em.getTransaction().commit();
