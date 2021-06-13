@@ -12,6 +12,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import javax.swing.JOptionPane;
 
+import com.pontoDigital.Model.Data.DataYear;
 import com.pontoDigital.Model.Employer.Funcionario;
 
 
@@ -22,8 +23,8 @@ public class InteractionDAO{
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("pontodigital");
 		return factory.createEntityManager();
 	}
-	//Methods are realized two operation to insert and update
 	
+	//Methods are realized two operation to insert and update
 	public void save(Funcionario func) throws Exception {
 		EntityManager em = getEntityManager();
 		
@@ -48,7 +49,24 @@ public class InteractionDAO{
 				em.close();
 			}
 			finally {
-				JOptionPane.showMessageDialog(null, "Conclu√≠do com sucesso");
+				JOptionPane.showMessageDialog(null, "Conclus„o com sucesso");
+			}
+	}
+	
+	public void saveDate(DataYear data) throws Exception {
+		EntityManager em = getEntityManager();
+		
+			try {
+				em.getTransaction().begin();
+				if(data.getId() == null) {
+					 em.persist(data); //run insert
+					 
+				}
+				em.getTransaction().commit();
+				em.close();
+			}
+			finally {
+				JOptionPane.showMessageDialog(null, "Testes");
 			}
 	}
 	

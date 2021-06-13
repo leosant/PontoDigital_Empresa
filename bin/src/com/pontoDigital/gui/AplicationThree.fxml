@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Ellipse?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="650.0" prefWidth="650.0" styleClass="paneBase" stylesheets="@styleAppThree.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pontoDigital.Controllers.ControllerThree">
+   <children>
+      <AnchorPane layoutX="37.0" prefHeight="650.0" prefWidth="650.0" styleClass="paneMinEs" stylesheets="@styleGlobal.css">
+         <children>
+            <Line endX="315.0" layoutX="335.0" layoutY="68.0" startX="-335.0" />
+            <ImageView fitHeight="60.0" fitWidth="116.0" layoutX="497.0" layoutY="582.0" pickOnBounds="true" preserveRatio="true" visible="false" AnchorPane.rightAnchor="38.0" AnchorPane.topAnchor="582.0">
+               <image>
+                  <Image url="@../Assets/logo.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="60.0" layoutY="10.0" onMouseClicked="#clickAddUser" pickOnBounds="true" preserveRatio="true" styleClass="btRelogioPonto" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="10.0">
+               <image>
+                  <Image url="@../Assets/AddUser.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="222.0" layoutY="10.0" onMouseClicked="#clickEdit" pickOnBounds="true" preserveRatio="true" styleClass="btRelatorio" AnchorPane.leftAnchor="222.0" AnchorPane.topAnchor="10.0">
+               <image>
+                  <Image url="@../Assets/Edit.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgRelatorio1" fitHeight="50.0" fitWidth="50.0" layoutX="387.0" layoutY="10.0" onMouseClicked="#clickRemove" pickOnBounds="true" preserveRatio="true" styleClass="btRelatorio" AnchorPane.leftAnchor="388.0" AnchorPane.topAnchor="10.0">
+               <image>
+                  <Image url="@../Assets/Remove.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgRelatorio11" fitHeight="50.0" fitWidth="50.0" layoutX="23.0" layoutY="582.0" onMouseClicked="#returnScreenTwo" pickOnBounds="true" preserveRatio="true" styleClass="btRelatorio">
+               <image>
+                  <Image url="@../Assets/Left%203.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="538.0" layoutY="10.0" onMouseClicked="#closedApp" pickOnBounds="true" preserveRatio="true" styleClass="btSair" AnchorPane.rightAnchor="58.0" AnchorPane.topAnchor="10.0">
+               <image>
+                  <Image url="@../Assets/shutdown.png" />
+               </image>
+            </ImageView>
+            <GridPane layoutX="10.0" layoutY="62.0" prefHeight="30.0" prefWidth="632.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label alignment="CENTER" contentDisplay="RIGHT" prefHeight="17.0" prefWidth="218.0" text="Add User" textAlignment="CENTER" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="171.0" text="Edit" textFill="WHITE" GridPane.columnIndex="1">
+                  	<font>
+                  		<Font name="Arial Black" size="12.0" />
+                  	</font>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="166.0" text="Remove" textFill="WHITE" GridPane.columnIndex="2">
+                  	<font>
+                  		<Font name="Arial Black" size="12.0" />
+                  	</font>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="17.0" prefWidth="163.0" text="Shutdown" textFill="WHITE" GridPane.columnIndex="3">
+                  	<font>
+                  		<Font name="Arial Black" size="12.0" />
+                  	</font>
+                  </Label>
+               </children>
+            </GridPane>
+            <AnchorPane fx:id="paneAddUser" layoutY="108.0" prefHeight="438.0" prefWidth="651.0" styleClass="paneMinEs" stylesheets="@styleGlobal.css" visible="false" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+               <children>
+                  <TextField fx:id="txtSenha" layoutX="39.0" layoutY="234.0" promptText="Digite a senha" styleClass="txtDefault" stylesheets="@styleAppThree.css" AnchorPane.leftAnchor="39.0" AnchorPane.topAnchor="234.0" />
+                  <TextField fx:id="nomeFunc" layoutX="39.0" layoutY="145.0" prefHeight="6.0" prefWidth="149.0" promptText="Digite o nome" styleClass="txtDefault" stylesheets="@styleAppThree.css" AnchorPane.leftAnchor="39.0" AnchorPane.topAnchor="145.0" />
+                  <TextField fx:id="cpfFunc" layoutX="221.0" layoutY="145.0" promptText="Digite CPF" styleClass="txtDefault" stylesheets="@styleAppThree.css" AnchorPane.leftAnchor="221.0" AnchorPane.topAnchor="145.0" />
+                  <Label layoutX="203.0" layoutY="25.0" text="Criar novo usuário" textFill="WHITE" AnchorPane.leftAnchor="203.0" AnchorPane.topAnchor="25.0">
+                     <font>
+                        <Font name="Arial Black" size="20.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="250.0" layoutY="350.0" mnemonicParsing="false" onAction="#adicionarUsario" prefHeight="50.0" prefWidth="150.0" styleClass="btPonto" text="Adicionar" textFill="WHITE" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="249.0">
+                     <font>
+                        <Font name="Arial Black" size="20.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="477.0" layoutY="120.0" text="Selecione o Grau" textFill="WHITE" AnchorPane.leftAnchor="470.0" AnchorPane.topAnchor="145.0">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Label>
+                  <RadioButton layoutX="434.0" layoutY="149.0" mnemonicParsing="false" onMouseClicked="#visiblePaneUserPrivTrue" text="Efetivo" textFill="WHITE" AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="170.0">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="groupGrau" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton layoutX="533.0" layoutY="149.0" mnemonicParsing="false" onMouseClicked="#visiblePaneUserPrivFalse" text="Estagiário" textFill="WHITE" toggleGroup="$groupGrau" AnchorPane.leftAnchor="515.0" AnchorPane.topAnchor="170.0">
+                  	<font>
+            			<Font name="Arial Black" size="12.0" />
+            		</font>
+                  </RadioButton>
+                  <AnchorPane fx:id="panePrivUser" layoutX="393.0" layoutY="213.0" prefHeight="117.0" prefWidth="275.0" AnchorPane.leftAnchor="410.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="212.0">
+                     <children>
+                        <RadioButton layoutX="123.0" layoutY="50.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="116.0" text="Administrador" textFill="WHITE" AnchorPane.leftAnchor="109.0" AnchorPane.topAnchor="50.0">
+                           <font>
+                              <Font name="Arial Black" size="12.0" />
+                           </font>
+                           <toggleGroup>
+                              <ToggleGroup fx:id="groupPriv" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton layoutX="30.0" layoutY="50.0" mnemonicParsing="false" text="Padrão" textFill="WHITE" toggleGroup="$groupPriv" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="50.0">
+                           <font>
+                              <Font name="Arial Black" size="12.0" />
+                           </font>
+                        </RadioButton>
+                        <Label layoutX="51.0" layoutY="14.0" text="Selecione o Privilégio" textFill="WHITE" AnchorPane.leftAnchor="51.0" AnchorPane.topAnchor="14.0">
+                           <font>
+                              <Font name="Arial Black" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="paneEdit" layoutY="100.0" prefHeight="438.0" prefWidth="661.0" styleClass="paneMinEs" stylesheets="@styleGlobal.css" visible="false" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+               <children>
+                  <TableView fx:id="tbFindEdit" layoutX="40.0" layoutY="89.0" onMouseClicked="#EditSelectedTU" prefHeight="142.0" prefWidth="250.0" style="-fx-background-radius: 20;" stylesheets="@styleAppThree.css" visible="false" AnchorPane.bottomAnchor="209.0" AnchorPane.leftAnchor="40.0">
+                    <columns>
+                      <TableColumn fx:id="clmNameEdit" editable="false" maxWidth="250.0" prefWidth="250.0" resizable="false" text="Nome" />
+                    </columns>
+                  </TableView>
+                  <TextField fx:id="senhaFuncEdit" alignment="CENTER" layoutX="39.0" layoutY="234.0" promptText="Digite a senha" styleClass="txtDefault" stylesheets="@styleAppThree.css" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="290.0" />
+                  <TextField fx:id="nomeFuncEdit" alignment="CENTER" layoutX="39.0" layoutY="145.0" prefHeight="6.0" prefWidth="149.0" promptText="Digite o nome" styleClass="txtDefault" stylesheets="@styleAppThree.css" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="250.0" />
+                  <TextField fx:id="cpfFuncEdit" alignment="CENTER" layoutX="221.0" layoutY="145.0" promptText="Digite CPF" styleClass="txtDefault" stylesheets="@styleAppThree.css" AnchorPane.leftAnchor="225.0" AnchorPane.topAnchor="250.0" />
+                  <Label layoutX="247.0" layoutY="14.0" text="Editar Usuário" textFill="WHITE" AnchorPane.leftAnchor="247.0" AnchorPane.rightAnchor="247.0" AnchorPane.topAnchor="14.0">
+                     <font>
+                        <Font name="Arial Black" size="20.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="250.0" layoutY="345.0" mnemonicParsing="false" onMouseClicked="#updateUser" prefHeight="50.0" prefWidth="150.0" styleClass="btPonto" text="Alterar" textFill="WHITE" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="249.0">
+                     <font>
+                        <Font name="Arial Black" size="20.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="471.0" layoutY="162.0" text="Selecione o Grau" textFill="WHITE" AnchorPane.leftAnchor="470.0" AnchorPane.topAnchor="145.0">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Label>
+                  <RadioButton fx:id="rbEfeEdit" layoutX="437.0" layoutY="193.0" mnemonicParsing="false" onMouseClicked="#visiblePaneEditPrivtrue" text="Efetivo" textFill="WHITE" toggleGroup="$groupGrau" AnchorPane.leftAnchor="430.0" AnchorPane.topAnchor="170.0">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="rbEstEdit" layoutX="528.0" layoutY="193.0" mnemonicParsing="false" onMouseClicked="#visiblePaneEditPrivFalse" text="Estagiário" textFill="WHITE" toggleGroup="$groupGrau" AnchorPane.leftAnchor="515.0" AnchorPane.topAnchor="170.0">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </RadioButton>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="328.0" layoutY="68.0" lineSpacing="2.0" opacity="0.5" prefHeight="50.0" prefWidth="98.0" text="Selecione o usuário para buscar" textAlignment="JUSTIFY" textFill="WHITE" wrapText="true" AnchorPane.rightAnchor="228.0" AnchorPane.topAnchor="80.0">
+                     <font>
+                        <Font name="Jokerman" size="10.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="imgRelatorio111" fitHeight="17.0" fitWidth="22.0" layoutX="300.0" layoutY="90.0" onMouseClicked="#returnScreenTwo" opacity="0.5" pickOnBounds="true" preserveRatio="true" rotate="6.1" styleClass="btRelatorio" AnchorPane.rightAnchor="331.0" AnchorPane.topAnchor="90.0">
+                     <image>
+                        <Image url="@../Assets/Left%203.png" />
+                     </image>
+                  </ImageView>
+                  <TextField fx:id="txtFind" alignment="CENTER" layoutX="42.0" layoutY="82.0" onKeyReleased="#findDirect" onMouseClicked="#startTable" prefHeight="26.0" prefWidth="250.0" promptText="Pesquisar usuário" styleClass="txtDefault" stylesheets="@styleAppThree.css" AnchorPane.bottomAnchor="325.0" AnchorPane.leftAnchor="40.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </TextField>
+                  <AnchorPane fx:id="panePrivEdit" layoutX="411.0" layoutY="212.0" prefHeight="117.0" prefWidth="258.0" AnchorPane.leftAnchor="410.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="212.0">
+                     <children>
+                        <RadioButton fx:id="rbAdminEdit" layoutX="109.0" layoutY="56.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="135.0" text="Administrador" textFill="WHITE" toggleGroup="$groupPriv" AnchorPane.leftAnchor="109.0" AnchorPane.topAnchor="50.0">
+                           <font>
+                              <Font name="Arial Black" size="12.0" />
+                           </font>
+                        </RadioButton>
+                        <RadioButton fx:id="rbDefaultEdit" layoutX="14.0" layoutY="50.0" mnemonicParsing="false" text="Padrão" textFill="WHITE" toggleGroup="$groupPriv" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="50.0">
+                           <font>
+                              <Font name="Arial Black" size="12.0" />
+                           </font>
+                        </RadioButton>
+                        <Label layoutX="51.0" layoutY="14.0" text="Selecione o Privilégio" textFill="WHITE" AnchorPane.leftAnchor="51.0" AnchorPane.topAnchor="14.0">
+                           <font>
+                              <Font name="Arial Black" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="paneRemove" layoutX="10.0" layoutY="110.0" prefHeight="438.0" prefWidth="661.0" styleClass="paneMinEs" stylesheets="@styleGlobal.css" visible="false" AnchorPane.bottomAnchor="110.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0">
+               <children>
+                  <Label layoutX="247.0" layoutY="14.0" prefHeight="29.0" prefWidth="200.0" text="Remover Usuário" textFill="WHITE" AnchorPane.leftAnchor="247.0" AnchorPane.rightAnchor="214.0" AnchorPane.topAnchor="14.0">
+                     <font>
+                        <Font name="Arial Black" size="20.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="250.0" layoutY="350.0" mnemonicParsing="false" onMouseClicked="#removeUser" prefHeight="50.0" prefWidth="150.0" styleClass="btPonto" text="Remover" textFill="WHITE" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="249.0">
+                     <font>
+                        <Font name="Arial Black" size="20.0" />
+                     </font>
+                  </Button>
+                  <TableView fx:id="tbFindDelete" layoutX="40.0" layoutY="93.0" onMouseClicked="#RemoveSelectedTU" prefHeight="153.0" prefWidth="301.0" style="-fx-background-radius: 20;" visible="false">
+                    <columns>
+                      <TableColumn fx:id="clmNameDelete" minWidth="160.0" prefWidth="30.0" text="Nome" />
+                      <TableColumn fx:id="clmCPFDelete" minWidth="0.0" prefWidth="114.0" text="CPF" />
+                    </columns>
+                  </TableView>
+                  <Label alignment="CENTER" contentDisplay="CENTER" layoutX="378.0" layoutY="72.0" lineSpacing="2.0" opacity="0.5" prefHeight="50.0" prefWidth="98.0" text="Selecione o usuário para buscar" textAlignment="JUSTIFY" textFill="WHITE" wrapText="true" AnchorPane.topAnchor="72.0">
+                     <font>
+                        <Font name="Jokerman" size="10.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="imgRelatorio1111" fitHeight="17.0" fitWidth="22.0" layoutX="353.0" layoutY="94.0" onMouseClicked="#returnScreenTwo" opacity="0.5" pickOnBounds="true" preserveRatio="true" styleClass="btRelatorio">
+                     <image>
+                        <Image url="@../Assets/Left%203.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER" contentDisplay="TOP" layoutX="378.0" layoutY="178.0" prefHeight="29.0" prefWidth="184.0" text="Usuário Selecionado" textFill="WHITE" AnchorPane.rightAnchor="55.0" AnchorPane.topAnchor="178.0">
+                     <font>
+                        <Font name="Arial Black" size="15.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="lblFuncRemove" alignment="CENTER" contentDisplay="CENTER" layoutX="431.0" layoutY="208.0" prefHeight="29.0" prefWidth="210.0" text="Funcionario" textAlignment="CENTER" textFill="WHITE" AnchorPane.rightAnchor="43.0" AnchorPane.topAnchor="208.0">
+                     <font>
+                        <Font name="Arial Black" size="12.0" />
+                     </font>
+                  </Label>
+                  <Ellipse fill="#ffffff00" layoutX="466.0" layoutY="221.0" radiusX="109.0" radiusY="71.0" stroke="#ffffff4f" strokeType="INSIDE" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="150.0" />
+                  <TextField layoutX="50.0" layoutY="95.0" onMouseClicked="#startTable" prefHeight="26.0" prefWidth="301.0" promptText="Pesquisar usuário" styleClass="txtDefault" stylesheets="@styleAppThree.css" AnchorPane.bottomAnchor="325.0" AnchorPane.leftAnchor="40.0">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </TextField>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

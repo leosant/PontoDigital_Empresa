@@ -20,18 +20,6 @@
     	<version>11</version>
     	<type>pom</type>
 	</dependency>
- 	
-    <dependency>
-        <groupId>org.openjfx</groupId>
-        <artifactId>javafx-controls</artifactId>
-        <version>11</version>
-    </dependency>
-    
-    <dependency>
-        <groupId>org.openjfx</groupId>
-        <artifactId>javafx-fxml</artifactId>
-        <version>11</version>
-    </dependency>
 
 	<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
 	<dependency>
@@ -47,11 +35,12 @@
 		<version>5.4.12.Final</version>
 	</dependency>
 	
+	<!-- https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.1-api -->
 	<dependency>
-        <groupId>org.hibernate</groupId>
-        <artifactId>hibernate-core</artifactId>
-        <version>5.4.4.Final</version>
-    </dependency>
+    	<groupId>org.hibernate.javax.persistence</groupId>
+    	<artifactId>hibernate-jpa-2.1-api</artifactId>
+    	<version>1.0.2.Final</version>
+	</dependency>
 	
 	<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 	<dependency>

@@ -110,7 +110,7 @@ public class ControllerThree{
 			
 		}catch(Exception e) {
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, "Erro no servidor, verifique a conex√£o com o banco de dados");
+			JOptionPane.showMessageDialog(null, "Erro no servidor, verifique a conex„o com o banco de dados");
 		}
 	}
 	
@@ -185,15 +185,15 @@ public class ControllerThree{
 		lblFuncRemove.setText(empregado.getNome());
 		
 		try {
-			int confirmUpdate = JOptionPane.showConfirmDialog(null, "Deseja realmente alterar esse usu√°rio?",
-					"Alterar Usu√°rio ?", JOptionPane.YES_NO_OPTION);
+			int confirmUpdate = JOptionPane.showConfirmDialog(null, "Deseja realmente alterar esse usu·rio?",
+					"Alterar Usu·rio ?", JOptionPane.YES_NO_OPTION);
 			
 			if(confirmUpdate == 0) {
 				interactionDAO.save(StringUtilsThree.persistUser(empregado, nomeFuncEdit, cpfFuncEdit, senhaFuncEdit, 
 						groupGrau, groupPriv));
 			}
 		}catch(Exception e) {
-			JOptionPane.showMessageDialog(null, "Error no servido, verique a sua conex√£o ao banco de "
+			JOptionPane.showMessageDialog(null, "Error no servido, verique a sua conex„o ao banco de "
 					+ "dados");
 		}
 
@@ -237,15 +237,15 @@ public class ControllerThree{
 		empregado = tbFindDelete.getSelectionModel().getSelectedItem();
 		
 		try {
-			int confirmDelete = JOptionPane.showConfirmDialog(null, "Aten√ß√£o todos os dados desse funcion√°rio ser√° removidos,"
-					+ "\n sem a possibilidade de recupera√ß√£o!", "Deseja remover o usu√°rio?", JOptionPane.YES_NO_OPTION,
+			int confirmDelete = JOptionPane.showConfirmDialog(null, "AtenÁ„o todos os dados desse funcion·rio ser· removidos,"
+					+ "\n sem a possibilidade de recuperaÁ„o!", "Deseja remover o usu·rio?", JOptionPane.YES_NO_OPTION,
 					JOptionPane.INFORMATION_MESSAGE);
 			
 			if(confirmDelete == 0) {				
 				interactionDAO.delete(empregado.getId());
 			}
 		}catch(Exception e) {
-			JOptionPane.showMessageDialog(null, "Error no servido, verique a sua conex√£o ao banco de "
+			JOptionPane.showMessageDialog(null, "Error no servido, verique a sua conex„o ao banco de "
 					+ "dados");
 		}
 		
@@ -286,7 +286,7 @@ public class ControllerThree{
 				break;
 			default:
 				JOptionPane.showMessageDialog(null, "Desculpe ocorreu um erro distinto, retorne a "
-						+ "p√°gina anterior.", "Error!", 0);
+						+ "p·gina anterior.", "Error!", 0);
 				break;
 			}	
 	}

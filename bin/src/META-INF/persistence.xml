@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+     http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+    version="2.0">
+
+ <persistence-unit name="pontodigital" transaction-type="RESOURCE_LOCAL">
+
+   <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+   <class>com.pontoDigital.Model.Funcionario</class>
+
+   <properties>
+      <!-- Driver JDBC para conexão com o MySQL -->
+	  <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+
+	  <!-- Propriedades para conexão com o banco de dados -->
+	  <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/pontodigital?createDatabaseIfNotExist=true&amp;useTimezone=true&amp;serverTimezone=UTC" />
+	  <property name="javax.persistence.jdbc.user" value="root" />
+	  <property name="javax.persistence.jdbc.password" value=""/>
+
+	  <!-- Configurações do Hibernate -->
+	  <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5Dialect" />
+	  <property name="hibernate.hbm2ddl.auto" value="update" />
+	  
+	  <property name="hibernate.show_sql" value="true"/>
+	  <property name="hibernate.format_sql" value="true"/>
+   </properties>
+ </persistence-unit>
+</persistence>
