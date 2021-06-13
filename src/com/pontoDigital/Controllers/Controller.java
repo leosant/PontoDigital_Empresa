@@ -1,13 +1,16 @@
 package com.pontoDigital.Controllers;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.Date;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.swing.JOptionPane;
 
 import com.pontoDigital.DAO.InteractionDAO;
+import com.pontoDigital.Model.Data.DataDays;
+import com.pontoDigital.Model.Data.DataMonth;
 import com.pontoDigital.Model.Data.DataYear;
 import com.pontoDigital.Model.Employer.Funcionario;
 import com.pontoDigital.Principal.ScreenOne;
@@ -28,12 +31,12 @@ import javafx.util.Duration;
 
 public class Controller{
 	//Special attribute
-	Date data = new Date();
 	SimpleDateFormat sfd1 = new SimpleDateFormat("HH:mm:ss");
 	SimpleDateFormat sfd2 = new SimpleDateFormat("dd/MM/yyyy");
 	SimpleDateFormat sfd3 = new SimpleDateFormat("yyyy");
 	SimpleDateFormat sfd4 = new SimpleDateFormat("MM");
 	SimpleDateFormat sfd5 = new SimpleDateFormat("dd");
+	Date data = new Date();
 	
 	//Labels
 	@FXML private Label lblUser;
@@ -50,7 +53,6 @@ public class Controller{
 
 	//Buttons
 	@FXML private Button btPonto;
-	@FXML private Button btHelpMe;
 
 	//ImageView
 	@FXML private ImageView setaPonto;
@@ -60,51 +62,66 @@ public class Controller{
 	//AnchorPanel
 	@FXML private AnchorPane relogioPainel;
 	@FXML private AnchorPane relatorioPainel;
-	@FXML private AnchorPane paneConfig;
 	
 	//Interaction with the layer database and Employer
 	private InteractionDAO interactionDAO;
 	
+	//Teste
+	EntityManager getEntityManager() {
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("pontodigital");
+		return factory.createEntityManager();
+	}
+	
+	private DataYear dataYear;
+	private DataMonth dataMonth;
+	private DataDays dataDays;
+	private Funcionario funcTest;
+
 	//Part of guide button hours time
 	public void botaoHoraRelogio() {
-		
+		interactionDAO = new InteractionDAO();
+		dataYear = new DataYear();
+		dataMonth = new DataMonth();
+		dataDays = new DataDays();
+		funcTest = StringUtilsOne.funcToAll(txtLoginUser, txtSenhaUser, interactionDAO);
+		EntityManager em = getEntityManager();
 		labelsInstanciaBtr();
+			
+		lblUser.setText(funcTest.getNome());
+		dataYear.setYear(Integer.parseInt(sfd3.format(data)));
+		dataMonth.setMonth(Integer.parseInt(sfd4.format(data)));
+		dataDays.setDay(Integer.parseInt(sfd5.format(data)));
+		
+		dataYear.setFuncionarios(funcTest);
+		dataMonth.setDataYear(dataYear);
+		dataDays.setDataMonth(dataMonth);
+	
+		
+		System.out.println("data resultado ano: " +dataYear.getYear());
+		System.out.println("data resultado mês: " +dataMonth.getMonth());
+		System.out.println("data resultado dia: " +dataDays.getDay());
+		
+		em.getTransaction().begin();
+		em.merge(dataYear);
+		em.merge(dataMonth);
+		em.merge(dataDays);
+		em.getTransaction().commit();
+		em.close();
 		
 		KeyFrame frame = new KeyFrame(Duration.millis(1000), e -> atualizaHoras());
 		Timeline timeline = new Timeline(frame);
 		timeline.setCycleCount(Timeline.INDEFINITE);
 		timeline.play();
 	}
-	
-	//Part of configuration manual of options button
-	public void configurationManual() {
-		paneConfig.setVisible(true);
-	}
-	
-	public void configurationManualExit() {
-		paneConfig.setVisible(false);
-	}
-	
-	// Part of guide button hours time. Here is the button to send data to the database
-	public void registrarPonto() throws Exception {
-		
+
+	// Part of guide button hours time. Here is the button to send data to the
+	// database
+	public void registrarPonto() {
+		//TODO build call to my database (button)
 		interactionDAO = new InteractionDAO();
-		DataYear dataYear = new DataYear();
-		Funcionario managerFunc = StringUtilsOne.funcToAll(txtLoginUser, txtSenhaUser, interactionDAO);
+		Funcionario testFunc = StringUtilsOne.funcToAll(txtLoginUser, txtSenhaUser, interactionDAO);
 		
-		lblUser.setText(((Funcionario) managerFunc).getNome());
-		//Verifica possibilidade de mudar para o LocalDate
-		dataYear.setYear(Integer.parseInt(sfd3.format(data)));
-		dataYear.setDays(Integer.parseInt(sfd5.format(data)));
-		dataYear.setMonth(Integer.parseInt(sfd4.format(data)));
-		dataYear.setFuncionarios(managerFunc);
-		
-		//Options office hour automatic
-		StringUtilsOne.configurationOptionsAuto(dataYear);
-		
-		interactionDAO.saveDate(dataYear);
-		
-		JOptionPane.showMessageDialog(null, managerFunc.getNome() + "\n" + lblRelogio.getText() + "\n"
+		JOptionPane.showMessageDialog(null, testFunc.getNome() + "\n" + lblRelogio.getText() + "\n"
 				+ lblDataCompleta.getText() + "\nSalving my database");
 	}
 
