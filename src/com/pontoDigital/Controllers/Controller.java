@@ -56,6 +56,7 @@ public class Controller{
 	@FXML private ImageView setaSair;
 
 	//AnchorPanel
+	@FXML private AnchorPane paneDeafult;
 	@FXML private AnchorPane relogioPainel;
 	@FXML private AnchorPane relatorioPainel;
 	@FXML private AnchorPane paneConfig;
@@ -158,7 +159,7 @@ public class Controller{
 		//True
 		setaPonto.setVisible(true);
 		relogioPainel.setVisible(true);
-		//Label�s
+		//Labels
 		lblRelogio.setVisible(true);
 		lblData.setVisible(true);
 		lblDataCompleta.setVisible(true);
@@ -166,6 +167,7 @@ public class Controller{
 		setaSair.setVisible(false);
 		setaRelatorio.setVisible(false);
 		relatorioPainel.setVisible(false);
+		paneDeafult.setVisible(false);
 		//Hours Time
 		lblRelogio.setText(sfd1.format(data));
 		lblRelogio.getText();

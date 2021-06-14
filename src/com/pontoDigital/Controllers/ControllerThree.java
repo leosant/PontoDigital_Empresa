@@ -188,10 +188,10 @@ public class ControllerThree{
 			int confirmUpdate = JOptionPane.showConfirmDialog(null, "Deseja realmente alterar esse usuário?",
 					"Alterar Usuário ?", JOptionPane.YES_NO_OPTION);
 			
-			if(confirmUpdate == 0) {
+//			if(confirmUpdate == 0) {
 				interactionDAO.save(StringUtilsThree.persistUser(empregado, nomeFuncEdit, cpfFuncEdit, senhaFuncEdit, 
 						groupGrau, groupPriv));
-			}
+//			}
 		}catch(Exception e) {
 			JOptionPane.showMessageDialog(null, "Error no servido, verique a sua conexão ao banco de "
 					+ "dados");

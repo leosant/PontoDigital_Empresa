@@ -11,8 +11,6 @@
 
    <class>com.pontoDigital.Model.Employer.Funcionario</class>
    <class>com.pontoDigital.Model.Data.DataYear</class>
-   <class>com.pontoDigital.Model.Data.DataMonth</class>
-   <class>com.pontoDigital.Model.Data.DataDays</class>
 
    <properties>
       <!-- Driver JDBC para conexão com o MySQL -->

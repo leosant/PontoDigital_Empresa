@@ -51,7 +51,7 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="relogioPainel" layoutX="122.0" prefHeight="400.0" prefWidth="535.0" styleClass="paneRelPontoDir" stylesheets="@styleGlobal.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="122.0">
+      <AnchorPane fx:id="relogioPainel" layoutX="122.0" prefHeight="400.0" prefWidth="535.0" styleClass="paneRelPontoDir" stylesheets="@styleGlobal.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="122.0">
          <children>
       
             <Label fx:id="lblRelogio" alignment="CENTER" layoutX="189.0" layoutY="224.0" prefHeight="44.0" prefWidth="158.0" text="Relógio" textFill="WHITE" AnchorPane.bottomAnchor="132.0" AnchorPane.leftAnchor="189.0" AnchorPane.rightAnchor="188.0">
@@ -197,6 +197,24 @@
                   <Font name="Arial Black" size="10.0" />
                </font></CheckBox>
          </children></AnchorPane>
+      <AnchorPane fx:id="paneDeafult" layoutX="122.0" layoutY="-5.0" prefHeight="406.0" prefWidth="528.0" styleClass="paneRelPontoDir" stylesheets="@styleGlobal.css">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="132.0" layoutY="154.0" lineSpacing="3.0" opacity="0.89" prefHeight="99.0" prefWidth="265.0" text="Bem vindo ao Ponto Digital" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.bottomAnchor="153.0" AnchorPane.leftAnchor="132.0" AnchorPane.rightAnchor="131.0" AnchorPane.topAnchor="154.0">
+               <font>
+                  <Font name="Gill Sans Ultra Bold" size="27.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="34.0" layoutY="25.0" lineSpacing="2.0" opacity="0.5" prefHeight="44.0" prefWidth="64.0" text="Comece por aqui" textAlignment="JUSTIFY" textFill="WHITE" wrapText="true" AnchorPane.leftAnchor="38.0">
+               <font>
+                  <Font name="Jokerman" size="12.0" />
+               </font></Label>
+            <ImageView fx:id="imgRelatorio111" fitHeight="17.0" fitWidth="22.0" layoutX="17.0" layoutY="30.0" opacity="0.5" pickOnBounds="true" preserveRatio="true" styleClass="btRelatorio">
+               <image>
+                  <Image url="@../Assets/Left%203.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
 
    </children>
    
