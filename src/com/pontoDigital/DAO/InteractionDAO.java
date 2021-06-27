@@ -11,12 +11,11 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import javax.swing.JOptionPane;
 
-import com.pontoDigital.Model.Data.DataYear;
-import com.pontoDigital.Model.Employer.Funcionario;
+import com.pontoDigital.Model.Entity.DataYear;
+import com.pontoDigital.Model.Entity.Funcionario;
 
 
 public class InteractionDAO{
-	
 	
 	public final EntityManager getEntityManager() {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("pontodigital");
@@ -70,7 +69,8 @@ public class InteractionDAO{
 	}
 	
 	public List<Funcionario> listAll() {
-		EntityManager em = getEntityManager(); 
+		EntityManager em = getEntityManager();
+		
 		CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
 		
 		CriteriaQuery<Funcionario> criteriaQuery = criteriaBuilder.createQuery(Funcionario.class);

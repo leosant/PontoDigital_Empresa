@@ -1,4 +1,4 @@
-package com.pontoDigital.Model.Data;
+package com.pontoDigital.Model.Entity;
 
 import java.time.LocalTime;
 import javax.persistence.Entity;
@@ -8,8 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import com.pontoDigital.Model.Employer.Funcionario;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

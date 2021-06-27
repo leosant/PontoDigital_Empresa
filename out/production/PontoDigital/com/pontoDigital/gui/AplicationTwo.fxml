@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pontoDigital.Controllers.ControllerTwo">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pontoDigital.Controllers.ControllerOneTwo">
    <children>
       <AnchorPane layoutX="14.0" layoutY="21.0" prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #3F012C; -fx-background-radius: 8 8 8 350;">
          <children>

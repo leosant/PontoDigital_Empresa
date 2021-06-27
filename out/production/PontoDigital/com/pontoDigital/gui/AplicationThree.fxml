@@ -17,7 +17,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="650.0" prefWidth="650.0" styleClass="paneBase" stylesheets="@styleAppThree.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pontoDigital.Controllers.ControllerThree">
+<AnchorPane prefHeight="650.0" prefWidth="650.0" styleClass="paneBase" stylesheets="@styleAppThree.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pontoDigital.Controllers.ControllerOneThree">
    <children>
       <AnchorPane layoutX="37.0" prefHeight="650.0" prefWidth="650.0" styleClass="paneMinEs" stylesheets="@styleGlobal.css">
          <children>

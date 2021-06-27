@@ -1,8 +1,9 @@
-package com.pontoDigital.Model.Employer;
+package com.pontoDigital.Model.Entity;
 import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -12,7 +13,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.pontoDigital.Model.Data.DataYear;
+import com.pontoDigital.Model.Enums.Status;
+import com.pontoDigital.Model.Enums.Tipo;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -35,6 +37,7 @@ public class Funcionario  implements Serializable{
 	@Enumerated(EnumType.STRING)
 	private Tipo tipo;
 	
+	@Column(unique = true)
 	private String cpf;
 	
 	@EqualsAndHashCode.Include

@@ -1,17 +1,24 @@
 package com.pontoDigital.Service;
 
-import com.pontoDigital.Model.Employer.*;
+import java.io.Serializable;
+
+import com.pontoDigital.Model.Entity.Funcionario;
+import com.pontoDigital.Model.Enums.Status;
+import com.pontoDigital.Model.Enums.Tipo;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 
-public class StringUtilsThree {
+public class ServiceThree implements Serializable{
 	
-	private StringUtilsThree() {
-		throw new IllegalStateException("Utility class");
-	 }
+	private static final long serialVersionUID = 1L;
+
+	private ServiceThree() {
+		 throw new IllegalStateException("Utility class");
+	}
 	
 	public static void tbSetup(Funcionario empregado, TextField nome, TextField cpf, 
 			TextField senha, ToggleGroup groupGrau, ToggleGroup groupPriv, RadioButton rbEfe,
@@ -80,4 +87,5 @@ public class StringUtilsThree {
 		return listSenFun;
 		
 	}
+
 }

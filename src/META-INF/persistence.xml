@@ -9,8 +9,8 @@
 
    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-   <class>com.pontoDigital.Model.Employer.Funcionario</class>
-   <class>com.pontoDigital.Model.Data.DataYear</class>
+   <class>com.pontoDigital.Model.Entity.Funcionario</class>
+   <class>com.pontoDigital.Model.Entity.DataYear</class>
 
    <properties>
       <!-- Driver JDBC para conexão com o MySQL -->

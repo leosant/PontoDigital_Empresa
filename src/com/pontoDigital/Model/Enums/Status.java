@@ -1,4 +1,4 @@
-package com.pontoDigital.Model.Employer;
+package com.pontoDigital.Model.Enums;
 
 public enum Status {
 	

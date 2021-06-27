@@ -2,11 +2,15 @@ package com.pontoDigital.Controllers;
 import java.util.List;
 
 import javax.swing.JOptionPane;
-import com.pontoDigital.DAO.InteractionDAO;
-import com.pontoDigital.Model.Employer.Funcionario;
+
+import com.pontoDigital.DAO.Interaction;
+import com.pontoDigital.DAO.InteractionFuncDao;
+import com.pontoDigital.Model.Entity.Funcionario;
 import com.pontoDigital.Principal.ScreenThree;
 import com.pontoDigital.Principal.ScreenTwo;
-import com.pontoDigital.Service.StringUtilsThree;
+import com.pontoDigital.Service.ServiceGlobal;
+import com.pontoDigital.Service.ServiceThree;
+
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -73,11 +77,11 @@ public class ControllerThree{
 	private ObservableList<Funcionario> listObsFunc = FXCollections.observableArrayList();
 	
 	//Layer DAO
-	private InteractionDAO interactionDAO;
+	private Interaction<Funcionario> interactionDAO;
 	
 	//AnchorPane add
 	public void clickAddUser() {
-		paneVisibleIs(1);
+		ServiceGlobal.paneVisibleIs(1, paneAddUser, paneEdit, paneRemove);
 		if(tbFindEdit.isVisible()) {
 			tbFindEdit.setVisible(false);
 		}
@@ -102,10 +106,10 @@ public class ControllerThree{
 	public void adicionarUsario(){	
 		//Create at controller	
 		empregado = new Funcionario();
-		interactionDAO = new InteractionDAO();
+		interactionDAO = new InteractionFuncDao();
 		
 		try {
-			interactionDAO.save(StringUtilsThree.persistUser(empregado, nomeFunc, cpfFunc, txtSenha,
+			interactionDAO.save(ServiceThree.persistUser(empregado, nomeFunc, cpfFunc, txtSenha,
 					groupGrau, groupPriv));
 			
 		}catch(Exception e) {
@@ -116,7 +120,7 @@ public class ControllerThree{
 	
 	//AnchorPane edit
 	public void clickEdit() {
-		paneVisibleIs(2);
+		ServiceGlobal.paneVisibleIs(2, paneAddUser, paneEdit, paneRemove);
 	}
 	
 	//AnchorPane edit - Radio button
@@ -152,7 +156,7 @@ public class ControllerThree{
 	//AnchorPane edit and remove - TableView (Adjusted)
 	public ObservableList<Funcionario> updateTable() {
 		tbFindEdit.refresh();
-		interactionDAO = new InteractionDAO();
+		interactionDAO = new InteractionFuncDao();
 		List<Funcionario> listFunc = interactionDAO.listAll();
 		listObsFunc = FXCollections.observableArrayList(listFunc);
 		
@@ -161,8 +165,8 @@ public class ControllerThree{
 	
 	//AnchorPane edit - TableView - TextField
 	public void findDirect() {
-		tbFindEdit.setItems(StringUtilsThree.findAutoComplete(txtFind, listObsFunc));
-		tbFindDelete.setItems(StringUtilsThree.findAutoComplete(txtFindDelete, listObsFunc));
+		tbFindEdit.setItems(ServiceThree.findAutoComplete(txtFind, listObsFunc));
+		tbFindDelete.setItems(ServiceThree.findAutoComplete(txtFindDelete, listObsFunc));
 	}
 	
 	//AnchorPane edit - TableView - Selected (Adjusted)
@@ -170,7 +174,7 @@ public class ControllerThree{
 		tbFindEdit.refresh();			
 		empregado = tbFindEdit.getSelectionModel().getSelectedItem();
 		
-		StringUtilsThree.tbSetup(empregado, nomeFuncEdit, cpfFuncEdit, senhaFuncEdit, groupGrau, 
+		ServiceThree.tbSetup(empregado, nomeFuncEdit, cpfFuncEdit, senhaFuncEdit, groupGrau, 
 				groupPriv, rbEfeEdit, rbAdminEdit, rbDefaultEdit, rbEstEdit);
 		
 		tbFindEdit.setVisible(false);
@@ -178,7 +182,7 @@ public class ControllerThree{
 	
 	//AnchorPane edit - button update
 	public void updateUser(){
-		interactionDAO = new InteractionDAO();
+		interactionDAO = new InteractionFuncDao();
 		
 		empregado = tbFindEdit.getSelectionModel().getSelectedItem();
 		
@@ -189,7 +193,7 @@ public class ControllerThree{
 					"Alterar Usuário ?", JOptionPane.YES_NO_OPTION);
 			
 			if(confirmUpdate == 0) {
-				interactionDAO.save(StringUtilsThree.persistUser(empregado, nomeFuncEdit, cpfFuncEdit, senhaFuncEdit, 
+				interactionDAO.save(ServiceThree.persistUser(empregado, nomeFuncEdit, cpfFuncEdit, senhaFuncEdit, 
 						groupGrau, groupPriv));
 			}
 		}catch(Exception e) {
@@ -217,7 +221,7 @@ public class ControllerThree{
 	
 	//AnchorPane remove
 	public void clickRemove() {
-		paneVisibleIs(3);
+		ServiceGlobal.paneVisibleIs(3, paneAddUser, paneEdit, paneRemove);
 	}
 	
 	//AnchorPane remove - tableView -- VErificar a utilidade
@@ -233,7 +237,7 @@ public class ControllerThree{
 	
 	//AnchorPane remove - button remove
 	public void removeUser() {
-		interactionDAO = new InteractionDAO();
+		interactionDAO = new InteractionFuncDao();
 		empregado = tbFindDelete.getSelectionModel().getSelectedItem();
 		
 		try {
@@ -251,7 +255,6 @@ public class ControllerThree{
 		
 	}
 	
-	//Button closed
 	public void closedApp() {
 		Platform.exit();
 	}
@@ -265,30 +268,4 @@ public class ControllerThree{
 			e.printStackTrace();
 		}	
 	}
-	
-	//Switch to AnchorPane
-	public void paneVisibleIs(Integer flag) {
-		
-		if(paneAddUser.isVisible() || paneEdit.isVisible() || paneRemove.isVisible()) {
-			paneAddUser.setVisible(false);
-			paneEdit.setVisible(false);
-			paneRemove.setVisible(false);
-		}
-			switch (flag){
-			case 1: 
-				paneAddUser.setVisible(true);
-				break;
-			case 2:
-				paneEdit.setVisible(true);
-				break;
-			case 3:
-				paneRemove.setVisible(true);
-				break;
-			default:
-				JOptionPane.showMessageDialog(null, "Desculpe ocorreu um erro distinto, retorne a "
-						+ "página anterior.", "Error!", 0);
-				break;
-			}	
-	}
-	
 }

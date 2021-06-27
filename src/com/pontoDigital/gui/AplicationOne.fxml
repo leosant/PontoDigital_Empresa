@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="650.0" styleClass="paneBase" stylesheets="@styleGlobal.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pontoDigital.Controllers.Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="650.0" styleClass="paneBase" stylesheets="@styleGlobal.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pontoDigital.Controllers.ControllerOne">
    <children>
       <ImageView fx:id="setaPonto" fitHeight="50.0" fitWidth="50.0" layoutX="87.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="87.0" AnchorPane.topAnchor="14.0">
          <image>
@@ -34,24 +34,24 @@
       </ImageView>
       <AnchorPane prefHeight="400.0" prefWidth="80.0" styleClass="paneMinEs" stylesheets="@styleGlobal.css" AnchorPane.rightAnchor="570.0">
          <children>
-            <ImageView fx:id="imgSair" fitHeight="50.0" fitWidth="50.0" layoutX="15.0" layoutY="336.0" onMouseClicked="#botaoSair" pickOnBounds="true" preserveRatio="true" styleClass="btSair">
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="15.0" layoutY="336.0" onMouseClicked="#buttonExit" pickOnBounds="true" preserveRatio="true" styleClass="btSair">
                <image>
                   <Image url="@../Assets/shutdown.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="imgRelatorio" fitHeight="50.0" fitWidth="50.0" layoutX="15.0" layoutY="175.0" onMouseClicked="#botaoRelatorioPonto" pickOnBounds="true" preserveRatio="true" styleClass="btRelatorio">
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="15.0" layoutY="175.0" onMouseClicked="#buttonReports" pickOnBounds="true" preserveRatio="true" styleClass="btRelatorio">
                <image>
                   <Image url="@../Assets/ImportantMonth.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="imgPonto" fitHeight="50.0" fitWidth="50.0" layoutX="15.0" layoutY="21.0" onMouseClicked="#botaoHoraRelogio" pickOnBounds="true" preserveRatio="true" styleClass="btRelogioPonto" AnchorPane.topAnchor="14.0">
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="15.0" layoutY="21.0" onMouseClicked="#buttonHours" pickOnBounds="true" preserveRatio="true" styleClass="btRelogioPonto" AnchorPane.topAnchor="14.0">
                <image>
                   <Image url="@../Assets/ClockAdd.png" />
                </image>
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="relogioPainel" layoutX="122.0" prefHeight="400.0" prefWidth="535.0" styleClass="paneRelPontoDir" stylesheets="@styleGlobal.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="122.0">
+      <AnchorPane fx:id="paneHours" layoutX="122.0" prefHeight="400.0" prefWidth="535.0" styleClass="paneRelPontoDir" stylesheets="@styleGlobal.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="122.0">
          <children>
       
             <Label fx:id="lblRelogio" alignment="CENTER" layoutX="189.0" layoutY="224.0" prefHeight="44.0" prefWidth="158.0" text="Relógio" textFill="WHITE" AnchorPane.bottomAnchor="132.0" AnchorPane.leftAnchor="189.0" AnchorPane.rightAnchor="188.0">
@@ -60,7 +60,7 @@
                </font>
             </Label>
       
-            <Button fx:id="btPonto" layoutX="204.0" layoutY="288.0" mnemonicParsing="false" onMouseClicked="#registrarPonto" prefHeight="70.0" prefWidth="120.0" styleClass="btPonto" stylesheets="@styleGlobal.css" text="Bater Ponto" textFill="WHITE" AnchorPane.bottomAnchor="42.0" AnchorPane.leftAnchor="204.0" AnchorPane.rightAnchor="204.0">
+            <Button layoutX="204.0" layoutY="288.0" mnemonicParsing="false" onMouseClicked="#buttonPoint" prefHeight="70.0" prefWidth="120.0" styleClass="btPonto" stylesheets="@styleGlobal.css" text="Bater Ponto" textFill="WHITE" AnchorPane.bottomAnchor="42.0" AnchorPane.leftAnchor="204.0" AnchorPane.rightAnchor="204.0">
                <font>
                   <Font name="Arial Black" size="15.0" />
                </font>
@@ -78,8 +78,14 @@
                   <Image url="@../Assets/logo.png" />
                </image>
             </ImageView>
-            <Label fx:id="lblData" layoutX="424.0" layoutY="14.0" text="Data: " textFill="#fcfcfc" visible="false" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="14.0" />
-            <Label fx:id="lblDataCompleta" layoutX="458.0" layoutY="14.0" text="dd/MM/yyy" textFill="WHITE" visible="false" />
+            <Label fx:id="lblData" layoutX="424.0" layoutY="14.0" text="Data: " textFill="#fcfcfc" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="14.0">
+               <font>
+                  <Font name="Arial Black" size="11.0" />
+               </font></Label>
+            <Label fx:id="lblDataCompleta" layoutX="458.0" layoutY="14.0" text="dd/MM/yyy" textFill="WHITE">
+               <font>
+                  <Font name="Arial Black" size="11.0" />
+               </font></Label>
             <Label fx:id="lblUser" layoutX="408.0" layoutY="52.0" opacity="0.5" text="Usuario" textFill="WHITE" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="40.0">
                <font>
                   <Font name="Arial Black" size="15.0" />
@@ -152,14 +158,14 @@
                   </Button>
                </children>
             </AnchorPane>
-            <Button fx:id="btHelpMe" accessibleHelp="gdg" accessibleRoleDescription="odii" accessibleText="adas" disable="true" ellipsisString="testando aqui" layoutX="481.0" layoutY="108.0" mnemonicParsing="false" opacity="0.67" prefHeight="25.0" prefWidth="18.0" styleClass="btPonto" stylesheets="@styleGlobal.css" text="?" textFill="WHITE">
+            <Button accessibleHelp="gdg" accessibleRoleDescription="odii" accessibleText="adas" disable="true" ellipsisString="testando aqui" layoutX="481.0" layoutY="108.0" mnemonicParsing="false" opacity="0.67" prefHeight="25.0" prefWidth="18.0" styleClass="btPonto" stylesheets="@styleGlobal.css" text="?" textFill="WHITE">
                <font>
                   <Font name="Arial Rounded MT Bold" size="9.0" />
                </font>
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="relatorioPainel" layoutX="125.0" layoutY="-6.0" prefHeight="406.0" prefWidth="528.0" styleClass="paneRelatorioDir" stylesheets="@styleGlobal.css" visible="false">
+      <AnchorPane fx:id="paneReports" layoutX="125.0" layoutY="-6.0" prefHeight="406.0" prefWidth="528.0" styleClass="paneRelatorioDir" stylesheets="@styleGlobal.css" visible="false">
          <children>
             <Label layoutX="427.0" layoutY="386.0" text="Copyright Leonardo" textFill="#ebe5e5" AnchorPane.bottomAnchor="7.0" AnchorPane.rightAnchor="30.0">
                <font>
