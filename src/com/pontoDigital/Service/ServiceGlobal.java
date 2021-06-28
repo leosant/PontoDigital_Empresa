@@ -1,6 +1,7 @@
 package com.pontoDigital.Service;
 
 import java.io.Serializable;
+import java.text.Normalizer;
 
 import javax.swing.JOptionPane;
 
@@ -38,5 +39,9 @@ public class ServiceGlobal implements Serializable{
 					+ "página anterior.", "Error!", JOptionPane.ERROR_MESSAGE);
 			break;
 		}
+	}
+	
+	public static String removerAcentos(String str) {
+	    return Normalizer.normalize(str, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
 	}
 }

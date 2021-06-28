@@ -105,7 +105,7 @@
                         <Font name="Arial Rounded MT Bold" size="30.0" />
                      </font>
                   </Label>
-                  <Button layoutX="250.0" layoutY="350.0" mnemonicParsing="false" onAction="#adicionarUsario" prefHeight="50.0" prefWidth="150.0" styleClass="btPonto" text="Adicionar" textFill="WHITE" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="249.0">
+                  <Button layoutX="250.0" layoutY="350.0" mnemonicParsing="false" onMouseClicked="#addEmployer" prefHeight="50.0" prefWidth="150.0" styleClass="btPonto" text="Adicionar" textFill="WHITE" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="250.0" AnchorPane.rightAnchor="249.0">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="20.0" />
                      </font>
